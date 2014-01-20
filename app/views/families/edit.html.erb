@@ -1,0 +1,16 @@
+<h1>Nueva Familia<span class="line"></span></h1>
+
+<div class="row">
+  <div class="span6 offset3">
+	<%= form_for(@family) do |f| %>
+	  <p>
+	    <%= f.label "Nombre de la familia" %>
+	    <%= f.text_field :name %>
+	  </p>
+	  
+	  <p>
+	    <%= f.submit "Salvar Cambios", class: "btn btn-sm btn-primary" %>
+	  </p>
+	<% end %>
+  </div>
+</div>

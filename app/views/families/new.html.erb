@@ -1,0 +1,23 @@
+<h1>Nueva Familia<span class="line"></span></h1>
+
+<div class="boton_izq">
+	<p>
+	  <button type="button" class="btn btn-info"><%= link_to "Regresar a Socios", families_path %></button>
+	</p>
+</div>
+
+<div class="row">
+  <div class="span6 offset3">
+	<%= form_for(@family) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	  <p>
+	    <%= f.label "Nombre de la familia" %>
+	    <%= f.text_field :name %>
+	  </p>
+	  
+	  <p>
+	    <%= f.submit "Crear Familia", class: "btn btn-sm btn-primary" %>
+	  </p>
+	<% end %>
+  </div>
+</div>

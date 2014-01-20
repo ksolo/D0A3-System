@@ -1,0 +1,21 @@
+
+<h1>Nuestras Familias<span class="line"></span></h1>
+
+<div class="boton_izq">
+	<p>
+	  <button type="button" class="btn btn-default"><%= link_to "Nueva Familia", new_family_path %></button>
+	</p>
+</div>
+
+<h2>Total de Familias: <%= @families.count %></h2>
+
+<table class="table table-striped">
+<tr>
+	<th>Familias</th>
+</tr>
+<% @families.each do |family| %>
+<tr>
+	<td><%= link_to family.name, family %></td>
+</tr>
+<% end %>
+</table>

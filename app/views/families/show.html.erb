@@ -1,0 +1,52 @@
+<h1>Familia: <%= @family.name %><span class="line"></span></h1>
+
+<div class="boton_izq">
+	<p>
+	  <button type="button" class="btn btn-info"><%= link_to "Regresar a Socios", families_path %></button>
+	</p>
+	<p>
+	  <button type="button" class="btn btn-default"><%= link_to "Nuevo Miembro",new_family_person_path(@family) %></button>
+	</p>
+</div>
+
+<h2>Miembros</h2>
+<table class="table table-striped">
+<tr>
+	<th>Nombre</th>
+	<th>Apellido Paterno</th>
+	<th>Apellido Materno</th>
+	<th>Sexo</th>
+	<th>Fecha de Nacimiento</th>
+	<th>Relación</th>
+	<th>Editar</th>
+	<th>Borrar</th>
+</tr>
+<% @family.family_members.each do |member| %>
+<tr>
+	<td><%= link_to link_to member.name, member %></td>
+	<td><%= member.first_last_name %></td>
+	<td><%= member.second_last_name %></td>
+	<td><%= member.sex %></td>
+	<td><%= member.dob %></td>
+	<td><%= member.family_roll %></td>
+	<td><button type="button" class="btn btn-default btn-xs"><%= link_to "Editar", edit_family_person_path(@family, member) %></button></td>
+	<td><button type="button" class="btn btn-danger btn-xs"><%= link_to "Borrar", family_person_path(@family, member), method: :delete,
+                                  data: { confirm: "Estas Seguro?" } %></button></td>
+
+</tr>
+<% end %>
+</table>
+<div>
+	<% if @family.family_members.empty? %>
+	<p class="boton_izq">
+	  <button type="button" class="btn btn-danger"><%= link_to "Borrar Familia", @family, method: :delete,
+                                  data: { confirm: "Estas Seguro?" } %></button>
+	</p>
+	<% end %>
+	
+	<p class="boton_izq">
+	  <button type="button" class="btn btn-default"><%= link_to "Editar Nombre de la Familia", edit_family_path %></button>
+	</p>
+
+</div>
+

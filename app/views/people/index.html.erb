@@ -1,0 +1,25 @@
+<h1>Todos los Miembros<span class="line"></span></h1>
+
+<h2>Total de Miembros: <%= @people.count %></h2>
+
+<table class="table table-striped">
+<tr>
+	<th>Nombre</th>
+	<th>Apellido Paterno</th>
+	<th>Apellido Materno</th>
+	<th>Sexo</th>
+	<th>Fecha de Nacimiento</th>
+	<th>Relación</th>
+
+</tr>
+<% @people.each do |member| %>
+<tr>
+	<td><%= link_to link_to member.name, member %></td>
+	<td><%= member.first_last_name %></td>
+	<td><%= member.second_last_name %></td>
+	<td><%= member.sex %></td>
+	<td><%= member.dob %></td>
+	<td><%= member.family_roll %></td>
+</tr>
+<% end %>
+</table>

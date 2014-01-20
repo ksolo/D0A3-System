@@ -1,0 +1,89 @@
+name,first_last_name,second_last_name,sex,dob,family_roll,family_id,mother_id,father_id
+Diana,Pérez,Romero,F,6/5/1967,Madre,1,,
+Carolina,Camacho,Romero,F,31/03/1971,Madre,2,,
+Maribel,Maldonado,Romero,F,7/8/1971,Madre,3,,
+Ersuli,Ledezma,Romero,F,21/11/1972,Madre,4,,
+Verónica Saloma,Colin,Romero,F,28/05/1973,Madre,5,,
+Adela,Guzmán,Romero,F,13/12/1973,Madre,6,,
+Susana,Rosales,Romero,F,11/6/1974,Madre,7,,
+María de la Luz,Sánchez,Romero,F,2/8/1974,Madre,8,,
+Diana,Martínez,Romero,F,20/04/1975,Madre,9,,
+Elisa,Segura,Romero,F,9/10/1977,Madre,10,,
+Nancy,Moysén,Romero,F,29/12/1977,Madre,11,,
+Diana,Ruíz,Romero,F,1/5/1978,Madre,12,,
+Adriana,González,Romero,F,21/11/1978,Madre,13,,
+María Luisa,Olivos,Romero,F,21/05/1980,Madre,14,,
+Mireya,Guzmán,Romero,F,22/08/1981,Madre,15,,
+Dolores,Aguilar,Romero,F,2/4/1982,Madre,16,,
+Daisy Kenia,Hernández,Romero,F,9/5/1982,Madre,17,,
+Inguer,Resendiz,Romero,F,6/6/1983,Madre,18,,
+Elsa,Rosales,Romero,F,6/4/1984,Madre,19,,
+Ivonne,Ramírez,Romero,F,14/08/1984,Madre,20,,
+Judith,Romero,Romero,F,6/3/1967,Abuela Materna,1,,
+Wendolyne,Loeza,Camacho,F,8/4/1997,Hija,2,,
+Elizabeth,Maldonado,Hernández,F,28/01/1969,Tia,3,,
+Hortensia,López,Rivas,F,3/9/1952,Abuela,5,,
+Uriel,Polo,Guzmán,M,1/3/1995,Tio,6,,
+Margarita,Sánchez,Sánchez,F,27/08/1942,Abuela Materna,7,,
+Ma. Del Carmen,Rodríguez,Martínez,F,18/07/1952,Abuela Materna,8,,
+Zita,Romero,Hurtado,F,2/2/2000,Abuela Materna,9,,
+Isac,De la Cruz,Segura,M,10/2/1996,Tio,10,,
+Ma. De los Ángeles,López,Sánchez,F,5/7/1950,Abuela Paterna,13,,
+Margarita,González,Palomino,F,6/11/1952,Abuela Materna,15,,
+Juana,Acevedo,González,F,15/04/1961,Abuela Materna,17,,
+Cyntia,Morán,Herrera,F,25/09/1973,Amiga,18,,
+Antonia,Rosales,Arias,M,17/01/1977,Tio,19,,
+Romelia,Bustamante,XXXX,F,21/11/1962,Abuela Materna,20,,
+Miguel,Benítez,Flores,M,6/11/1989,Padre,1,,
+Juan Carlos,Loeza,Jiménez,M,6/9/1971,Padre,2,,
+Arturo,Hernández,Sánchez,M,9/5/1984,Padre,3,,
+Juan,Leal,Aguado,M,27/01/1962,Padre,4,,
+Oziel,Muciño,Gutiérrez,M,13/11/1972,Padre,5,,
+Vicente,Polo,Trejo,M,13/12/1975,Padre,6,,
+Emmanuel Roberto,Castillo,Gea,M,28/05/1981,Padre,7,,
+Tomas,Mejía,Moctezuma,M,25/07/1972,Padre,8,,
+Mario,Alejandres,Parra,M,5/3/1974,Padre,9,,
+Martín,De la Cruz,Galicia,M,5/9/1974,Padre,10,,
+José Luis,Hernández,Acosta,M,28/01/1976,Padre,11,,
+Jesús Euller,Bello,González,M,20/08/1977,Padre,12,,
+Iván,González,Mancilla,M,21/10/1978,Padre,13,,
+Iván,Gutiérrez,Navarrete,M,24/06/1977,Padre,14,,
+Juan Carlos,Montes de Oca,Morales,M,7/1/1981,Padre,15,,
+Esteban,Guadarrama,Pérez,M,3/8/1981,Padre,16,,
+Alejandro,Hernández,Pérez,M,8/6/1982,Padre,17,,
+José Alberto,García,García,M,2/3/1976,Padre,18,,
+Florimon,Gutiérrez,Cervantes,M,5/1/1983,Padre,19,,
+Fernando,Castillo,Flores,M,6/9/1984,Padre,20,,
+Saúl Alejandro,Benítez,Pérez,M,22/08/2011,Hijo,1,1,36
+Dulce María,Loeza,Camacho,F,30/08/2010,Hija,2,2,37
+Lizmary Natalia,Hernández,Maldonado,M,5/9/2012,Hija,3,3,38
+Andrés Leonel,Leal,Ledezma,F,26/09/2011,Hija,4,4,39
+Alonso Genaro,Muciño,Colin,M,13/07/1994,Hijo,5,5,40
+Sebastián,Polo,Guzmán,M,29/04/2010,Hijo,6,6,41
+Samantha,Castillo,Gea,F,7/6/2012,Hija,7,7,42
+Mateo,Mejía,Sánchez,M,14/04/2012,Hijo,8,8,43
+Abigail,Alejandres,Martínez,F,11/1/2007,Hija,9,9,44
+Santiago,De la Cruz,Segura,M,4/12/2009,Hijo,10,10,45
+Anne,Hernández,Moysén,F,18/06/2010,Hija,11,11,46
+Jacob,Bello,Ruíz,M,7/1/2011,Hijo,12,12,47
+Montserrat,López,González,F,30/10/2011,Hija,13,13,48
+Noé Matoshi,Gutiérrez,Olivos,M,5/12/2010,Hijo,14,14,49
+Carlos Alberto,Montes de Oca,Guzmán,M,2/3/2012,Hijo,15,15,50
+Jesús,Guadarrama,Aguilar,M,24/11/2012,Hijo,16,16,51
+Jonathan Abdiel,Hernández,Acevedo,M,18/11/2011,Hijo,17,17,52
+Kendra Ximena,García,Resendiz,F,25/02/2012,Hija,18,18,53
+Lesly Gabriela,Gutiérrez,Rosales,F,21/06/2011,Hija,19,19,54
+Sayuri,Castillo,Ramírez,F,8/5/2009,Hija,20,20,55
+Juan Carlos,Loeza,Camacho,M,7/2/2003,Hijo,2,2,37
+Victor Gerardo,Leal,Ledezma,M,3/6/2009,Hijo,4,4,39
+Ivon,Muciño,Colin,F,13/12/1999,Hija,5,5,40
+César,Polo,Guzmán,M,31/03/1998,Hijo,6,6,41
+Javier,Alejandres,Parra,M,7/4/2011,Hijo,9,9,44
+Paulina,De la Cruz,Segura,F,30/11/2011,Hija,10,10,45
+Daniel,López,González,M,8/7/2008,Hijo,13,13,48
+Vanessa,Gutiérrez,Rosales,F,5/10/2002,Hija,19,19,54
+Fernando Yael,Castillo,Ramírez,M,14/08/2008,Hijo,20,20,55
+Wendolyne,Loeza,Camacho,F,4/8/1997,Hija,2,2,37
+Alonso Genaro,Muciño,Colin,M,18/12/2010,Hijo,5,5,40
+Uriel,Polo,Hernández,M,1/3/1995,Hijo,6,6,41
+Alejandro,Gutiérrez,Rosales,M,26/05/2001,Hijo,19,19,54

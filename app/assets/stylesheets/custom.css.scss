@@ -1,0 +1,169 @@
+@import "bootstrap";
+
+/* mixins, variables, etc. */
+
+$grayMediumLight: #eaeaea;
+
+/* universal */
+
+html {
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 70px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+ .navbar-inverse .navbar-inner{
+	background-color: white;
+	background-image: none;
+	border-color: #81519c;
+}
+
+
+.navbar .nav > li > a {
+  color: $grayLight;
+  font-weight:bold;	
+  padding: 30px 15px 2px;
+  text-shadow:none;
+  &:hover {
+    color: purple;
+    text-decoration: none;
+  }
+}
+
+
+/* buttons */
+
+.btn-info a{
+ color: white;
+}
+
+.btn-danger a{
+ color: white;
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+span.line {
+  background: #81519C;
+  display: block;
+  width: 95px;
+  height: 4px;
+  margin: 7px 0 0 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+
+h1 {
+  color: $grayLight;
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: left;
+  border-bottom: 1px solid #747474;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $grayLight;
+  clear:both;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+
+/* header */
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: white;
+  letter-spacing: -1px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  font-weight: bold;
+  line-height: 1;
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+
+/* footer */
+
+footer {
+  margin-top: 100px;
+  padding-top: 5px;
+  border-top: 1px solid $grayMediumLight;
+  color: $grayLight;
+  clear:both;
+  a {
+    color: $gray;
+    &:hover {
+      color: $grayDarker;
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 10px;
+    }
+  }
+}
+
+/* family index */
+
+.boton_izq {
+ 	float: right;
+ 	margin-left:8px;
+}
+
+.boton_izq p{
+  float: right;
+  margin-left:8px;
+}
+
+.clear {
+ 	clear: both;
+}
+
+
+
+

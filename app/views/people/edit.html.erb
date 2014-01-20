@@ -1,0 +1,44 @@
+<h1>Editar a miembro de la familia <%= @family.name %><span class="line"></span></h1>
+
+<div class="boton_izq">
+	<p>
+	  <button type="button" class="btn btn-info"><%= link_to "Regresar a Familia", @family %></button>
+	</p>
+</div>
+
+<div class="row">
+  <div class="span6 offset3">
+	<%= form_for([@family, @person]) do |f| %>
+	  <p>
+	    <%= f.label "Nombre" %>
+	    <%= f.text_field :name %>
+	  </p>
+	  <p>
+	    <%= f.label "Apellido Paterno" %>
+	    <%= f.text_field :first_last_name %>
+	  </p>
+	  <p>
+	    <%= f.label "Apellido Materno" %>
+	    <%= f.text_field :second_last_name %>
+	  </p>
+	  <p>
+	  	<%= f.label "Sex" %>
+	  	<%= f.label "M" ,:class => "checkbox inline"%>
+	  	<%= radio_button("person", "sex", "M") %>
+	  	<%= f.label "F" ,:class => "checkbox inline"%>
+		<%= radio_button("person", "sex", "F") %>
+	  </p>
+	  <p>
+	    <%= f.label "Fecha de Naciemiento" %>
+	    <%= f.text_field :dob %>
+	  </p>
+	  <p>
+	    <%= f.label "Roll Familiar" %>
+	    <%= f.text_field :family_roll %>
+	  </p>
+	  <p>
+	    <%= f.submit "Editar Miembro", class: "btn btn-sm btn-primary" %>
+	  </p>
+	<% end %>
+  </div>
+</div>
