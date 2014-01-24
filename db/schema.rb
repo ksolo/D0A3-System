@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140124002122) do
+ActiveRecord::Schema.define(version: 20140124013942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20140124002122) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "families", ["name"], name: "index_families_on_name", unique: true, using: :btree
 
   create_table "family_relations", force: true do |t|
     t.integer  "family_id"
@@ -49,5 +51,7 @@ ActiveRecord::Schema.define(version: 20140124002122) do
     t.string   "remember_token"
     t.boolean  "admin"
   end
+
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
 end

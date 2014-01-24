@@ -2,6 +2,8 @@ D0A3::Application.routes.draw do
 
 root 'welcome#index'
 
+resources :users
+
 resources :families do 
   resources :people
 end
