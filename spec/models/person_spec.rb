@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Person do
 
 	before do
-		@person = Person.new(name: "Fernando", first_last_name:"Perez", second_last_name:"Lopez", 
+		@person = Person.new(name: "Fernando", first_last_name:"Garcia", second_last_name:"Lopez", 
 													sex:"M", dob:"20/01/1995", family_roll: "Hijo")
 	end
 
@@ -21,49 +21,37 @@ describe Person do
 
 	it { should be_valid }
 
-	describe "when name is not present" do
-		before { @person.name = " " }
-		it { should_not be_valid }
+	describe "when invalid atribute" do
+		before do
+			@person.name = " "
+			@person.first_last_name = " "
+			@person.second_last_name = " "
+			@person.sex = " "
+			@person.dob = " "
+			@person.family_roll = " "
+		end
+
+		it { should have(1).error_on(:name) }
+		it { should have(1).error_on(:first_last_name) }
+		it { should have(1).error_on(:second_last_name) }
+		it { should have(1).error_on(:sex) }
+		it { should have(1).error_on(:dob) }
+		it { should have(1).error_on(:family_roll) }
 	end
 
-	describe "when name is too long" do
-		before { @person.name = "a" * 51 }
-		it { should_not be_valid }
-	end
+	
+	describe "when atribute is too long" do
+		before do
+			@person.name = "a" * 51 
+			@person.first_last_name = "a" * 51 
+			@person.second_last_name = "a" * 51 
+			@person.family_roll = "a" * 51 
+		end
 
-	describe "when first_last_name is not present" do
-		before { @person.first_last_name = " " }
-		it { should_not be_valid }
-	end
-
-	describe "when first_last_name is too long" do
-		before { @person.first_last_name = "a" * 51 }
-		it { should_not be_valid }
-	end
-
-	describe "when second_last_name is not present" do
-		before { @person.second_last_name = " " }
-		it { should_not be_valid }
-	end
-
-	describe "when second_last_name is too long" do
-		before { @person.second_last_name = "a" * 51 }
-		it { should_not be_valid }
-	end
-
-	describe "when sex is not present" do
-		before { @person.sex = " " }
-		it { should_not be_valid }
-	end
-
-	describe "when dob is not present" do
-		before { @person.dob = " " }
-		it { should_not be_valid }
-	end
-
-	describe "when family_roll is not present" do
-		before { @person.family_roll = " " }
-		it { should_not be_valid }
+		it { should have(1).error_on(:name) }
+		it { should have(1).error_on(:first_last_name) }
+		it { should have(1).error_on(:second_last_name) }
+		it { should have(1).error_on(:family_roll) }
 	end
 
 
@@ -79,4 +67,12 @@ describe Person do
 		it { should_not be_valid }
 	end
 
+end
+
+
+# Checks that Factory Girl works
+describe User do
+	subject {build(:person)}
+
+		its(:name) { should == "Fernando" }
 end

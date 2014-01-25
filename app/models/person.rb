@@ -5,7 +5,7 @@ class Person < ActiveRecord::Base
 	validates :name, presence: true, length: { maximum: 50 }
 	validates :first_last_name, presence: true, length: { maximum: 50 }
 	validates :second_last_name, presence: true, length: { maximum: 50 }
-	validates :sex, presence: true
+	validates :sex, inclusion: { in: %w(M F), message: "%{value} is not a gender try M or F"}
 	validates :dob, presence: true
 	validates :family_roll, presence: true, length: { maximum: 50 }
 
