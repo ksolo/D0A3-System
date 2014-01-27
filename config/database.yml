@@ -19,17 +19,17 @@ development:
   encoding: unicode
   database: D0A3_development
   pool: 5
-  # username: D0A3
-  # password:
+  username: postgres
+  password: 123qwe123
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
   # domain sockets, so uncomment these lines.
-  #host: localhost
+  host: localhost
 
   # The TCP port the server listens on. Defaults to 5432.
   # If your server runs on a different port number, change accordingly.
-  #port: 5432
+  port: 5432
 
   # Schema search path. The server defaults to $user,public
   #schema_search_path: myapp,sharedapp,public
@@ -48,8 +48,8 @@ test:
   encoding: unicode
   database: D0A3_test
   pool: 5
-  # username: D0A3
-  # password:
+  username: postgres
+  password: 123qwe123
 
 production:
   adapter: postgresql

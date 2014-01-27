@@ -1,1 +1,89 @@
-name,first_last_name,second_last_name,sex,dob,family_rollDiana,Pí©rez,Romero,F,6/5/67,MadreCarolina,Camacho,Romero,F,31/03/1971,MadreMaribel,Maldonado,Romero,F,7/8/71,MadreErsuli,Ledezma,Romero,F,21/11/1972,MadreVerí_nica Saloma,Colin,Romero,F,28/05/1973,MadreAdela,Guzmíçn,Romero,F,13/12/1973,MadreSusana,Rosales,Romero,F,11/6/74,MadreMarí_a de la Luz,Síçnchez,Romero,F,2/8/74,MadreDiana,Martí_nez,Romero,F,20/04/1975,MadreElisa,Segura,Romero,F,9/10/77,MadreNancy,Moysí©n,Romero,F,29/12/1977,MadreDiana,Ruí_z,Romero,F,1/5/78,MadreAdriana,Gonzíçlez,Romero,F,21/11/1978,MadreMarí_a Luisa,Olivos,Romero,F,21/05/1980,MadreMireya,Guzmíçn,Romero,F,22/08/1981,MadreDolores,Aguilar,Romero,F,2/4/82,MadreDaisy Kenia,Herníçndez,Romero,F,9/5/82,MadreInguer,Resendiz,Romero,F,6/6/83,MadreElsa,Rosales,Romero,F,6/4/84,MadreIvonne,Ramí_rez,Romero,F,14/08/1984,MadreJudith,Romero,Romero,F,6/3/67,Abuela MaternaWendolyne,Loeza,Camacho,F,8/4/97,HijaElizabeth,Maldonado,Herníçndez,F,28/01/1969,TiaHortensia,Lí_pez,Rivas,F,3/9/52,AbuelaUriel,Polo,Guzmíçn,M,1/3/95,TioMargarita,Síçnchez,Síçnchez,F,27/08/1942,Abuela MaternaMa. Del Carmen,Rodrí_guez,Martí_nez,F,18/07/1952,Abuela MaternaZita,Romero,Hurtado,F,2/2/00,Abuela MaternaIsac,De la Cruz,Segura,M,10/2/96,TioMa. De los íngeles,Lí_pez,Síçnchez,F,5/7/50,Abuela PaternaMargarita,Gonzíçlez,Palomino,F,6/11/52,Abuela MaternaJuana,Acevedo,Gonzíçlez,F,15/04/1961,Abuela MaternaCyntia,Moríçn,Herrera,F,25/09/1973,AmigaAntonia,Rosales,Arias,M,17/01/1977,TioRomelia,Bustamante,XXXX,F,21/11/1962,Abuela MaternaMiguel,Bení_tez,Flores,M,6/11/89,PadreJuan Carlos,Loeza,Jimí©nez,M,6/9/71,PadreArturo,Herníçndez,Síçnchez,M,9/5/84,PadreJuan,Leal,Aguado,M,27/01/1962,PadreOziel,Mucií±o,Gutií©rrez,M,13/11/1972,PadreVicente,Polo,Trejo,M,13/12/1975,PadreEmmanuel Roberto,Castillo,Gea,M,28/05/1981,PadreTomas,Mejí_a,Moctezuma,M,25/07/1972,PadreMario,Alejandres,Parra,M,5/3/74,PadreMartí_n,De la Cruz,Galicia,M,5/9/74,PadreJosí© Luis,Herníçndez,Acosta,M,28/01/1976,PadreJesí_s Euller,Bello,Gonzíçlez,M,20/08/1977,PadreIvíçn,Gonzíçlez,Mancilla,M,21/10/1978,PadreIvíçn,Gutií©rrez,Navarrete,M,24/06/1977,PadreJuan Carlos,Montes de Oca,Morales,M,7/1/81,PadreEsteban,Guadarrama,Pí©rez,M,3/8/81,PadreAlejandro,Herníçndez,Pí©rez,M,8/6/82,PadreJosí© Alberto,Garcí_a,Garcí_a,M,2/3/76,PadreFlorimon,Gutií©rrez,Cervantes,M,5/1/83,PadreFernando,Castillo,Flores,M,6/9/84,PadreSaí_l Alejandro,Bení_tez,Pí©rez,M,22/08/2011,HijoDulce Marí_a,Loeza,Camacho,F,30/08/2010,HijaLizmary Natalia,Herníçndez,Maldonado,M,5/9/12,HijaAndrí©s Leonel,Leal,Ledezma,F,26/09/2011,HijaAlonso Genaro,Mucií±o,Colin,M,13/07/1994,HijoSebastiíçn,Polo,Guzmíçn,M,29/04/2010,HijoSamantha,Castillo,Gea,F,7/6/12,HijaMateo,Mejí_a,Síçnchez,M,14/04/2012,HijoAbigail,Alejandres,Martí_nez,F,11/1/07,HijaSantiago,De la Cruz,Segura,M,4/12/09,HijoAnne,Herníçndez,Moysí©n,F,18/06/2010,HijaJacob,Bello,Ruí_z,M,7/1/11,HijoMontserrat,Lí_pez,Gonzíçlez,F,30/10/2011,HijaNoí© Matoshi,Gutií©rrez,Olivos,M,5/12/10,HijoCarlos Alberto,Montes de Oca,Guzmíçn,M,2/3/12,HijoJesí_s,Guadarrama,Aguilar,M,24/11/2012,HijoJonathan Abdiel,Herníçndez,Acevedo,M,18/11/2011,HijoKendra Ximena,Garcí_a,Resendiz,F,25/02/2012,HijaLesly Gabriela,Gutií©rrez,Rosales,F,21/06/2011,HijaSayuri,Castillo,Ramí_rez,F,8/5/09,HijaJuan Carlos,Loeza,Camacho,M,7/2/03,HijoVictor Gerardo,Leal,Ledezma,M,3/6/09,HijoIvon,Mucií±o,Colin,F,13/12/1999,HijaCí©sar,Polo,Guzmíçn,M,31/03/1998,HijoJavier,Alejandres,Parra,M,7/4/11,HijoPaulina,De la Cruz,Segura,F,30/11/2011,HijaDaniel,Lí_pez,Gonzíçlez,M,8/7/08,HijoVanessa,Gutií©rrez,Rosales,F,5/10/02,HijaFernando Yael,Castillo,Ramí_rez,M,14/08/2008,HijoWendolyne,Loeza,Camacho,F,4/8/97,HijaAlonso Genaro,Mucií±o,Colin,M,18/12/2010,HijoUriel,Polo,Herníçndez,M,1/3/95,HijoAlejandro,Gutií©rrez,Rosales,M,26/05/2001,Hijo
+name,first_last_name,second_last_name,sex,dob,family_roll
+Diana,PÃ©rez,Romero,F,6/5/1967,Madre
+Carolina,Camacho,Romero,F,31/03/1971,Madre
+Maribel,Maldonado,Romero,F,7/8/1971,Madre
+Ersuli,Ledezma,Romero,F,21/11/1972,Madre
+VerÃ³nica Saloma,Colin,Romero,F,28/05/1973,Madre
+Adela,GuzmÃ¡n,Romero,F,13/12/1973,Madre
+Susana,Rosales,Romero,F,11/6/1974,Madre
+MarÃ­a de la Luz,SÃ¡nchez,Romero,F,2/8/1974,Madre
+Diana,MartÃ­nez,Romero,F,20/04/1975,Madre
+Elisa,Segura,Romero,F,9/10/1977,Madre
+Nancy,MoysÃ©n,Romero,F,29/12/1977,Madre
+Diana,RuÃ­z,Romero,F,1/5/1978,Madre
+Adriana,GonzÃ¡lez,Romero,F,21/11/1978,Madre
+MarÃ­a Luisa,Olivos,Romero,F,21/05/1980,Madre
+Mireya,GuzmÃ¡n,Romero,F,22/08/1981,Madre
+Dolores,Aguilar,Romero,F,2/4/1982,Madre
+Daisy Kenia,HernÃ¡ndez,Romero,F,9/5/1982,Madre
+Inguer,Resendiz,Romero,F,6/6/1983,Madre
+Elsa,Rosales,Romero,F,6/4/1984,Madre
+Ivonne,RamÃ­rez,Romero,F,14/08/1984,Madre
+Judith,Romero,Romero,F,6/3/1967,Abuela Materna
+Wendolyne,Loeza,Camacho,F,8/4/1997,Hija
+Elizabeth,Maldonado,HernÃ¡ndez,F,28/01/1969,Tia
+Hortensia,LÃ³pez,Rivas,F,3/9/1952,Abuela
+Uriel,Polo,GuzmÃ¡n,M,1/3/1995,Tio
+Margarita,SÃ¡nchez,SÃ¡nchez,F,27/08/1942,Abuela Materna
+Ma. Del Carmen,RodrÃ­guez,MartÃ­nez,F,18/07/1952,Abuela Materna
+Zita,Romero,Hurtado,F,2/2/2000,Abuela Materna
+Isac,De la Cruz,Segura,M,10/2/1996,Tio
+Ma. De los Ãngeles,LÃ³pez,SÃ¡nchez,F,5/7/1950,Abuela Paterna
+Margarita,GonzÃ¡lez,Palomino,F,6/11/1952,Abuela Materna
+Juana,Acevedo,GonzÃ¡lez,F,15/04/1961,Abuela Materna
+Cyntia,MorÃ¡n,Herrera,F,25/09/1973,Amiga
+Antonia,Rosales,Arias,M,17/01/1977,Tio
+Romelia,Bustamante,XXXX,F,21/11/1962,Abuela Materna
+Miguel,BenÃ­tez,Flores,M,6/11/1989,Padre
+Juan Carlos,Loeza,JimÃ©nez,M,6/9/1971,Padre
+Arturo,HernÃ¡ndez,SÃ¡nchez,M,9/5/1984,Padre
+Juan,Leal,Aguado,M,27/01/1962,Padre
+Oziel,MuciÃ±o,GutiÃ©rrez,M,13/11/1972,Padre
+Vicente,Polo,Trejo,M,13/12/1975,Padre
+Emmanuel Roberto,Castillo,Gea,M,28/05/1981,Padre
+Tomas,MejÃ­a,Moctezuma,M,25/07/1972,Padre
+Mario,Alejandres,Parra,M,5/3/1974,Padre
+MartÃ­n,De la Cruz,Galicia,M,5/9/1974,Padre
+JosÃ© Luis,HernÃ¡ndez,Acosta,M,28/01/1976,Padre
+JesÃºs Euller,Bello,GonzÃ¡lez,M,20/08/1977,Padre
+IvÃ¡n,GonzÃ¡lez,Mancilla,M,21/10/1978,Padre
+IvÃ¡n,GutiÃ©rrez,Navarrete,M,24/06/1977,Padre
+Juan Carlos,Montes de Oca,Morales,M,7/1/1981,Padre
+Esteban,Guadarrama,PÃ©rez,M,3/8/1981,Padre
+Alejandro,HernÃ¡ndez,PÃ©rez,M,8/6/1982,Padre
+JosÃ© Alberto,GarcÃ­a,GarcÃ­a,M,2/3/1976,Padre
+Florimon,GutiÃ©rrez,Cervantes,M,5/1/1983,Padre
+Fernando,Castillo,Flores,M,6/9/1984,Padre
+SaÃºl Alejandro,BenÃ­tez,PÃ©rez,M,22/08/2011,Hijo
+Dulce MarÃ­a,Loeza,Camacho,F,30/08/2010,Hija
+Lizmary Natalia,HernÃ¡ndez,Maldonado,M,5/9/2012,Hija
+AndrÃ©s Leonel,Leal,Ledezma,F,26/09/2011,Hija
+Alonso Genaro,MuciÃ±o,Colin,M,13/07/1994,Hijo
+SebastiÃ¡n,Polo,GuzmÃ¡n,M,29/04/2010,Hijo
+Samantha,Castillo,Gea,F,7/6/2012,Hija
+Mateo,MejÃ­a,SÃ¡nchez,M,14/04/2012,Hijo
+Abigail,Alejandres,MartÃ­nez,F,11/1/2007,Hija
+Santiago,De la Cruz,Segura,M,4/12/2009,Hijo
+Anne,HernÃ¡ndez,MoysÃ©n,F,18/06/2010,Hija
+Jacob,Bello,RuÃ­z,M,7/1/2011,Hijo
+Montserrat,LÃ³pez,GonzÃ¡lez,F,30/10/2011,Hija
+NoÃ© Matoshi,GutiÃ©rrez,Olivos,M,5/12/2010,Hijo
+Carlos Alberto,Montes de Oca,GuzmÃ¡n,M,2/3/2012,Hijo
+JesÃºs,Guadarrama,Aguilar,M,24/11/2012,Hijo
+Jonathan Abdiel,HernÃ¡ndez,Acevedo,M,18/11/2011,Hijo
+Kendra Ximena,GarcÃ­a,Resendiz,F,25/02/2012,Hija
+Lesly Gabriela,GutiÃ©rrez,Rosales,F,21/06/2011,Hija
+Sayuri,Castillo,RamÃ­rez,F,8/5/2009,Hija
+Juan Carlos,Loeza,Camacho,M,7/2/2003,Hijo
+Victor Gerardo,Leal,Ledezma,M,3/6/2009,Hijo
+Ivon,MuciÃ±o,Colin,F,13/12/1999,Hija
+CÃ©sar,Polo,GuzmÃ¡n,M,31/03/1998,Hijo
+Javier,Alejandres,Parra,M,7/4/2011,Hijo
+Paulina,De la Cruz,Segura,F,30/11/2011,Hija
+Daniel,LÃ³pez,GonzÃ¡lez,M,8/7/2008,Hijo
+Vanessa,GutiÃ©rrez,Rosales,F,5/10/2002,Hija
+Fernando Yael,Castillo,RamÃ­rez,M,14/08/2008,Hijo
+Wendolyne,Loeza,Camacho,F,4/8/1997,Hija
+Alonso Genaro,MuciÃ±o,Colin,M,18/12/2010,Hijo
+Uriel,Polo,HernÃ¡ndez,M,1/3/1995,Hijo
+Alejandro,GutiÃ©rrez,Rosales,M,26/05/2001,Hijo
