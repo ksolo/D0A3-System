@@ -1,14 +1,22 @@
 D0A3::Application.routes.draw do
 
-root 'welcome#index'
+  root 'sessions#new'
 
-resources :users
+  get "sessions/new"
+  get "sessions/create"
+  get "sessions/destroy"
 
-resources :families do 
-  resources :people
-end
+  match '/signin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'delete'
 
-resources :people, only: [:index, :show]
+  resources :users
+
+  resources :families do 
+    resources :people
+  end
+
+  resources :people, only: [:index, :show]
+  resources :sessions, only: [:new, :create, :destroy]
 
 
   # The priority is based upon order of creation: first created -> highest priority.
