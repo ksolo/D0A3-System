@@ -47,6 +47,12 @@
 	<p class="boton_izq">
 	  <button type="button" class="btn btn-default"><%= link_to "Editar Nombre de la Familia", edit_family_path %></button>
 	</p>
-
 </div>
+
+<h3>Contacto:<span class="line"></span></h3>
+<p><%= @family.styled_address %></p>
+<p><%= @family.styled_contact_info %></p>
+
+
+
 

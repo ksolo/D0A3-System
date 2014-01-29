@@ -6,6 +6,7 @@ resources :users
 
 resources :families do 
   resources :people
+  resources :addresses, only: [:new, :create, :edit, :update]
 end
 
 resources :people, only: [:index, :show]
