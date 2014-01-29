@@ -49,21 +49,6 @@ describe Address do
 		it { should have(1).error_on(:email) }
 	end
 
-	
-	# describe "when atribute is too long" do
-	# 	before do
-	# 		@person.name = "a" * 51 
-	# 		@person.first_last_name = "a" * 51 
-	# 		@person.second_last_name = "a" * 51 
-	# 		@person.family_roll = "a" * 51 
-	# 	end
-
-	# 	it { should have(1).error_on(:name) }
-	# 	it { should have(1).error_on(:first_last_name) }
-	# 	it { should have(1).error_on(:second_last_name) }
-	# 	it { should have(1).error_on(:family_roll) }
-	# end
-
   describe "when email format is invalid" do
 		it "should be invalid" do
 			addresses = %w[user@foo,com user_at_foo.org example.user@foo.
