@@ -1,4 +1,5 @@
 class Person < ActiveRecord::Base
+
 	has_many :family_relations
 	has_many :families, through: :family_relations, source: :family
 
@@ -10,7 +11,6 @@ class Person < ActiveRecord::Base
 	validates :family_roll, presence: true, length: { maximum: 50 }
 
 	# validates_uniqueness_of :name, :case_sensitive => false, :scope => [:first_last_name, :second_last_name]
-
 
 	validate :user_id_uniqueness # Custom Method
 
