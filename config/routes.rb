@@ -9,11 +9,11 @@ D0A3::Application.routes.draw do
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
-  resources :users
-
   resources :families do 
     resources :people
+    resources :addresses, only: [:new, :create, :edit, :update]
   end
+
 
   resources :people, only: [:index, :show]
   resources :sessions, only: [:new, :create, :destroy]

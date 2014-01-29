@@ -1,0 +1,87 @@
+<div class="boton_izq">
+	<p>
+	  <button type="button" class="btn btn-info"><%= link_to "Regresar a Familia", @family %></button>
+	</p>
+</div>
+
+<div class="row">
+  <div class="span6 offset3">
+	<%= form_for([@family, @address]) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	  <p>
+	    <%= f.label "Calle" %>
+	    <%= f.text_field :calle %>
+	  </p>
+	  <p>
+	    <%= f.label "Número Exterior" %>
+	    <%= f.text_field :num_ext %>
+	  </p>
+	  <p>
+	    <%= f.label "Número Interior" %>
+	    <%= f.text_field :num_int %>
+	  </p>
+	  <p>
+	    <%= f.label "Localidad" %>
+	    <%= f.text_field :localidad %>
+	  </p>
+	  <p>
+	    <%= f.label "Referencia" %>
+	    <%= f.text_field :referencia %>
+	  </p>
+	  <p>
+	    <%= f.label "Colonia" %>
+	    <%= f.text_field :colonia %>
+	  </p>
+	  <p>
+	    <%= f.label "Delegación o Municipio" %>
+	    <%= f.text_field :municipio %>
+	  </p>
+	  <% if @address.calle %>
+		  <p>
+		    <%= f.label "Ciudad" %>
+		    <%= f.text_field :ciudad %>
+		  </p>
+		  <p>
+		    <%= f.label "Estado" %>
+		    <%= f.text_field :estado %>
+		  </p>
+		  <p>
+		    <%= f.label "País" %>
+		    <%= f.text_field :pais %>
+		  </p>
+	  <% else %>
+		  <p>
+		    <%= f.label "Ciudad" %>
+		    <%= f.text_field :ciudad, :value => "México" %>
+		  </p>
+		  <p>
+		    <%= f.label "Estado" %>
+		    <%= f.text_field :estado, :value => "Distrito Federal" %>
+		  </p>
+		  <p>
+		    <%= f.label "País" %>
+		    <%= f.text_field :pais, :value => "México" %>
+		  </p>
+	  <% end %>
+	  <p>
+	    <%= f.label "Código Postal" %>
+	    <%= f.text_field :codigo_postal %>
+	  </p>
+	  <p>
+	    <%= f.label "Teléfono" %>
+	    <%= f.text_field :telefono %>
+	  </p>
+	  <p>
+	    <%= f.label "Celular" %>
+	    <%= f.text_field :celular %>
+	  </p>
+	  <p>
+	    <%= f.label "Email" %>
+	    <%= f.text_field :email %>
+	  </p>
+
+	    <%= f.submit "Guardar", class: "btn btn-sm btn-primary" %>
+	  </p>
+	<% end %>
+  </div>
+</div>
