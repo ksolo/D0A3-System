@@ -11,7 +11,7 @@ describe Family do
 	it { should respond_to(:name) }
 	it { should respond_to(:family_relations) }
 	it { should respond_to(:family_members) }
-	it { should respond_to(:addresses) }
+	it { should respond_to(:address) }
 
 	it { should be_valid }
 

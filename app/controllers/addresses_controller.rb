@@ -3,12 +3,12 @@ class AddressesController < ApplicationController
 
 	def new
 	   @family = Family.find(params[:family_id])
-	   @address = @family.addresses.build
+	   @address = @family.build_address
 	end
 
 	def create
 		@family = Family.find(params[:family_id])
-		@address = @family.addresses.build(address_params)
+		@address = @family.build_address(address_params)
 		if @family.save  
 	    flash[:success] = "Creación Exitosa"
 	    redirect_to @family
@@ -19,7 +19,7 @@ class AddressesController < ApplicationController
 
 	def edit
 		@family = Family.find(params[:family_id])
-		@address = @family.addresses.find(params[:id])
+		@address = @family.address
 	end
 
 	def update

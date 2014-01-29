@@ -3,27 +3,28 @@ class Family < ActiveRecord::Base
 
 	has_many :family_relations
 	has_many :family_members, through: :family_relations, source: :person
-	has_many :addresses
+	# belongs_to :address
+	has_one :address
 
 	validates :name, presence: true, length: { maximum: 50 },
 						uniqueness: { case_sensitive: false }
 
 
 	def styled_address
-	 direccion = "#{self.addresses.first.calle}
-		#{self.addresses.first.num_ext} ,int #{self.addresses.first.num_int},
-		#{self.addresses.first.localidad},
-		#{self.addresses.first.colonia},
-		#{self.addresses.first.municipio},
-		#{self.addresses.first.ciudad},
-		#{self.addresses.first.estado},
-		#{self.addresses.first.pais},
-		#{self.addresses.first.codigo_postal}"
+	 direccion = "#{self.address.calle}
+		#{self.address.num_ext} ,int #{self.address.num_int},
+		#{self.address.localidad},
+		#{self.address.colonia},
+		#{self.address.municipio},
+		#{self.address.ciudad},
+		#{self.address.estado},
+		#{self.address.pais},
+		#{self.address.codigo_postal}"
 		direccion.titleize
 	end
 	def styled_contact_info
-		"Tel: #{self.addresses.first.telefono},
-		Cel: #{self.addresses.first.celular},
-		Email: #{self.addresses.first.email}"
+		"Tel: #{self.address.telefono},
+		Cel: #{self.address.celular},
+		Email: #{self.address.email}"
 	end
 end
