@@ -49,10 +49,19 @@
 	</p>
 </div>
 
-<h3>Contacto:<span class="line"></span></h3>
-<p><%= @family.styled_address %></p>
-<p><%= @family.styled_contact_info %></p>
-
-
+<div>
+	<h3>Contacto:<span class="line"></span></h3>
+		<% if @family.addresses.empty? %>
+			<p class="boton_der">
+			  <button type="button" class="btn btn-warning"><%= link_to "Falta Información de Contacto", new_family_address_path(@family) %></button>
+			</p>
+		<% else %>
+			<p><%= @family.styled_address %></p>
+			<p><%= @family.styled_contact_info %></p>
+			<p class="boton_der">
+			  <button type="button" class="btn btn-default"><%= link_to "Editar Contacto", edit_family_address_path(@family, @family.addresses.first) %></button>
+			</p>		
+		<% end %>
+</div>
 
 

@@ -58,6 +58,10 @@ textarea {
  color: white;
 }
 
+.btn-warning a{
+ color: white;
+}
+
 /* typography */
 
 h1, h2, h3, h4, h5, h6 {
@@ -168,6 +172,11 @@ footer {
 .boton_izq p{
   float: right;
   margin-left:8px;
+}
+
+.boton_der {
+  float: left;
+  margin-right:8px;
 }
 
 .clear {

@@ -19,7 +19,7 @@ class AddressesController < ApplicationController
 
 	def edit
 		@family = Family.find(params[:family_id])
-		@address = @family.address.find(params[:id])
+		@address = @family.addresses.find(params[:id])
 	end
 
 	def update
