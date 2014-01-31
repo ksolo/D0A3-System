@@ -32,5 +32,5 @@ class Family < ActiveRecord::Base
 		Cel: #{self.address.celular},
 		Email: #{self.address.email}"
 	end
->>>>>>> master
+
 end
