@@ -14,7 +14,7 @@ D0A3::Application.routes.draw do
   resources :families do 
     resources :people
     resources :addresses, only: [:new, :create, :edit, :update]
-
+  end
 
 
   resources :groups do
