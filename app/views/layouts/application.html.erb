@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>De Cero A Tres</title>
+    <title><%= full_title(yield(:title)) %></title>
     <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= csrf_meta_tags %>
@@ -11,13 +11,15 @@
 	<%= render 'layouts/header' %>
     <div class="container">
       
+      <h1><%= full_title(yield(:title)).gsub('D0A3 |','') %><span class="line"></span></h1>
+
       <% flash.each do |key, value| %>
         <%= content_tag(:div, value, class: "alert alert-#{key}") %>
       <% end %>
 
       <%= yield %>
       <div class="clear"></div>
-      <%= render 'layouts/footer' %>
     </div>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

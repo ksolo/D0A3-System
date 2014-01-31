@@ -11,15 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140127231523) do
+ActiveRecord::Schema.define(version: 20140131181812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attendances", force: true do |t|
+    t.integer  "person_id"
+    t.integer  "lecture_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "families", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "status"
+    t.integer  "responsible_id"
+    t.text     "observations"
   end
 
   add_index "families", ["name"], name: "index_families_on_name", unique: true, using: :btree
@@ -27,6 +37,27 @@ ActiveRecord::Schema.define(version: 20140127231523) do
   create_table "family_relations", force: true do |t|
     t.integer  "family_id"
     t.integer  "person_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.integer  "user_id"
+    t.string   "location"
+    t.integer  "cost"
+    t.date     "init_date"
+    t.date     "finish_date"
+    t.integer  "min_age"
+    t.integer  "max_age"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lectures", force: true do |t|
+    t.integer  "group_id"
+    t.datetime "date"
+    t.text     "observation"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -41,6 +72,16 @@ ActiveRecord::Schema.define(version: 20140127231523) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "spots", force: true do |t|
+    t.integer  "child_id"
+    t.integer  "tutor_id"
+    t.integer  "group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "spots", ["child_id", "group_id"], name: "index_spots_on_child_id_and_group_id", unique: true, using: :btree
 
   create_table "users", force: true do |t|
     t.string   "password_digest"

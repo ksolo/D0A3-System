@@ -36,9 +36,9 @@ class PeopleController < ApplicationController
 		@person = Person.find(params[:id])
 	    if @person.update_attributes(persons_params)
 	    	flash[:success] = "Actualización Exitosa"
-	      redirect_to @family
+	    	redirect_to @family
 	    else
-	      render 'edit'
+	    	render 'edit'
 	    end
 	end
 

@@ -1,0 +1,65 @@
+<% provide(:title, "Nuevo #{ @group.name }") %>
+
+<div class="boton_izq">
+	<p>
+	  <button type="button" class="btn btn-info"><%= link_to "Regresar a Grupos", groups_path %></button>
+	</p>
+	<p>
+		<button type="button" class="btn btn-default btn-xs"><%= link_to "Editar Grupo", edit_group_path(@group) %></button>
+	</p>
+	<p>
+		<button type="button" class="btn btn-default"><%= link_to "Nueva Clase", new_group_lecture_path(@group) %></button>
+	</p>
+</div>
+<% if(@group.lectures.empty?) %>
+		<h2>No hay clases</h2>
+		<p class="boton_cen">
+			<button type="button" class="btn btn-default"><%= link_to "Agregar Clase", new_group_lecture_path(@group) %></button>
+		</p>
+	<% else %>
+	<h2>Clases</h2>
+	<table class="table table-striped">
+		<tr>	
+			<th>Fecha</th>
+			<th>Hora</th>
+			<th>Observación</th>
+			<th>Editar</th>
+			<th>Borrar</th>
+		</tr>	
+		<% @group.lectures.each do |lecture| %>
+			<tr>
+				<td><%= lecture.date.strftime('%m/%d/%Y') %></td>
+				<td><%= lecture.date.strftime('%I:%M %p') %></td>
+				<td><%= lecture.observation %></td>
+				<td><button type="button" class="btn btn-default btn-xs"><%= link_to "Editar Clase", edit_group_lecture_path(@group, lecture) %></button></td>
+				<td><button type="button" class="btn btn-danger btn-xs"><%= link_to "Borrar Clase", group_lecture_path(@group, lecture), method: :delete, data: { confirm: "Estas Seguro?" } %></button></td>
+			</tr>
+		<% end %>
+	</table>
+<% end %>
+<% if(@group.spots.empty?) %>
+	<h2>No hay spots</h2>
+	<p>
+		<button type="button" class="btn btn-default"><%= link_to "Nuevo Spot", new_group_spot_path(@group) %></button>
+	</p>
+<% else %>
+	<h2>Spots</h2>
+	<table class="table table-striped">
+		<tr>
+			<th>Niño</th>
+			<th>Cuidador</th>
+			<th>Pagos</th>
+			<th>Editar</th>
+			<th>Borrar</th>
+		</tr>
+		<% @group.spots.each do |spot| %>
+			<tr>
+				<td><%= spot.child.name %></td>
+				<td><% if(spot.tutor) %><%= spot.tutor.name %><% end %></td>
+				<td>PAGOS</td>
+				<td><button type="button" class="btn btn-default btn-xs"><%= link_to "Editar Spot", edit_group_spot_path(@group, spot) %></button></td>
+				<td><button type="button" class="btn btn-danger btn-xs"><%= link_to "Borrar Spot", group_spot_path(@group, spot), method: :delete, data: { confirm: "Estas Seguro?" } %></button></td>
+			</tr>
+		<% end %>
+	</table>
+<% end %>

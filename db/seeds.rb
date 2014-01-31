@@ -1,4 +1,7 @@
+
 require "csv"
+
+User.create( name: "Juan", email: "flaco@gmail.com", password: "123qwe123", password_confirmation: "123qwe123" )
 
 def load_file(file)
 	array = []
@@ -20,4 +23,18 @@ end
 
 load_file("family_relations.csv").each do |line| 
 	FamilyRelation.create(line)
+end
+
+
+families = Family.all
+
+families.each do |f|
+	f.family_relations.each do |rel|
+		if(rel.person)
+			if(rel.person.family_roll=='Madre')
+				f.responsible_id = rel.person.id
+			end
+		end
+		f.save
+	end
 end

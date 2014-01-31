@@ -6,15 +6,23 @@ D0A3::Application.routes.draw do
   get "sessions/create"
   get "sessions/destroy"
 
+  get "spots/create"
+
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
 
   resources :users
-
+  resources :groups
+  
   resources :families do 
     resources :people
   end
 
+  resources :groups do
+    resources :lectures
+    resources :spots
+  end
+  
   resources :people, only: [:index, :show]
   resources :sessions, only: [:new, :create, :destroy]
 

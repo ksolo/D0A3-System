@@ -1,6 +1,7 @@
-<h1><%= "#{@person.name} #{@person.first_last_name} #{@person.second_last_name}" %><span class="line"></span></h1>
+<% provide(:title, "#{@person.name} #{@person.first_last_name} #{@person.second_last_name}") %>
 
 <h2>Pertenece a la familia
 	<% @person.families.each do |family| %>
-  <strong><%= "#{family.name} " %></strong>
-	<% end %></h2>
+		<strong><%= "#{family.name} " %></strong>
+	<% end %>
+</h2>

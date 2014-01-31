@@ -2,6 +2,7 @@ class Person < ActiveRecord::Base
 
 	has_many :family_relations
 	has_many :families, through: :family_relations, source: :family
+	has_many :attendances
 
 	validates :name, presence: true, length: { maximum: 50 }
 	validates :first_last_name, presence: true, length: { maximum: 50 }

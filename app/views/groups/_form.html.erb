@@ -1,0 +1,25 @@
+  	<h1>Datos del grupo</h1>
+	<%= form_for(@group) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	  <p>
+	    <%= f.label "Nombre del Grupo" %>
+	    <%= f.text_field :name %>
+	    <%= f.label "Facilitador" %>
+	    <%= select("group", "user_id", User.all.collect {|p| [ p.name, p.id ] }, { include_blank: 'Selecciona'}) %>
+	    <%= f.label "Edad mínima (Semanas)" %>
+	    <%= f.number_field :min_age %>
+	    <%= f.label "Edad máxima (Semanas)" %>
+	    <%= f.number_field :max_age %>
+	    <%= f.label "Inicio de curso" %>
+	    <%= f.date_select :init_date %>
+	    <%= f.label "Fin de curso" %>
+	    <%= f.date_select :finish_date %>
+	    <%= f.label "Costo" %>
+	    <%= f.number_field :cost %>
+	    <%= f.label "Ubicación" %>
+	    <%= f.text_field :location %>
+	  </p>
+	  <p>
+	    <%= f.submit "Guardar", class: "btn btn-sm btn-primary" %>
+	  </p>
+	<% end %>

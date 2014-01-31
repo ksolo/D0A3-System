@@ -167,3 +167,62 @@ footer {
 
 
 
+/* Group select */
+
+#person_dob_1i, #group_finish_date_1i, #group_init_date_1i, #lecture_date_1i{ width: 70px; }
+#person_dob_2i, #group_finish_date_2i, #group_init_date_2i, #lecture_date_2i{ width: 110px; }
+#person_dob_3i, #group_finish_date_3i, #group_init_date_3i, #lecture_date_3i{ width: 55px; }
+#person_dob_4i, #group_finish_date_4i, #group_init_date_4i, #lecture_date_4i{ width: 55px; }
+#person_dob_5i, #group_finish_date_5i, #group_init_date_5i, #lecture_date_5i{ width: 55px; }
+
+.child_selected, .child_spot {
+  width: 100px;
+  height: 120px;
+  float: left;
+  overflow: hidden;
+  margin: 3px;
+  position: relative;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+.child_selected {
+  background-color: rgba(0, 0, 0, 0.64);
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  display: none;
+}
+.child_active .child_selected{ display: block; }
+#posibble_childs .child_active{ display: none; }
+.kid_stats {
+  width: 100%;
+  height: 30%;
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  font-size: 12px;
+  text-indent: 5px;
+}
+.weeks_stat {
+  position: absolute;
+  width: 96%;
+  height: 30%;
+  top: 0px;
+  padding: 4%;
+  font-size: 10px;
+  right: 0;
+  text-align: right;
+}
+.weeks_stat span {
+  font-size: 30px;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  top: 5px;
+}
+.kid_stats p {
+  font-size: 12px;
+  width: 100%;
+  height: 5px;
+}
+#enlist_childs .child_selector, #posibble_childs .child_selector{ display: none; }

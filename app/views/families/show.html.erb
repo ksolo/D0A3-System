@@ -1,4 +1,4 @@
-<h1>Familia: <%= @family.name %><span class="line"></span></h1>
+<% provide(:title, "Familia: #{ @family.name }") %>
 
 <div class="boton_izq">
 	<p>
@@ -38,14 +38,12 @@
 </table>
 <div>
 	<% if @family.family_members.empty? %>
+		<p class="boton_izq">
+			<button type="button" class="btn btn-danger"><%= link_to "Borrar Familia", @family, method: :delete, data: { confirm: "Estas Seguro?" } %></button>
+		</p>
+	<% end %>	
 	<p class="boton_izq">
-	  <button type="button" class="btn btn-danger"><%= link_to "Borrar Familia", @family, method: :delete,
-                                  data: { confirm: "Estas Seguro?" } %></button>
-	</p>
-	<% end %>
-	
-	<p class="boton_izq">
-	  <button type="button" class="btn btn-default"><%= link_to "Editar Nombre de la Familia", edit_family_path %></button>
+		<button type="button" class="btn btn-default"><%= link_to "Editar Nombre de la Familia", edit_family_path %></button>
 	</p>
 
 </div>

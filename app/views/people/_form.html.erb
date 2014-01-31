@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="span6 offset3">
+	<%= form_for([@family, @person]) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	  <p>
+	    <%= f.label "Nombre" %>
+	    <%= f.text_field :name %>
+	  </p>
+	  <p>
+	    <%= f.label "Apellido Paterno" %>
+	    <%= f.text_field :first_last_name %>
+	  </p>
+	  <p>
+	    <%= f.label "Apellido Materno" %>
+	    <%= f.text_field :second_last_name %>
+	  </p>
+	  <p>
+	  	<%= f.label "Sex" %>
+	  	<%= f.label "M" ,:class => "checkbox inline"%>
+	  	<%= radio_button("person", "sex", "M") %>
+	  	<%= f.label "F" ,:class => "checkbox inline"%>
+		  <%= radio_button("person", "sex", "F") %>
+	  </p><br>
+	  <p>
+	    <%= f.label "Fecha de Naciemiento" %>
+	    <%= f.date_select :dob %>
+	  </p>
+
+	  <p>
+	  	<%= f.label "Roll Familiar" %>
+	  	<%= select("person", "family_roll", [[ 'Hijo', 'Hijo' ], [ 'Hija', 'Hija' ], [ 'Padre', 'Padre' ], [ 'Madre', 'Madre' ], [ 'Abuelo', 'Abuelo' ], [ 'Abuela', 'Abuela' ], [ 'Tio', 'Tio' ], [ 'Tia', 'Tia' ], [ 'Otro', 'Otro' ]], { include_blank: 'Selecciona un rol'}) %>
+	  	<br>
+	  	<input id="other_name" type="text" placeholder="Escribe el parentesco" style="display:none;">
+	  </p><br>
+	  <p>
+	    <%= f.submit "Guardar", class: "btn btn-sm btn-primary" %>
+	    <!-- Avisarle a Javi de este cambio por cualquier cosa, se cambia crear por Guardar, para renderear form -->
+	  </p>
+	<% end %>
+  </div>
+</div>
+
+<script>
+	$(document).ready(function() {
+		$("#person_family_roll").change(function(){
+			if($(this).val()=='Otro') $("#other_name").fadeIn();
+			else $("#other_name").fadeOut();
+		});
+		$("#other_name").on('keyup',function(){
+			var value = $(this).val();
+			$("#person_family_roll").val(value);
+		});
+	});
+</script>

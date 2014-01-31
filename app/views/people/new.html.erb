@@ -1,4 +1,4 @@
-<h1>Nuevo Miembro de la familia <%= @family.name %><span class="line"></span></h1>
+<% provide(:title, "Nuevo Miembro: #{ @family.name }") %>
 
 <div class="boton_izq">
 	<p>
@@ -6,59 +6,4 @@
 	</p>
 </div>
 
-<div class="row">
-  <div class="span6 offset3">
-	<%= form_for([@family, @person]) do |f| %>
-	<%= render 'shared/error_messages', object: f.object %>
-	  <p>
-	    <%= f.label "Nombre" %>
-	    <%= f.text_field :name %>
-	  </p>
-	  <p>
-	    <%= f.label "Apellido Paterno" %>
-	    <%= f.text_field :first_last_name %>
-	  </p>
-	  <p>
-	    <%= f.label "Apellido Materno" %>
-	    <%= f.text_field :second_last_name %>
-	  </p>
-	  <p>
-	  	<%= f.label "Sex" %>
-	  	<%= f.label "M" ,:class => "checkbox inline"%>
-	  	<%= radio_button("person", "sex", "M") %>
-	  	<%= f.label "F" ,:class => "checkbox inline"%>
-		  <%= radio_button("person", "sex", "F") %>
-	  </p><br>
-	  <p>
-	    <%= f.label "Fecha de Naciemiento (dd/mm/aaaa)" %>
-	    <%= f.text_field :dob %>
-	  </p>
-
-	  <p>
-	  	<%= f.label "Roll Familiar" %>
-	  	<%= f.label "Hijo" ,:class => "checkbox inline"%>
-	  	<%= radio_button("person", "family_roll", "Hijo") %>
-	  	<%= f.label "Hija" ,:class => "checkbox inline"%>
-		  <%= radio_button("person", "family_roll", "Hija") %>
-		  <%= f.label "Padre" ,:class => "checkbox inline"%>
-	  	<%= radio_button("person", "family_roll", "Padre") %>
-	  	<%= f.label "Madre" ,:class => "checkbox inline"%>
-		  <%= radio_button("person", "family_roll", "Madre") %>
-		  <%= f.label "Abuelo" ,:class => "checkbox inline"%>
-	  	<%= radio_button("person", "family_roll", "Abuelo") %>
-	  	<%= f.label "Abuela" ,:class => "checkbox inline"%>
-		  <%= radio_button("person", "family_roll", "Abuela") %>
-		  <%= f.label "Tio" ,:class => "checkbox inline"%>
-	  	<%= radio_button("person", "family_roll", "Tia") %>
-	  	<%= f.label "Tia" ,:class => "checkbox inline"%>
-		  <%= radio_button("person", "family_roll", "Tio") %>
-		  <%= f.label "Otro" ,:class => "checkbox inline"%>
-		  <%= radio_button("person", "family_roll", "Otro") %>
-
-	  </p><br>
-	  <p>
-	    <%= f.submit "Crear Miembro", class: "btn btn-sm btn-primary" %>
-	  </p>
-	<% end %>
-  </div>
-</div>
+<%= render 'people/form' %>

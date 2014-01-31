@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="span6 offset3">
+	<%= form_for([@group, @lecture]) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	  <p>
+	    <%= f.label "Fecha & hora" %>
+	    <span>
+		    <% if(f.object.date) %>
+		    	<%= f.datetime_select :date %>
+		    <% else %>
+		    	<%= f.datetime_select :date, :value => (DateTime.now).strftime('%m/%d/%Y %H:%M') %>
+		    <% end %>
+		</span>
+	</p>
+	<p>
+		<%= f.label "Observaciones" %>
+		<%= f.text_area :observation %>
+	</p>
+	<% if(@lecture.attendances.empty?) %>
+		<p>
+			<%= f.label "Esta clase no tiene aún asistencias" %>
+			<button type="button" class="btn btn-default">Agregar asistencias</button>
+		</p>
+	<% else %>
+		<p>
+			<%= f.label "Asistencias" %>
+		</p>
+		<% @lecture.attendances.each do |a| %>
+			<%= a.person.name %>
+		<% end %>
+	  <% end %>
+	  <p>
+	    <%= f.submit "Guardar", class: "btn btn-sm btn-primary" %>
+	  </p>
+	<% end %>
+  </div>
+</div>
