@@ -71,7 +71,7 @@ end
 
 
 # Checks that Factory Girl works
-describe User do
+describe Person do
 	subject {build(:person)}
 
 		its(:name) { should == "Fernando" }
