@@ -128,8 +128,8 @@ describe User do
 describe User do
 	subject {build(:user)}
 
-		its(:name) { should == "Example User" }
-		its(:email) {should eq("user@example.com")}
+		its(:name) { should include("Person")}
+		its(:email) {should include("@example.com")}
 
 		it {should_not be_admin}
 end

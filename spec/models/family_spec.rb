@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe Family do
-
 	before do
 		@family = Family.new(name: "Perez Lopez")
 	end
@@ -26,7 +25,7 @@ describe Family do
 	end
 
 
-	describe "when name address is already taken" do
+	describe "when name name is already taken" do
 		before do
 			family_with_same_name = @family.dup
 			family_with_same_name.name = @family.name.upcase
@@ -35,5 +34,15 @@ describe Family do
 
 		it { should_not be_valid }
 	end
+end
 
+	# Checks that Factory Girl works
+describe Family do
+	  before(:each) { User.delete_all }
+ 
+		subject {create(:family)}
+
+		its(:name) { should include("Family") }
+		its(:status) {should be_true}
+		its(:observations) {should == "Esta es una observación de la Familia Perez Lopez"}
 end

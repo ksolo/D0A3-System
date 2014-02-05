@@ -58,9 +58,9 @@ describe Person do
 	describe "when complete name is already taken" do
 		before do
 			person_with_same_complete_name = @person.dup
-			person_with_same_complete_name.name = @person.name.upcase
+			person_with_same_complete_name.name = @person.name.downcase
 			person_with_same_complete_name.first_last_name = @person.first_last_name.upcase
-			person_with_same_complete_name.second_last_name = @person.second_last_name.upcase
+			person_with_same_complete_name.second_last_name = @person.second_last_name.titleize
 			person_with_same_complete_name.save
 		end
 
@@ -71,7 +71,7 @@ end
 
 
 # Checks that Factory Girl works
-describe User do
+describe Person do
 	subject {build(:person)}
 
 		its(:name) { should == "Fernando" }

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140131181812) do
+ActiveRecord::Schema.define(version: 20140204230353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,7 +48,6 @@ ActiveRecord::Schema.define(version: 20140131181812) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "address_id"
-    t.integer  "person_id"
     t.boolean  "status"
     t.integer  "responsible_id"
     t.text     "observations"
@@ -94,6 +93,8 @@ ActiveRecord::Schema.define(version: 20140131181812) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "people", ["name", "first_last_name", "second_last_name"], name: "index_people_on_name_and_first_last_name_and_second_last_name", unique: true, using: :btree
 
   create_table "spots", force: true do |t|
     t.integer  "child_id"
