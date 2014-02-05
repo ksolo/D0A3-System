@@ -5,14 +5,18 @@ describe 'Person pages' do
 
 	let(:user) { create(:user) }
 
-  	before do
-  		sign_in user
-  		10.times { create(:person) }
-		visit people_path
+  before do
+  	sign_in user
 	end
 
 	describe 'Index People' do
+		before do
+	  	10.times { create(:person) }
+			visit people_path
+		end
+
 		it { should have_title('Todos los Miembros') }
+
 		describe 'Should render people list' do
 			it "should list each person" do
 				Person.all.each do |member|
@@ -22,3 +26,13 @@ describe 'Person pages' do
 		end
 	end
 end
+
+
+
+
+
+
+
+
+
+
