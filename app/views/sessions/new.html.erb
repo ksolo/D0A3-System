@@ -1,15 +1,20 @@
 <% provide(:title, "Sign in") %>
+<% unless signed_in? %>
+	<div>
+	    <%= form_for(:session, url: sessions_path) do |f| %>
 
-<div>
-    <%= form_for(:session, url: sessions_path) do |f| %>
+			<%= f.label :email %>
+			<%= f.text_field :email %>
 
-		<%= f.label :email %>
-		<%= f.text_field :email %>
+			<%= f.label :password %>
+			<%= f.password_field :password %>
+			<br>
+	      	<%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
 
-		<%= f.label :password %>
-		<%= f.password_field :password %>
-		<br>
-      	<%= f.submit "Sign in", class: "btn btn-large btn-primary" %>
-
-	<% end %>
-</div>
+		<% end %>
+	</div>
+	<% else %>
+	<div>
+		<h2><%= "#{current_user.name} is logged-in"%></h2>
+	</div>
+<% end %>

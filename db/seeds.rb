@@ -2,6 +2,7 @@
 require "csv"
 
 User.create( name: "Juan", email: "flaco@gmail.com", password: "123qwe123", password_confirmation: "123qwe123" )
+User.create( name: "javier", email: "javier@deceroatres.com", password: "deceroatres", password_confirmation: "deceroatres" )
 
 def load_file(file)
 	array = []
