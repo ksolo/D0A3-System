@@ -1,3 +1,4 @@
+# encoding: UTF-8
 require 'spec_helper'
 
 describe Address do
@@ -26,8 +27,6 @@ describe Address do
     it { should respond_to(:celular) }
     it { should respond_to(:email) }
     it { should respond_to(:family) }
-
-
 
 	it { should be_valid }
 

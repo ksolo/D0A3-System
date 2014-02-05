@@ -17,7 +17,6 @@ class GroupsController < ApplicationController
 
 	def new
 		@group = Group.new
-		@childs = Person.all.order('dob DESC')
 	end
 
 	def edit

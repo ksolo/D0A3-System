@@ -187,13 +187,11 @@ footer {
 
 
 /* Group select */
-
-#person_dob_1i, #group_finish_date_1i, #group_init_date_1i, #lecture_date_1i{ width: 70px; }
-#person_dob_2i, #group_finish_date_2i, #group_init_date_2i, #lecture_date_2i{ width: 110px; }
-#person_dob_3i, #group_finish_date_3i, #group_init_date_3i, #lecture_date_3i{ width: 55px; }
-#person_dob_4i, #group_finish_date_4i, #group_init_date_4i, #lecture_date_4i{ width: 55px; }
-#person_dob_5i, #group_finish_date_5i, #group_init_date_5i, #lecture_date_5i{ width: 55px; }
-
+.date_selector:nth-child(1){ width: 70px; }
+.date_selector:nth-child(2){ width: 110px; }
+.date_selector:nth-child(3),
+.date_selector:nth-child(4),
+.date_selector:nth-child(5){ width: 55px; }
 .child_selected, .child_spot {
   width: 100px;
   height: 120px;

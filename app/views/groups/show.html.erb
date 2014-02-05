@@ -1,4 +1,4 @@
-<% provide(:title, "Nuevo #{ @group.name }") %>
+<% provide(:title, "Grupo #{ @group.name }") %>
 
 <div class="boton_izq">
 	<p>
@@ -49,16 +49,20 @@
 			<th>Niño</th>
 			<th>Cuidador</th>
 			<th>Pagos</th>
-			<th>Editar</th>
-			<th>Borrar</th>
+			<!--<th>Editar</th>
+			<th>Borrar</th>-->
 		</tr>
 		<% @group.spots.each do |spot| %>
 			<tr>
-				<td><%= spot.child.name %></td>
-				<td><% if(spot.tutor) %><%= spot.tutor.name %><% end %></td>
-				<td>PAGOS</td>
-				<td><button type="button" class="btn btn-default btn-xs"><%= link_to "Editar Spot", edit_group_spot_path(@group, spot) %></button></td>
-				<td><button type="button" class="btn btn-danger btn-xs"><%= link_to "Borrar Spot", group_spot_path(@group, spot), method: :delete, data: { confirm: "Estas Seguro?" } %></button></td>
+				<td><%= link_to "#{spot.child.name} #{spot.child.first_last_name} #{spot.child.second_last_name}", group_spot_path(@group, spot) %></td>
+				<td><% if(spot.tutor) %><%= "#{spot.tutor.name} #{spot.tutor.first_last_name} #{spot.tutor.second_last_name}" %><% end %></td>
+				<% total = 0 %>
+				<% spot.payments.each do |p| %>
+					<% total = total + p.amount %>
+				<% end %>
+				<td>$<%= total %></td>
+				<!--<td><button type="button" class="btn btn-default btn-xs"><%= link_to "Editar Spot", edit_group_spot_path(@group, spot) %></button></td>
+				<td><button type="button" class="btn btn-danger btn-xs"><%= link_to "Borrar Spot", group_spot_path(@group, spot), method: :delete, data: { confirm: "Estas Seguro?" } %></button></td>-->
 			</tr>
 		<% end %>
 	</table>

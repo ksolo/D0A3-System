@@ -22,19 +22,18 @@
 		  <%= radio_button("person", "sex", "F") %>
 	  </p><br>
 	  <p>
-	    <%= f.label "Fecha de Naciemiento" %>
-	    <%= f.date_select :dob %>
+	    <%= f.label "Fecha de Nacimiento" %>
+	    <%= f.date_select :dob, { :value => @person.dob.strftime('%m/%d/%Y %H:%M') } , { :class => 'date_selector' } %>
 	  </p>
 
 	  <p>
 	  	<%= f.label "Roll Familiar" %>
-	  	<%= select("person", "family_roll", [[ 'Hijo', 'Hijo' ], [ 'Hija', 'Hija' ], [ 'Padre', 'Padre' ], [ 'Madre', 'Madre' ], [ 'Abuelo', 'Abuelo' ], [ 'Abuela', 'Abuela' ], [ 'Tio', 'Tio' ], [ 'Tia', 'Tia' ], [ 'Otro', 'Otro' ]], { include_blank: 'Selecciona un rol'}) %>
+	  	<%= select("person", "family_roll", [[ 'Hijo', 'Hijo', :class => 'man' ], [ 'Hija', 'Hija', :class => 'woman' ], [ 'Padre', 'Padre', :class => 'man' ], [ 'Madre', 'Madre', :class => 'woman' ], [ 'Abuelo', 'Abuelo', :class => 'man' ], [ 'Abuela', 'Abuela', :class => 'woman' ], [ 'Tio', 'Tio', :class => 'man' ], [ 'Tia', 'Tia', :class => 'woman' ], [ 'Otro', 'Otro' ]], { include_blank: 'Selecciona un rol'}) %>
 	  	<br>
 	  	<input id="other_name" type="text" placeholder="Escribe el parentesco" style="display:none;">
 	  </p><br>
 	  <p>
 	    <%= f.submit "Guardar", class: "btn btn-sm btn-primary" %>
-	    <!-- Avisarle a Javi de este cambio por cualquier cosa, se cambia crear por Guardar, para renderear form -->
 	  </p>
 	<% end %>
   </div>
@@ -49,6 +48,15 @@
 		$("#other_name").on('keyup',function(){
 			var value = $(this).val();
 			$("#person_family_roll").val(value);
+		});
+		$('input:radio').click(function() {
+			if($("#person_sex_m").is(':checked')){
+				$('.man').show();
+				$('.woman').hide();
+			}else{
+				$('.man').hide();
+				$('.woman').show();
+			}
 		});
 	});
 </script>

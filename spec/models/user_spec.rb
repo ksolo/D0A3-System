@@ -3,8 +3,7 @@ require 'spec_helper'
 describe User do
 
 	before do
-		@user = User.new(name: "Example User", email: "user@example.com",
-			password: "foobar", password_confirmation: "foobar")
+		@user = User.new(name: "Example User", email: "user@example.com", password: "foobar", password_confirmation: "foobar")
 	end
 
 	subject { @user }
@@ -122,14 +121,13 @@ describe User do
     end
   end
 
+	# Checks that Factory Girl works
+	describe User do
+	  subject {build(:user)}
+
+	    its(:name) { should include("Person") }
+	    its(:email) { should include("@example.com") }
+
+	    it { should_not be_admin }
 	end
-
-# Checks that Factory Girl works
-describe User do
-	subject {build(:user)}
-
-		its(:name) { should == "Example User" }
-		its(:email) {should eq("user@example.com")}
-
-		it {should_not be_admin}
 end

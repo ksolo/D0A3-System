@@ -19,12 +19,15 @@ D0A3::Application.routes.draw do
 
   resources :groups do
     resources :lectures
-    resources :spots
+    resources :spots do
+      resources :payments
+    end
   end
   
   resources :people, only: [:index, :show]
   resources :sessions, only: [:new, :create, :destroy]
 
+  get ':controller(/:action(/:id))(.:format)'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

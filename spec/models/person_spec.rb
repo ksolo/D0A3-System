@@ -3,8 +3,7 @@ require 'spec_helper'
 describe Person do
 
 	before do
-		@person = Person.new(name: "Fernando", first_last_name:"Garcia", second_last_name:"Lopez", 
-													sex:"M", dob:"20/01/1995", family_roll: "Hijo")
+		@person = Person.new( name: "Fernando", first_last_name:"Garcia", second_last_name:"Lopez",  sex:"M", dob:"20/01/1995", family_roll: "Hijo")
 	end
 
 	subject { @person }

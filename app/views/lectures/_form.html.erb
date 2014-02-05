@@ -6,9 +6,9 @@
 	    <%= f.label "Fecha & hora" %>
 	    <span>
 		    <% if(f.object.date) %>
-		    	<%= f.datetime_select :date %>
+		    	<%= f.datetime_select :date, { :class => 'date_selector' }  %>
 		    <% else %>
-		    	<%= f.datetime_select :date, :value => (DateTime.now).strftime('%m/%d/%Y %H:%M') %>
+		    	<%= f.datetime_select :date, { :value => (DateTime.now).strftime('%m/%d/%Y %H:%M')}, { :class => 'date_selector' }  %>
 		    <% end %>
 		</span>
 	</p>

@@ -1,8 +1,8 @@
 FactoryGirl.define do
   factory :person do
     name "Fernando"
-    first_last_name "Garcia"
-    second_last_name "Lopez"
+    sequence(:first_last_name) { |n| "Garcia#{n}" }
+    sequence(:second_last_name) { |n| "Hernandez#{n}" }
     sex "M"
     dob "20/01/1995"
     family_roll "Hijo"

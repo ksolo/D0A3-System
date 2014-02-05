@@ -1,0 +1,34 @@
+<div class="boton_izq">
+	<p>
+		<button type="button" class="btn btn-info"><%= link_to "Regresar a Grupo", group_path(@group) %></button>
+	</p>
+	<p>
+		<button type="button" class="btn btn-info"><%= link_to "Regresar a Spot", group_spot_path(@group,@spot) %></button>
+	</p>
+</div>
+<div class="row">
+  <div class="span6 offset3">
+	<%= form_for([@group, @spot, @payment]) do |f| %>
+	<%= render 'shared/error_messages', object: f.object %>
+	  <p>
+	    <%= f.label "Fecha & hora" %>
+	    <span>
+		    <% if(f.object.date) %>
+		    	<%= f.date_select :date, { :value => @payment.date.strftime('%m/%d/%Y %H:%M') } , { :class => 'date_selector' } %>
+		    <% else %>
+		    	<%= f.date_select :date, { :value => (DateTime.now).strftime('%m/%d/%Y %H:%M') } , { :class => 'date_selector' } %>
+		    <% end %>
+		</span>
+	</p>
+	<p>
+		<%= f.label "Cantidad:" %>
+		<%= f.number_field :amount %>
+	</p>
+	<p>
+		<%= f.label "Beca:" %>
+		<%= f.check_box :scholarship %>
+	</p>
+	<p><%= f.submit "Guardar", class: "btn btn-sm btn-primary" %></p>
+	<% end %>
+  </div>
+</div>

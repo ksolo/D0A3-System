@@ -16,8 +16,11 @@ class Person < ActiveRecord::Base
 	validate :user_id_uniqueness # Custom Method
 
 	def user_id_uniqueness
-	  existing_record = Person.where("name ILIKE ? AND first_last_name ILIKE ? AND second_last_name ILIKE ?", name, first_last_name, second_last_name)
-	  unless existing_record.blank?
+	  existing_record = Person.where("name ILIKE ? AND first_last_name ILIKE ? AND second_last_name ILIKE ?", name, first_last_name, second_last_name).first
+	  unless existing_record.blank? || (existing_record.id==self.id&&
+	  									existing_record.name==self.name&&
+	  									existing_record.first_last_name==self.first_last_name&&
+	  									existing_record.second_last_name==self.second_last_name)
 	    errors.add(:base, "The combination of name and last_name is allready taken")
 	  end
 	end

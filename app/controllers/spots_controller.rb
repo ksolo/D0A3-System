@@ -20,6 +20,7 @@ class SpotsController < ApplicationController
 	end
 
 	def show
+		@group = Group.find(params[:group_id])
 		@spot = Spot.find(params[:id])
 	end
 
