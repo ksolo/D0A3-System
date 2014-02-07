@@ -40,7 +40,7 @@ class Person < ActiveRecord::Base
   end
 
   def full_name
-  	"#{name} #{first_last_name} #{second_last_name}"
+  	[name,first_last_name,second_last_name].join(" ")
   end
 
 end

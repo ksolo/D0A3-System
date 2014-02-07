@@ -20,6 +20,11 @@ describe Person do
 
 	it { should be_valid }
 
+	it "returns a persons full name as a string" do
+   expect(@person.full_name).to eq 'Fernando Garcia Lopez'
+  end
+
+
 	describe "when invalid atribute" do
 		before do
 			@person.name = " "

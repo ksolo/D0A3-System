@@ -23,7 +23,9 @@
 	  </p><br>
 	  <p>
 	    <%= f.label "Fecha de Nacimiento" %>
-	    <%= f.date_select :dob, { :value => @person.dob.strftime('%m/%d/%Y %H:%M') } , { :class => 'date_selector' } %>
+	    <span class="selector_fecha">
+				<%= f.date_select :dob,{ :include_blank => true ,:order => [:day, :month, :year], :start_year => Time.now.year, :end_year => Time.now.year-100}, { :class => 'date_selector'}  %>
+			</span>
 	  </p>
 
 	  <p>

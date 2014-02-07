@@ -6,7 +6,6 @@ class PeopleController < ApplicationController
 	end
 
 	def create
-		p "XXX"*100
 		@family = Family.find(params[:family_id])
 		@person = @family.family_members.build(persons_params)
 		if @family.save  

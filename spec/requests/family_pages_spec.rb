@@ -14,6 +14,7 @@ describe "Family pages" do
 
     it { should have_title('Nuestras Familias') }
     it { should have_link("Nueva Familia", href: new_family_path)}
+    it { should have_button("Nueva Familia")}
     
     describe "Family List" do
       it "should list each family" do
