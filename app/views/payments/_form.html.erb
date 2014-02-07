@@ -13,11 +13,9 @@
 	  <p>
 	    <%= f.label "Fecha & hora" %>
 	    <span>
-		    <% if(f.object.date) %>
-		    	<%= f.date_select :date, { :value => @payment.date.strftime('%m/%d/%Y %H:%M') } , { :class => 'date_selector' } %>
-		    <% else %>
-		    	<%= f.date_select :date, { :value => (DateTime.now).strftime('%m/%d/%Y %H:%M') } , { :class => 'date_selector' } %>
-		    <% end %>
+			<span id="selector_fecha">
+				<%= f.date_select :date, { :include_blank  => true, :order => [:day, :month, :year] }, { :class => 'date_selector' }  %>
+			</span>
 		</span>
 	</p>
 	<p>

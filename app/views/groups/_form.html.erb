@@ -11,17 +11,13 @@
 	    <%= f.label "Edad máxima (Semanas)" %>
 	    <%= f.number_field :max_age %>
 	    <%= f.label "Inicio de curso" %>
-	    <% if(f.object.init_date) %>
-			<%= f.date_select :init_date, { :value => @group.init_date.strftime('%m/%d/%Y') } , { :class => 'date_selector' } %>
-		<% else %>
-			<%= f.date_select :init_date, { :value => (DateTime.now).strftime('%m/%d/%Y') } , { :class => 'date_selector' } %>
-		<% end %>
+	    <span id="selector_fecha">
+	    	<%= f.date_select :init_date, { :include_blank  => true, :order => [:day, :month, :year] }, { :class => 'date_selector' }  %>
+	    </span>
 	    <%= f.label "Fin de curso" %>
-	    <% if(f.object.finish_date) %>
-			<%= f.date_select :finish_date, { :value => @group.finish_date.strftime('%m/%d/%Y') } , { :class => 'date_selector' } %>
-		<% else %>
-			<%= f.date_select :finish_date, { :value => (DateTime.now).strftime('%m/%d/%Y') } , { :class => 'date_selector' } %>
-		<% end %>
+	    <span id="selector_fecha">
+	    	<%= f.date_select :finish_date, { :include_blank  => true, :order => [:day, :month, :year] }, { :class => 'date_selector' }  %>
+	    </span>
 	    <%= f.label "Costo" %>
 	    <%= f.number_field :cost %>
 	    <%= f.label "Ubicación" %>

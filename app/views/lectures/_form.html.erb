@@ -12,8 +12,8 @@
 		<%= render 'shared/error_messages', object: f.object %>
 		<p>
 			<%= f.label "Fecha & hora" %>
-			<span>
-				<%= f.datetime_select :date , { :include_blank => true }, :class => 'date_selector' %>
+			<span id="selector_fecha">
+				<%= f.datetime_select :date,  { :include_blank  => true, :order => [:day, :month, :year] }, :class => 'date_selector' %>
 			</span>
 		</p>
 		<p>
