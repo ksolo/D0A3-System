@@ -11,9 +11,13 @@
 	    <%= f.label "Edad máxima (Semanas)" %>
 	    <%= f.number_field :max_age %>
 	    <%= f.label "Inicio de curso" %>
-	    <%= f.date_select :init_date, { :class => 'date_selector' } %>
+	    <span id="selector_fecha">
+	    	<%= f.date_select :init_date, { :include_blank  => true, :order => [:day, :month, :year] }, { :class => 'date_selector' }  %>
+	    </span>
 	    <%= f.label "Fin de curso" %>
-	    <%= f.date_select :finish_date, { :class => 'date_selector' } %>
+	    <span id="selector_fecha">
+	    	<%= f.date_select :finish_date, { :include_blank  => true, :order => [:day, :month, :year] }, { :class => 'date_selector' }  %>
+	    </span>
 	    <%= f.label "Costo" %>
 	    <%= f.number_field :cost %>
 	    <%= f.label "Ubicación" %>

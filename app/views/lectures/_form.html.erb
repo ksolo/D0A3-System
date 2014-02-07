@@ -1,37 +1,41 @@
-<div class="row">
-  <div class="span6 offset3">
-	<%= form_for([@group, @lecture]) do |f| %>
-	<%= render 'shared/error_messages', object: f.object %>
-	  <p>
-	    <%= f.label "Fecha & hora" %>
-	    <span>
-		    <% if(f.object.date) %>
-		    	<%= f.datetime_select :date, { :class => 'date_selector' }  %>
-		    <% else %>
-		    	<%= f.datetime_select :date, { :value => (DateTime.now).strftime('%m/%d/%Y %H:%M')}, { :class => 'date_selector' }  %>
-		    <% end %>
-		</span>
+<div class="boton_izq">
+	<p>
+	  <button type="button" class="btn btn-info"><%= link_to "Regresar a Grupo", group_path(@group) %></button>
 	</p>
 	<p>
-		<%= f.label "Observaciones" %>
-		<%= f.text_area :observation %>
+		<button type="button" class="btn btn-danger btn-xs"><%= link_to "Borrar Clase", group_lecture_path(@group, @lecture), method: :delete, data: { confirm: "Estas Seguro?" } %></button></td>
 	</p>
-	<% if(@lecture.attendances.empty?) %>
+</div>
+<div class="row">
+	<div class="span6 offset3">
+		<%= form_for([@group, @lecture]) do |f| %>
+		<%= render 'shared/error_messages', object: f.object %>
 		<p>
-			<%= f.label "Esta clase no tiene aún asistencias" %>
-			<button type="button" class="btn btn-default">Agregar asistencias</button>
+			<%= f.label "Fecha & hora" %>
+			<span id="selector_fecha">
+				<%= f.datetime_select :date,  { :include_blank  => true, :order => [:day, :month, :year] }, :class => 'date_selector' %>
+			</span>
 		</p>
-	<% else %>
 		<p>
-			<%= f.label "Asistencias" %>
+			<%= f.label "Observaciones" %>
+			<%= f.text_area :observation %>
 		</p>
-		<% @lecture.attendances.each do |a| %>
-			<%= a.person.name %>
+		<% if(@lecture.attendances.empty?) %>
+			<p>
+				<%= f.label "Esta clase no tiene aún asistencias" %>
+				<button type="button" class="btn btn-default">Agregar asistencias</button>
+			</p>
+		<% else %>
+			<p>
+				<%= f.label "Asistencias" %>
+			</p>
+			<% @lecture.attendances.each do |a| %>
+				<%= a.person.name %>
+			<% end %>
 		<% end %>
-	  <% end %>
-	  <p>
-	    <%= f.submit "Guardar", class: "btn btn-sm btn-primary" %>
-	  </p>
-	<% end %>
-  </div>
+		<p>
+			<%= f.submit "Guardar", class: "btn btn-sm btn-primary" %>
+		</p>
+		<% end %>
+	</div>
 </div>
