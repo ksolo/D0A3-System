@@ -13,6 +13,7 @@ describe 'Person pages' do
 
 	describe 'Index People' do
 		it { should have_title('Todos los Miembros') }
+		it { should have_content(Person.all.count) }
 		describe 'Should render people list' do
 			it "should list each person" do
 				Person.all.each do |member|
@@ -21,4 +22,11 @@ describe 'Person pages' do
 			end
 		end
 	end
+
+	describe 'Show user information' do
+		let(:member) { FactoryGirl.create(:person) }
+		before { visit person_path(member) }
+		it { should have_title(member.name) }
+	end
+
 end

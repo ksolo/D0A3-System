@@ -4,7 +4,7 @@ class LecturesController < ApplicationController
 		@group = Group.find(params[:group_id])
 		@lecture = @group.lectures.build(lecture_params)
 		if @group.save  
-	    flash[:success] = "Creación Exitosa"
+	    flash[:success] = "Clase creada exitosamente"
 	    redirect_to @group
 	    else
 	      render 'new'
@@ -23,6 +23,7 @@ class LecturesController < ApplicationController
 
 	def show
 		@lecture = Lecture.find(params[:id])
+		@group = Group.find(params[:group_id])
 	end
 
 	def update
