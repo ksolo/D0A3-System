@@ -20,14 +20,15 @@
 	  	<%= radio_button("person", "sex", "M") %>
 	  	<%= f.label "F" ,:class => "checkbox inline"%>
 		  <%= radio_button("person", "sex", "F") %>
-	</p><br>
-	<p>
-	   <%= f.label "Fecha de Nacimiento" %>
-	   	<span id="selector_fecha">
-	    	<%= f.date_select :dob, { :include_blank  => true, :order => [:day, :month, :year] }, { :class => 'date_selector' }  %>
-	    </span>
-	</p>
-	<p>
+	  </p><br>
+	  <p>
+	    <%= f.label "Fecha de Nacimiento" %>
+	    <span class="selector_fecha">
+				<%= f.date_select :dob,{ :include_blank => true ,:order => [:day, :month, :year], :start_year => Time.now.year, :end_year => Time.now.year-100}, { :class => 'date_selector'}  %>
+			</span>
+	  </p>
+
+	  <p>
 	  	<%= f.label "Roll Familiar" %>
 	  	<%= select("person", "family_roll", [[ 'Hijo', 'Hijo', :class => 'man' ], [ 'Hija', 'Hija', :class => 'woman' ], [ 'Padre', 'Padre', :class => 'man' ], [ 'Madre', 'Madre', :class => 'woman' ], [ 'Abuelo', 'Abuelo', :class => 'man' ], [ 'Abuela', 'Abuela', :class => 'woman' ], [ 'Tio', 'Tio', :class => 'man' ], [ 'Tia', 'Tia', :class => 'woman' ], [ 'Otro', 'Otro' ]], { include_blank: 'Selecciona un rol'}) %>
 	  	<br>

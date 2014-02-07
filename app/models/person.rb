@@ -39,4 +39,8 @@ class Person < ActiveRecord::Base
      read_attribute(:second_last_name).try(:titleize)
   end
 
+  def full_name
+  	[name,first_last_name,second_last_name].join(" ")
+  end
+
 end

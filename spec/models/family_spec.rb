@@ -45,5 +45,5 @@ describe Family do
 
 		its(:name) { should include("Family") }
 		its(:status) {should be_true}
-		its(:observations) {should == "Esta es una observacion de la Familia Perez Lopez"}
+		its(:observations) {should == "Esta es una observación de la Familia Perez Lopez"}
 end

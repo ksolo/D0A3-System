@@ -182,12 +182,11 @@ footer {
 .clear { clear: both; }
 
 /* Group select */
-.date_selector{ width: 110px; }
-.date_selector:nth-child(1), #group_init_date_1i, #group_finish_date_1i{ width: 55px; }
-.date_selector:nth-child(2), #group_init_date_2i, #group_finish_date_2i{ width: 110px; }
+.date_selector:nth-child(1){ width: 55px; }
+.date_selector:nth-child(2){ width: 110px; }
 .date_selector:nth-child(3),
 .date_selector:nth-child(4),
-.date_selector:nth-child(5), #group_finish_date_3i, #group_init_date_3i{ width: 70px; }
+.date_selector:nth-child(5){ width: 70px;}
 .child_selected, .child_spot {
   width: 100px;
   height: 120px;

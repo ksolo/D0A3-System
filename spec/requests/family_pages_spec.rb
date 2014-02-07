@@ -13,12 +13,13 @@ describe "Family pages" do
     end
 
     it { should have_title('Nuestras Familias') }
-
+    it { should have_link("Nueva Familia", href: new_family_path)}
+    it { should have_button("Nueva Familia")}
+    
     describe "Family List" do
-
       it "should list each family" do
         Family.all.each do |family|
-          # expect(page).to have_link(family.name, href: family_path(family))
+          expect(page).to have_link(family.name, href: family_path(family))
           expect(page).to have_selector('a', text: family.name)
         end
         Family.delete_all
