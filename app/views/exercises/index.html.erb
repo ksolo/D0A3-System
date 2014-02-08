@@ -1,0 +1,30 @@
+<% provide(:title, 'Todos los Ejercicios') %>
+
+<div class="boton_der">
+	<p>
+	  <button type="button" class="btn btn-default"><%= link_to "Nuevo Ejercicio", new_exercise_path %></button>
+	</p>
+</div>
+
+<h2>Total de Ejercicios: <%= @exercises.count %></h2>
+
+<table class="table table-striped">
+<tr>
+	<th>Area</th>
+	<th>Rango de edad</th>
+	<th>Objetivo</th>
+	<th>Número de clases</th>
+	<th>Ver detalle</th>
+</tr>
+<% @exercises.each do |exercise| %>
+<tr>
+	<td><%= exercise.area %></td>
+	<td><%= "#{exercise.min_age} - #{exercise.max_age}" %></td>
+	<td><%= exercise.objective %></td>
+	<td><%= exercise.lectures.count %></td>
+	<td><p>
+	  <button type="button" class="btn btn-default"><%= link_to "Detalle", exercise_path(exercise) %></button>
+	</p></td>
+</tr>
+<% end %>
+</table>

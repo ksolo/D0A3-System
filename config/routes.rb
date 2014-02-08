@@ -24,6 +24,7 @@ D0A3::Application.routes.draw do
     end
   end
   
+  resources :exercises
   resources :people, only: [:index, :show]
   resources :sessions, only: [:new, :create, :destroy]
 

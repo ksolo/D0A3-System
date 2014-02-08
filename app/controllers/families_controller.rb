@@ -39,8 +39,8 @@ class FamiliesController < ApplicationController
 
 	def destroy
 		Family.find(params[:id]).destroy
-    flash[:success] = "Familia Borrada"
-    redirect_to families_path
+	    flash[:success] = "Familia Borrada"
+	    redirect_to families_path
 	end
 
 	private
