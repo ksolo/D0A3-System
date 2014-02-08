@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140204230353) do
+ActiveRecord::Schema.define(version: 20140207181146) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,18 @@ ActiveRecord::Schema.define(version: 20140204230353) do
   create_table "attendances", force: true do |t|
     t.integer  "person_id"
     t.integer  "lecture_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "exercises", force: true do |t|
+    t.string   "area"
+    t.integer  "min_age"
+    t.integer  "max_age"
+    t.text     "objective"
+    t.text     "description"
+    t.text     "material"
+    t.text     "music"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -104,6 +116,13 @@ ActiveRecord::Schema.define(version: 20140204230353) do
   end
 
   add_index "people", ["name", "first_last_name", "second_last_name"], name: "index_people_on_name_and_first_last_name_and_second_last_name", unique: true, using: :btree
+
+  create_table "plans", force: true do |t|
+    t.integer  "lecture_id"
+    t.integer  "exercise_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "spots", force: true do |t|
     t.integer  "child_id"

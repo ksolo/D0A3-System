@@ -13,6 +13,8 @@ describe Lecture do
 	it { should respond_to(:group_id) }
 	it { should respond_to(:date) }
 	it { should respond_to(:observation) }
+	it { should respond_to(:exercises) }
+	it { should respond_to(:plans) }
 
 	it { should be_valid }
 

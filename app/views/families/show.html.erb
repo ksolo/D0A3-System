@@ -1,6 +1,6 @@
 <% provide(:title, "Familia: #{ @family.name }") %>
 
-<div class="boton_izq">
+<div class="boton_der">
 	<p>
 	  <button type="button" class="btn btn-info"><%= link_to "Regresar a Socios", families_path %></button>
 	</p>
@@ -38,11 +38,11 @@
 </table>
 <div>
 	<% if @family.family_members.empty? %>
-		<p class="boton_izq">
+		<p class="boton_der">
 			<button type="button" class="btn btn-danger"><%= link_to "Borrar Familia", @family, method: :delete, data: { confirm: "Estas Seguro?" } %></button>
 		</p>
 	<% end %>	
-	<p class="boton_izq">
+	<p class="boton_der">
 		<button type="button" class="btn btn-default"><%= link_to "Editar Nombre de la Familia", edit_family_path %></button>
 	</p>
 </div>
@@ -52,11 +52,11 @@
 		<% if @family.address %>
 			<p><%= @family.styled_address %></p>
 			<p><%= @family.styled_contact_info %></p>
-			<p class="boton_der">
+			<p class="boton_izq">
 			  <button type="button" class="btn btn-default"><%= link_to "Editar Contacto", edit_family_address_path(@family, @family.address) %></button>
 			</p>
 		<% else %>
-			<p class="boton_der">
+			<p class="boton_izq">
 			  <button type="button" class="btn btn-warning"><%= link_to "Falta Información de Contacto", new_family_address_path(@family) %></button>
 			</p>		
 		<% end %>

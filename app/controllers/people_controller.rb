@@ -34,6 +34,9 @@ class PeopleController < ApplicationController
 		@family = Family.find(params[:family_id])
 		@person = Person.find(params[:id])
 	    if @person.update_attributes(persons_params)
+		    if @person.family_roll=='Otro'
+				@person.update_attributes(family_roll:params[:person][:other])
+			end
 	    	flash[:success] = "Actualización Exitosa"
 	    	redirect_to @family
 	    else
@@ -50,8 +53,8 @@ class PeopleController < ApplicationController
 
 	private
 
-		def persons_params
-      params.require(:person).permit(:name, :first_last_name, :second_last_name, :sex, :dob, :family_roll)
+	def persons_params
+		params.require(:person).permit(:name, :first_last_name, :second_last_name, :sex, :dob, :family_roll)
     end
 
 end

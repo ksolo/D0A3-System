@@ -5,7 +5,7 @@
 	<p>
 	    <%= f.label "Nombre" %>
 	    <%= f.text_field :name %>
-	s</p>
+	</p>
 	<p>
 	    <%= f.label "Apellido Paterno" %>
 	    <%= f.text_field :first_last_name %>
@@ -32,7 +32,7 @@
 	  	<%= f.label "Roll Familiar" %>
 	  	<%= select("person", "family_roll", [[ 'Hijo', 'Hijo', :class => 'man' ], [ 'Hija', 'Hija', :class => 'woman' ], [ 'Padre', 'Padre', :class => 'man' ], [ 'Madre', 'Madre', :class => 'woman' ], [ 'Abuelo', 'Abuelo', :class => 'man' ], [ 'Abuela', 'Abuela', :class => 'woman' ], [ 'Tio', 'Tio', :class => 'man' ], [ 'Tia', 'Tia', :class => 'woman' ], [ 'Otro', 'Otro' ]], { include_blank: 'Selecciona un rol'}) %>
 	  	<br>
-	  	<input id="other_name" type="text" placeholder="Escribe el parentesco" style="display:none;">
+	  	<input id="other_name" type="text" placeholder="Escribe el parentesco" style="margin-top: -48px; width: 185px; display:none; " name="person[other]">
 	</p><br>
 	<p>
 	    <%= f.submit "Guardar", class: "btn btn-sm btn-primary" %>
@@ -43,6 +43,16 @@
 
 <script>
 	$(document).ready(function() {
+		$("#person_family_roll").change(function () {
+			var value = $(this).val();
+			if(value=='Otro') $("#other_name").val("").show().focus();
+			else $("#other_name").hide().blur();
+		});
+
+		$("#other_name").on('keyup',function(e){
+			var newOption = $(this).val();
+		});
+
 		$('input:radio').click(function() {
 			if($("#person_sex_m").is(':checked')){
 				$('.man').show();

@@ -1,14 +1,8 @@
 <% provide(:title, "Grupo #{ @group.name }") %>
 
-<div class="boton_izq">
+<div class="boton_der">
 	<p>
 	  <button type="button" class="btn btn-info"><%= link_to "Regresar a Grupos", groups_path %></button>
-	</p>
-	<p>
-		<button type="button" class="btn btn-default btn-xs"><%= link_to "Editar Grupo", edit_group_path(@group) %></button>
-	</p>
-	<p>
-		<button type="button" class="btn btn-default"><%= link_to "Nueva Clase", new_group_lecture_path(@group) %></button>
 	</p>
 </div>
 <table class="table table-striped">
@@ -31,11 +25,14 @@
 		<td>$<%= @group.cost %></td>
 	</tr>
 </table>
+<div class="boton_der">
+	<p>
+		<button type="button" class="btn btn-default btn-xs"><%= link_to "Editar Grupo", edit_group_path(@group) %></button>
+	</p>
+</div>
+<br><br>
 <% if(@group.lectures.empty?) %>
 		<h1>No Hay Clases</h1>
-		<p class="boton_cen">
-			<button type="button" class="btn btn-default"><%= link_to "Agregar Clase", new_group_lecture_path(@group) %></button>
-		</p>
 	<% else %>
 	<h1>Clases</h1>
 	<table class="table table-striped">
@@ -63,12 +60,13 @@
 		<button type="button" class="btn btn-default"><%= link_to "Nuevo Spot", new_group_spot_path(@group) %></button>
 	</p>-->
 <% else %>
-	<h1>Spots</h1>
+	<h1>Inscritos</h1>
 	<table class="table table-striped">
 		<tr>
 			<th>Niño</th>
 			<th>Cuidador</th>
 			<th>Pagos</th>
+			<th>Saldo</th>
 			<!--<th>Editar</th>
 			<th>Borrar</th>-->
 		</tr>
@@ -81,9 +79,15 @@
 					<% total = total + p.amount %>
 				<% end %>
 				<td>$<%= total %></td>
+				<td>$<%= @group.cost-total %></td>
 				<!--<td><button type="button" class="btn btn-default btn-xs"><%= link_to "Editar Spot", edit_group_spot_path(@group, spot) %></button></td>
 				<td><button type="button" class="btn btn-danger btn-xs"><%= link_to "Borrar Spot", group_spot_path(@group, spot), method: :delete, data: { confirm: "Estas Seguro?" } %></button></td>-->
 			</tr>
 		<% end %>
 	</table>
 <% end %>
+<div class="boton_der">
+	<p>
+		<button type="button" class="btn btn-default"><%= link_to "Nueva Clase", new_group_lecture_path(@group) %></button>
+	</p>
+</div>

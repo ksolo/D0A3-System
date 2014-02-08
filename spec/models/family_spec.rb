@@ -37,13 +37,12 @@ describe Family do
 	end
 end
 
-	# Checks that Factory Girl works
+# Checks that Factory Girl works
 describe Family do
-	  before(:each) { User.delete_all }
  
 		subject {create(:family)}
 
 		its(:name) { should include("Family") }
-		its(:status) {should be_true}
-		its(:observations) {should == "Esta es una observación de la Familia Perez Lopez"}
+		its(:status) { should be_true }
+		its(:observations) { should == "Esta es una observación de la Familia Perez Lopez" }
 end

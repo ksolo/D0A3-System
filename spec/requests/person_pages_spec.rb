@@ -26,7 +26,7 @@ describe 'Person pages' do
 		end
 	end
 
-	describe 'Show user information' do
+	describe 'Show person' do
 		let(:member) { FactoryGirl.create(:person) }
 		before { visit person_path(member) }
 		it { should have_title(member.name) }

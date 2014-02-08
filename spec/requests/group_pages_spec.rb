@@ -145,8 +145,6 @@ describe 'Group pages' do
 		describe 'with valid information' do
 			before do
 				fill_in 'lecture[observation]', :with => 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.'
-				# puts find_field("lecture[date(1i)]").find('option[3]').value
-				# find_field("lecture[date(1i)]").find('option')
 				select '2016', from: 'lecture[date(1i)]'
 				select 'February', from: 'lecture[date(2i)]'
 				select '24', from: 'lecture[date(3i)]'
@@ -195,7 +193,7 @@ describe 'Group pages' do
 		describe 'Show group information' do
 			it { should have_title("Grupo #{group.name}") }
 			it { should have_link('Editar Grupo') }
-			it { should have_content('Spots') }
+			it { should have_content('Inscritos') }
 		end
 
 		describe 'Should render spots list on group' do
