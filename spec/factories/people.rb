@@ -6,5 +6,12 @@ FactoryGirl.define do
     sex "M"
     dob "20/01/1995"
     family_roll "Hijo"
+
+    trait :random_date do
+        dob "01/01/2014"
+    	#dob { rand(4.years).ago }
+    end
+
   end
+
 end

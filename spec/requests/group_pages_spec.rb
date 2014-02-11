@@ -6,18 +6,23 @@ describe 'Group pages' do
 
 	let(:user) { create(:user) }
 	let(:group) { create(:group) }
+	let(:person) { create(:person) }
+	let(:family) { Family.create({ name:'Nueva Familia', responsible_id: person.id }) }
+	let(:spot) { family.family_members.create( name: "Joaquín", first_last_name:"Garcia", second_last_name:"Lopez",  sex:"M", dob:"20/01/2014", family_roll: "Hijo") }
 	let(:lecture) { create( :lecture, group: group ) }
+	let(:hijo) { group.spots.create({ child_id: spot.id, tutor_id: person.id }) }
 
   	before do
 		sign_in user
 		10.times { create(:group) }
-		10.times { create(:spot, group: group ) }
 		visit groups_path
 	end
 
 	describe 'Index Groups' do
+	
 		it { should have_title('Nuestros Grupos') }
 		it { should have_content(Group.all.count) }
+	
 		describe 'Should render group list' do
 			it "should list each group" do
 				Group.all.each do |g|
@@ -25,6 +30,47 @@ describe 'Group pages' do
 				end
 			end
 		end
+	
+	end
+
+	describe 'New group' do
+		before { visit new_group_path }
+		it { should have_title('Nuevo Grupo') }
+		it { should have_button('Regresar a los Grupos') }
+
+		describe 'with invalid information' do
+			before { click_button('Guardar') }
+			it { should have_content('8 errors') }
+		end
+
+		describe 'with valid information' do
+			before do
+				fill_in "group[name]", :with => "New Group"
+				within '#group_user_id' do
+					find("option[2]").select_option
+				end
+				within '#group_init_date_1i' do
+					find("option[2]").select_option
+				end
+				within '#group_finish_date_1i' do
+					find("option[2]").select_option
+				end
+				select "January", from: "group[init_date(2i)]"
+				select "12", from: "group[init_date(3i)]"
+				select "January", from: "group[finish_date(2i)]"
+				select "12", from: "group[finish_date(3i)]"
+				fill_in "group[min_age]", :with => "0"
+				fill_in "group[max_age]", :with => "100"
+				fill_in "group[cost]", :with => "999"
+				fill_in "group[location]", :with => "Aula Dos"
+
+				expect { click_button "Guardar" }.to change(Group, :count).by(1)
+			end
+
+			it { should have_title('Editar Grupo') }
+			it { should have_content('Creación Exitosa') }
+		end
+
 	end
 
 	describe 'Show group information' do
@@ -93,6 +139,26 @@ describe 'Group pages' do
 			specify { expect(group.reload.init_date).to eq "12/01/1999".to_date }
 			specify { expect(group.reload.finish_date).to eq "12/01/2000".to_date }
 		end
+	end
+
+	describe 'Destroy group' do
+		
+		before { visit edit_group_path(group) }
+		
+		it { should have_button('Borrar Grupo') }
+		it { should have_link('Borrar Grupo', href: group_path(group) ) }
+		
+		describe "should delete an group" do
+
+			before do
+				expect { click_link "Borrar Grupo" }.to change(Group, :count).by(-1)
+			end
+
+			it { should have_title('Nuestros Grupos') }
+			it { should have_content("Grupo Borrado") }
+
+		end
+
 	end
 
 	describe 'new lecture' do
@@ -186,26 +252,91 @@ describe 'Group pages' do
 
 	end
 
-	describe 'Should Spots in Group' do
+	describe 'New Spots' do
+		
+		before do
+			family.family_members.create( name: "Fernando", first_last_name:"Garcia", second_last_name:"Lopez",  sex:"M", dob:"20/01/2014", family_roll: "Hijo")
+			visit edit_group_path(group)
+		end
+		
+		describe 'spot page' do
+
+			it { should have_title('Editar Grupo') }
+			it { should have_button('Regresar al Grupo') }
+			it { should have_content('Datos del grupo') }
+			it { should have_content(group.spots.count) }
+
+		end
+
+		describe 'when click on item' do
+			it "should create a spot" do
+				expect { click_link "child_spot_1" }.to change(Spot, :count).by(1)
+			end
+		end
+
+	end
+
+	describe "Spot page" do
+
+		before do
+			Spot.create({ child_id: spot.id, tutor_id: person.id, group_id: group.id })
+		end
+
+		describe "index" do
+			before { visit group_path(group) }
+
+			it 'should render spot list' do
+				group.spots.each do |spot|					
+					expect(page).to have_selector('a', text: spot.child.full_name)
+					expect(page).to have_content('a', text: spot.tutor.full_name)
+				end
+			end
+		end
+
+		describe "edit" do
+
+			before { visit group_spot_path(group, group.spots.first) }
+			it { should have_title(hijo.child.name) }
+			it { should have_button('Regresar a Spots') }
+			it { should have_button('Editar Spot') }
+			it { should have_content('Pagos') }
+			
+		end
+
+		describe "destroy" do
+			before { visit edit_group_path(group) }
+			it "should delete a spot" do
+				expect { click_link "Quitar" }.to change(Spot, :count).by(-1)
+			end
+		end
+
+	end
+
+=begin
+
+	describe 'Should payments in spot' do
 
 		before { visit group_path(group) }
 
-		describe 'Show group information' do
-			it { should have_title("Grupo #{group.name}") }
-			it { should have_link('Editar Grupo') }
-			it { should have_content('Inscritos') }
+		describe 'show spot information' do
+			#it { should have_title(group.spots.first.child.name) }
+			#it { should have_button('Regresar a Spots') }
+			#it { should have_button('Nuevo Pago') }
+
 		end
 
-		describe 'Should render spots list on group' do
+		describe 'Should render payments list on spot' do
 
-			it "should list each group" do
-				group.spots.each do |child|
-					expect(page).to have_selector('a', text: child.child.name)
-				end
+			it "should list each spot" do
+
+			#	spot.payments.each do |spot|
+			#		expect(page).to have_selector('td', text: spot.date)
+			#	end
+
 			end
 
 		end
 
 	end
-
+=end
 end

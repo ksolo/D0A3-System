@@ -11,6 +11,7 @@ class GroupsController < ApplicationController
 			flash[:success] = "Creación Exitosa"
 			redirect_to edit_group_path(@group)
 		else
+			#puts @group.errors.full_messages.each { |a| puts a }
 			render 'new'
 		end
 	end
@@ -42,6 +43,7 @@ class GroupsController < ApplicationController
 	end
 
 	def destroy
+		flash[:success] = "Grupo Borrado"
 		group = Group.find(params[:id])
 		group.destroy
 		redirect_to groups_path

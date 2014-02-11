@@ -18,6 +18,8 @@ describe Group do
 	it { should respond_to(:location) }
 	it { should respond_to(:min_age) }
 	it { should respond_to(:max_age) }
+	it { should respond_to(:spots) }
+	it { should respond_to(:lectures) }
 
 	it { should be_valid }
 
@@ -51,4 +53,15 @@ describe Group do
 		it { should_not be_valid }
 	end
 
+end
+# Checks that Factory Girl works
+describe Group do
+ 
+	subject { create(:group) }
+
+	its(:name) { should == "Primer Clase" }
+	its(:cost) { should ==  280 }
+	its(:min_age) { should ==  0 }
+	its(:max_age) { should ==  120 }
+	its(:location) { should ==  "Aula uno" }
 end

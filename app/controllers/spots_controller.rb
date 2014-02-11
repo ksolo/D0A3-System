@@ -1,6 +1,11 @@
 # encoding: UTF-8
 class SpotsController < ApplicationController
 
+	def index
+		@group = Group.find(params[:group_id])
+		@spots = @group.spots
+	end
+
 	def create
 		@group = Group.find(params[:group_id])
 		person = Person.find(params[:child_id])
@@ -39,7 +44,7 @@ class SpotsController < ApplicationController
 		@group = Group.find(params[:group_id])
 		Spot.find(params[:id]).destroy
     	flash[:success] = "Spot borrado"
-    	redirect_to @group
+    	redirect_to edit_group_path(@group)
 	end
 
 	private
