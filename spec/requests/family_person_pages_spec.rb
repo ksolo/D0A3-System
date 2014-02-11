@@ -18,6 +18,8 @@ describe "Family-Person pages" do
     it { should have_title('Familia:') }
     it { should have_button("Falta Información de Contacto")}
 		it { should have_link("Falta Información de Contacto", href: new_family_address_path(family))}
+		it { should have_button("Regresar a Socios") }
+		it { should have_link("Regresar a Socios", href: families_path ) }
 
     describe "Members List" do
 
@@ -46,7 +48,7 @@ describe "Family-Person pages" do
 			it { should have_title("Nuevo Miembro:") }
 			it { should have_content("Nuevo Miembro:") }
 			it { should have_button("Regresar a Familia")}
-			it { should have_link("Regresar a Familia", href: "/families/#{family.id}")}
+			it { should have_link("Regresar a Familia", href: family_path(family))}
 			# No sirvio escrito de la manera del siguiente renglon
 			# it { should have_link("Regresar a Familia", href: families_path(family))}
 		end
