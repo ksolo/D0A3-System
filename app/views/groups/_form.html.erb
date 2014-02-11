@@ -2,25 +2,25 @@
 	<%= form_for(@group) do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
 	  <p>
-	    <%= f.label "Nombre del Grupo" %>
+	    <%= f.label "Nombre del Grupo", :for => 'group_name' %>
 	    <%= f.text_field :name %>
-	    <%= f.label "Facilitador" %>
+	    <%= f.label "Facilitador", :for => 'group_' %>
 	    <%= select("group", "user_id", User.all.collect {|p| [ p.name, p.id ] }, { include_blank: 'Selecciona'}) %>
-	    <%= f.label "Edad mínima (Semanas)" %>
+	    <%= f.label "Edad mínima (Semanas)", :for => 'group_min_age' %>
 	    <%= f.number_field :min_age %>
-	    <%= f.label "Edad máxima (Semanas)" %>
+	    <%= f.label "Edad máxima (Semanas)", :for => 'group_max_age' %>
 	    <%= f.number_field :max_age %>
-	    <%= f.label "Inicio de curso" %>
+	    <%= f.label "Inicio de curso", :for => 'group_init_date' %>
 	    <span id="selector_fecha">
 	    	<%= f.date_select :init_date, { :include_blank  => true, :order => [:day, :month, :year] }, { :class => 'date_selector' }  %>
 	    </span>
-	    <%= f.label "Fin de curso" %>
+	    <%= f.label "Fin de curso", :for => 'group_finish_date' %>
 	    <span id="selector_fecha">
 	    	<%= f.date_select :finish_date, { :include_blank  => true, :order => [:day, :month, :year] }, { :class => 'date_selector' }  %>
 	    </span>
-	    <%= f.label "Costo" %>
+	    <%= f.label "Costo", :for => 'group_cost' %>
 	    <%= f.number_field :cost %>
-	    <%= f.label "Ubicación" %>
+	    <%= f.label "Ubicación", :for => 'group_location' %>
 	    <%= f.text_field :location %>
 	  </p>
 	  <p>

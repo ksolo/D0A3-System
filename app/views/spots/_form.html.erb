@@ -1,9 +1,9 @@
 <div class="boton_der">
 	<p>
-	  <button type="button" class="btn btn-info"><%= link_to "Regresar a Spot", group_spot_path(@group,@spot) %></button>
+		<button type="button" class="btn btn-info"><%= link_to "Regresar a Grupo", group_path(@group) %></button>
 	</p>
 	<p>
-		<button type="button" class="btn btn-info"><%= link_to "Regresar a Grupo", group_path(@group) %></button>
+	  <button type="button" class="btn btn-info"><%= link_to "Regresar a Spot", group_spot_path(@group,@spot) %></button>
 	</p>
 	<p>
 		<button type="button" class="btn btn-default"><%= link_to "Nuevo Pago", new_group_spot_payment_path(@group, @spot) %></button>
@@ -13,6 +13,9 @@
   <div class="span6 offset3">
 	<%= form_for([@group, @spot]) do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
+	<p>
+	    <%= f.text_field :child_name, :value => @spot.child.name, :readonly => true %>
+	</p>
 	  <p>
 		<%= f.text_field :child_id, :value => @spot.child.id, :style => "display:none;" %>
 	  </p>
