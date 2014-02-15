@@ -26,7 +26,8 @@ describe User do
 		end
 
 		it { should have(1).error_on(:name) }
-		it { should have(1).error_on(:email) }
+		it { should have(2).error_on(:email) }
+
 		it { should_not be_valid }
 	end
 

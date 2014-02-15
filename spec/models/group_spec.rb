@@ -5,7 +5,7 @@ describe Group do
 	let(:user) { FactoryGirl.create(:user) }
 
 	before do
-		@group = Group.new( name: "Primer Curso", user_id: user.id, cost: 123, init_date: '12/01/2014', finish_date: '12/02/2014', min_age: 3, max_age: 12, location: 'Aula uno' )
+		@group = Group.new( name: "Primer Curso", user_id: user.id, cost: 123, init_date: '12/01/2014', finish_date: '12/02/2014', min_age: 3, max_age: 120, location: 'Aula uno' )
 	end
 
 	subject { @group }
@@ -31,11 +31,11 @@ describe Group do
 	describe "when invalid atribute" do
 		before do
 			@group.name = " "
-			@group.cost = " "
+			@group.cost = "-10"
 			@group.init_date = " "
 			@group.finish_date = " "
-			@group.min_age = " "
-			@group.max_age = " "
+			@group.min_age = "-10"
+			@group.max_age = " 300"
 			@group.location = " "
 		end
 

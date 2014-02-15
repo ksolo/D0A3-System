@@ -1,12 +1,13 @@
 class Person < ActiveRecord::Base
-	before_save { name.downcase! }
-	before_save { first_last_name.downcase! }
-	before_save { second_last_name.downcase! }
 
+	before_save { |person| person.name.downcase! }
+	before_save { |person| person.first_last_name.downcase! }
+	before_save { |person| person.second_last_name.downcase! }
 
 	has_many :family_relations
 	has_many :families, through: :family_relations, source: :family
-	has_many :attendances
+	has_many :attendances, :dependent => :restrict
+	#has_many :spots, :dependent => :restrict
 
 	validates :name, presence: true, length: { maximum: 50 }
 	validates :first_last_name, presence: true, length: { maximum: 50 }
@@ -20,27 +21,36 @@ class Person < ActiveRecord::Base
 	def field_uniqueness
 	  existing_record = Person.where("name ILIKE ? AND first_last_name ILIKE ? AND second_last_name ILIKE ?", name, first_last_name, second_last_name).first
 	  unless existing_record.blank? || (existing_record.id == self.id && 
-	  																	existing_record.name == self.name && 
+																		existing_record.name == self.name && 
 	  																	existing_record.first_last_name == self.first_last_name && 
 	  																	existing_record.second_last_name == self.second_last_name)
 	    errors.add(:base, "The combination of name and last_name is allready taken") 
 	  end
 	end
 
-	def name
-     read_attribute(:name).try(:titleize)
+	include PgSearch
+	pg_search_scope :search, against: [:name, :first_last_name, :second_last_name],
+		ignoring: :accents
+		# using: { tsearch: { dictionary: "spanish" } }
+
+  def name
+	read_attribute(:name).try(:titleize)
   end
 
   def first_last_name
-     read_attribute(:first_last_name).try(:titleize)
+	read_attribute(:first_last_name).try(:titleize)
   end
 
   def second_last_name
-     read_attribute(:second_last_name).try(:titleize)
+	read_attribute(:second_last_name).try(:titleize)
   end
 
   def full_name
   	[name,first_last_name,second_last_name].join(" ")
+  end
+
+  def self.text_search(query)
+	search(query)
   end
 
 end

@@ -5,6 +5,7 @@
 	  <button type="button" class="btn btn-info"><%= link_to "Regresar a Grupos", groups_path %></button>
 	</p>
 </div>
+
 <table class="table table-striped">
 	<tr>	
 		<th>Nombre del Grupo</th>
@@ -25,68 +26,21 @@
 		<td>$<%= @group.cost %></td>
 	</tr>
 </table>
+
 <div class="boton_der">
 	<p>
 		<button type="button" class="btn btn-default btn-xs"><%= link_to "Editar Grupo", edit_group_path(@group) %></button>
 	</p>
 </div>
 <br><br>
-<% if(@group.lectures.empty?) %>
-		<h1>No Hay Clases</h1>
-	<% else %>
-	<h1>Clases</h1>
-	<table class="table table-striped">
-		<tr>	
-			<th>Fecha</th>
-			<th>Hora</th>
-			<th>Observación</th>
-			<th>Editar</th>
-			<!--<th>Borrar</th>-->
-		</tr>	
-		<% @group.lectures.each do |lecture| %>
-			<tr>
-				<td><%= link_to "#{lecture.date.strftime('%m/%d/%Y')}", group_lecture_path(@group, lecture) %></td>
-				<td><%= lecture.date.strftime('%I:%M %p') %></td>
-				<td><%= lecture.observation %></td>
-				<td><button type="button" class="btn btn-default btn-xs"><%= link_to "Editar Clase", edit_group_lecture_path(@group, lecture) %></button></td>
-				<!--<td><button type="button" class="btn btn-danger btn-xs"><%= link_to "Borrar Clase", group_lecture_path(@group, lecture), method: :delete, data: { confirm: "Estas Seguro?" } %></button></td>-->
-			</tr>
-		<% end %>
-	</table>
-<% end %>
-<h1>Inscritos</h1>
-<% if(@group.spots.empty?) %>
-	<!--<h2>No hay spots</h2>
-	<p>
-		<button type="button" class="btn btn-default"><%= link_to "Nuevo Spot", new_group_spot_path(@group) %></button>
-	</p>-->
-<% else %>
-	<table class="table table-striped">
-		<tr>
-			<th>Niño</th>
-			<th>Cuidador</th>
-			<th>Pagos</th>
-			<th>Saldo</th>
-			<!--<th>Editar</th>
-			<th>Borrar</th>-->
-		</tr>
-		<% @group.spots.each do |spot| %>
-			<tr>
-				<td><%= link_to "#{spot.child.name} #{spot.child.first_last_name} #{spot.child.second_last_name}", group_spot_path(@group, spot) %></td>
-				<td><% if(spot.tutor) %><%= "#{spot.tutor.name} #{spot.tutor.first_last_name} #{spot.tutor.second_last_name}" %><% end %></td>
-				<% total = 0 %>
-				<% spot.payments.each do |p| %>
-					<% total = total + p.amount %>
-				<% end %>
-				<td>$<%= total %></td>
-				<td>$<%= @group.cost-total %></td>
-				<!--<td><button type="button" class="btn btn-default btn-xs"><%= link_to "Editar Spot", edit_group_spot_path(@group, spot) %></button></td>
-				<td><button type="button" class="btn btn-danger btn-xs"><%= link_to "Borrar Spot", group_spot_path(@group, spot), method: :delete, data: { confirm: "Estas Seguro?" } %></button></td>-->
-			</tr>
-		<% end %>
-	</table>
-<% end %>
+
+<%= render 'groups/lectures'  %>
+<%= render 'groups/spots'  %>
+
 <div class="boton_der">
+	<p>
+		<button type="button" class="btn btn-info"><%= link_to "Inscripciones", new_group_spot_path(@group) %></button>
+	</p>
 	<p>
 		<button type="button" class="btn btn-default"><%= link_to "Nueva Clase", new_group_lecture_path(@group) %></button>
 	</p>

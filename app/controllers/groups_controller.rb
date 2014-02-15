@@ -22,10 +22,6 @@ class GroupsController < ApplicationController
 
 	def edit
 		@group = Group.find(params[:id])
-		today = Date.today
-		min_weeks = today-(@group.min_age).weeks
-		max_weeks = today-(@group.max_age).weeks
-		@childs = Person.where(dob: max_weeks..min_weeks)
 	end
 
 	def show

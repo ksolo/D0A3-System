@@ -6,7 +6,8 @@ gem 'bootstrap-sass', '2.3.2.0'
 
 # Use postgresql as the database for Active Record
 gem 'pg'
-
+#gem 'texticle', require: 'texticle/rails'
+gem 'pg_search'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -41,6 +42,7 @@ group :test do
   gem 'factory_girl_rails', '4.2.1'
   gem "spork-rails" , github: 'sporkrb/spork-rails'
   gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+  gem "wdm", ">=0.1.0" if RbConfig::CONFIG["target_os"] =~ /mswin|mingw|cygwin/i
   gem 'guard-rspec'
   gem 'guard-spork'
   gem "database_cleaner"

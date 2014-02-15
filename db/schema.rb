@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140207181146) do
+ActiveRecord::Schema.define(version: 20140214191125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+  enable_extension "unaccent"
 
   create_table "addresses", force: true do |t|
     t.string   "calle"
@@ -143,6 +144,8 @@ ActiveRecord::Schema.define(version: 20140207181146) do
     t.string   "remember_token"
     t.boolean  "admin"
     t.string   "employee_roll"
+    t.boolean  "coordinator"
+    t.boolean  "facilitator"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

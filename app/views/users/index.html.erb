@@ -1,0 +1,35 @@
+<% provide(:title, 'Todos los Usuarios') %>
+<% if current_user.admin? %>
+	<div class="boton_der">
+		<p>
+			<button type="button" class="btn btn-default"><%= link_to "Nuevo Usuario", new_user_path %></button>
+		</p>
+	</div>
+<% end %>
+
+<table class="table table-striped">
+<tr>
+	<th>Usuario</th>
+	<th>Email</th>
+	<% if current_user.admin? %>
+		<th>Editar</th>
+		<th>Eliminar</th>
+	<% end %>
+</tr>
+<% @users.each do |user| %>
+<tr>
+	<td><%= link_to user.name, user %></td>
+	<td><%= user.email %></td>
+	<% if current_user.admin? %>
+		<th><button type="button" class="btn btn-default"><%= link_to "Editar Usuario", edit_user_path(user)  %></button></th>
+		<% if !current_user?(user) %>
+			<th><button type="button" class="btn btn-danger"><%= link_to "Borrar Usuario", user, method: :delete, data: { confirm: "¿Estás seguro de borrar a #{user.name}?" } %></button></th>
+		<% else %>
+			<th>
+				<button type="button" class="btn btn-danger disabled">Borrar Usuario</button>
+			</th>
+		<% end %>
+	<% end %>
+</tr>
+<% end %>
+</table>

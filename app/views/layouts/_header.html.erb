@@ -5,11 +5,12 @@
       <nav>
         <ul class="nav pull-right">
           <% if signed_in? %>
-            <li><%= link_to "#{current_user.name}:", root_path %></li>
+            <li><%= link_to "#{current_user.name}:", edit_user_path(current_user) %></li>
             <li><%= link_to "Home", root_path %></li>
             <li><%= link_to "Familias", families_path %></li>
             <li><%= link_to "Grupos", groups_path %></li>
             <li><%= link_to "Miembros", people_path %></li>
+            <li><%= link_to "Usuarios", users_path %></li>
             <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
           <% else %>
             <li><%= link_to "Sign in", signin_path %></li>

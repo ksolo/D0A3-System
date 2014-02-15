@@ -20,8 +20,8 @@
 			<th>Fecha</th>
 			<td>Monto</td>
 			<td>Beca</td>
-			<td>Editar</td>
-			<td>Borrar</td>
+			<!--<td>Editar</td>
+			<td>Borrar</td>-->
 		</tr>
 		<% @spot.payments.each do |payment| %>
 			<tr>
@@ -32,8 +32,8 @@
 				<% else %>
 					<td>NO</td>
 				<% end %>
-				<td><button type="button" class="btn btn-default btn-xs"><%= link_to "Editar Pago", edit_group_spot_payment_path(@group, @spot, payment) %></button></td>
-				<td><button type="button" class="btn btn-danger btn-xs"><%= link_to "Borrar Pago", group_spot_payment_path(@group, @spot, payment), method: :delete, data: { confirm: "Estas Seguro?" } %></button></td>
+				<!--<td><button type="button" class="btn btn-default btn-xs"><%= link_to "Editar Pago", edit_group_spot_payment_path(@group, @spot, payment) %></button></td>
+				<td><button type="button" class="btn btn-danger btn-xs"><%= link_to "Borrar Pago", group_spot_payment_path(@group, @spot, payment), method: :delete, data: { confirm: "Estas Seguro?" } %></button></td>-->
 			</tr>
 		<% end %>
 	</table>

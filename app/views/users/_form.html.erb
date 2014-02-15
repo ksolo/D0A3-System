@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+		<p>
+			<%= f.label "Nombre", :for => 'user_name' %>
+			<%= f.text_field :name %>
+		</p>
+		<p>
+			<%= f.label "Email", :for => 'user_email' %>
+			<%= f.text_field :email %>
+		</p>
+		<% if current_user.admin? %>
+			<% if !current_user?(@user) %>
+				<p>
+					<%= f.check_box :admin  %>
+					<%= f.label 'admin', "Administrador", { :class => "checkbox inline" } %>
+				</p>
+			<% end %>
+			<p>
+				<%= f.check_box :coordinator  %>
+				<%= f.label 'coordinator', "Coordinador", { :class => "checkbox inline" } %>
+			</p>
+			<p>
+				<%= f.check_box :facilitator  %>
+				<%= f.label 'facilitator', "Facilitador", { :class => "checkbox inline" } %>
+			</p>
+		<% end %>
+		<p>
+			<%= f.label "Contraseña", :for => 'user_password' %>
+			<%= f.password_field :password, :value => @user.password %>
+		</p>
+		<p>
+			<%= f.label "Confirmación de Contraseña", :for => 'user_password_confirmation' %>
+			<%= f.password_field :password_confirmation, :value => @user.password %>
+		</p>
+		<p>
+			<%= f.submit "Guardar", class: "btn btn-sm btn-primary" %>
+		</p>
+    <% end %>
+  </div>
+</div>

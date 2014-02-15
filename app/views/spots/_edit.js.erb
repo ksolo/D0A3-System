@@ -3,36 +3,30 @@
 		max_age = parseInt('<%= @group.max_age %>');
 
 	$(document).ready(function() {
-
+		$(".search_input").on("keyup",function(){
+			var name = $(this).val();
+			if(name.length>=3) $("#search_form").submit();
+		});
 		//Add hover to child_selector
 		$('.child_selector').hover(function() {
 			$(this).find('.child_selected').fadeIn(250);
 		}, function() {
-			if($(this).hasClass('child_active')){
-				//Selector not xD
-			}else{
-				$(this).find('.child_selected').fadeOut(250);
-			}
+			$(this).find('.child_selected').fadeOut(250);
 		});
+
+		$(".inscrito").on("click",function(){
+			$(this).remove();
+		})
 
 		//To click add class child active
 		$('.child_selector').on("click",function(){
 			var childId = $(this).data('childid'),
 			$$ = $('.child_'+childId);
-			$$.addClass('child_active');
+
 			$$.find('.child_selected').fadeIn(250);
 
 			$$.not("#enlist_childs .child_"+childId).fadeOut();
 			$("#enlist_childs .child_"+childId).fadeIn();
-		});
-
-		//To catch values from min, max inputs
-		$("#group_min_age, #group_max_age").on('keyup', function(){
-			var daValue = $(this).val();
-			if($(this).attr('id')=='group_max_age') max_age = daValue;
-			else min_age = daValue;
-			//show kids with range
-			showKids();
 		});
 
 		<% @group.spots.each do |c| %>
@@ -51,10 +45,8 @@
 			if($(this).hasClass('child_active')) active = true;
 			if(ageInWeeks>=min_age && ageInWeeks<=max_age){
 				if(!active) $('#posibble_childs .child_'+childId).fadeIn(200);
-				$('#not_possible .child_'+childId).fadeOut(200);
 			}else{
 				$('#posibble_childs .child_'+childId).fadeOut(200);
-				if(!active) $('#not_possible .child_'+childId).fadeIn(200);
 			}
 		});
 	}
