@@ -14,3 +14,8 @@
 //= require jquery_ujs
 // require turbolinks
 //= require_tree .
+$(document).ready(function() {
+	$('.disabled').on("click",function(){
+		alert("No cuentas con los permisos suficientes para realizar esta acción.")
+	});
+});

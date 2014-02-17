@@ -69,12 +69,4 @@ class UsersController < ApplicationController
       redirect_to(root_url) unless current_user.admin?
     end
 
-    def coordinator_user
-      redirect_to(root_url) unless current_user.coordinator?
-    end
-
-    def facilitator_user
-      redirect_to(root_url) unless current_user.facilitator?
-    end
-
 end

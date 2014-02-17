@@ -1,6 +1,8 @@
 # encoding: UTF-8
 class PeopleController < ApplicationController
 
+	before_action :correct_user, only: [:edit, :update, :new, :create, :destroy, :delete]
+
 	def index
 		@people = Person.all.order("name ASC")
 	end
@@ -9,11 +11,11 @@ class PeopleController < ApplicationController
 		@family = Family.find(params[:family_id])
 		@person = @family.family_members.build(persons_params)
 		if @family.save  
-	    flash[:success] = "Creación Exitosa"
-	    redirect_to @family
-	    else
-	      render 'new'
-	    end
+			flash[:success] = "Creación Exitosa"
+			redirect_to @family
+		else
+			render 'new'
+		end
 	end
 
 	def new
@@ -53,8 +55,13 @@ class PeopleController < ApplicationController
 
 	private
 
-	def persons_params
-		params.require(:person).permit(:name, :first_last_name, :second_last_name, :sex, :dob, :family_roll)
-    end
+		def persons_params
+			params.require(:person).permit(:name, :first_last_name, :second_last_name, :sex, :dob, :family_roll)
+		end
+
+		def correct_user
+			@family = Family.find(params[:family_id])
+			redirect_to(@family, notice: "No tienes permitido crear, editar o borrar Personas.") unless current_user.coordinator? || current_user.admin?
+		end
 
 end

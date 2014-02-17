@@ -4,16 +4,16 @@ require 'spec_helper'
 describe "Family-Person pages" do
 
   subject { page }
+  let(:user) { create(:user, :is_admin) }
+  before { sign_in user }
 
   describe "index" do
 	  let(:family) { create(:family) }
-	  let(:user) { create(:user) }
-		let(:person1) { family.family_members.create( name: "Fernando", first_last_name:"Garcia", second_last_name:"Lopez",  sex:"M", dob:"20/01/1995", family_roll: "Hijo") }
-		let(:person2) { family.family_members.create( name: "Alejandra", first_last_name:"Garcia", second_last_name:"Lopez",  sex:"F", dob:"21/02/1996", family_roll: "Hija") }
-		let(:person3) { family.family_members.create( name: "Rodrigo", first_last_name:"Garcia", second_last_name:"Lopez",  sex:"M", dob:"22/03/1969", family_roll: "Padre") }
+	  let(:person1) { family.family_members.create( name: "Fernando", first_last_name:"Garcia", second_last_name:"Lopez",  sex:"M", dob:"20/01/1995", family_roll: "Hijo") }
+	  let(:person2) { family.family_members.create( name: "Alejandra", first_last_name:"Garcia", second_last_name:"Lopez",  sex:"F", dob:"21/02/1996", family_roll: "Hija") }
+	  let(:person3) { family.family_members.create( name: "Rodrigo", first_last_name:"Garcia", second_last_name:"Lopez",  sex:"M", dob:"22/03/1969", family_roll: "Padre") }
     
     before(:each) do
-      sign_in user
       visit family_path(family)
     end
 

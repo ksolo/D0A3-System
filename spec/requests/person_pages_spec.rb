@@ -1,13 +1,11 @@
 require 'spec_helper'
 
 describe 'Person pages' do
+	
 	subject { page }
-
-	let(:user) { create(:user) }
-
-  before do
-  	sign_in user
-	end
+	
+	let(:user) { create(:user, :is_admin) }
+	before { sign_in user }
 
 	describe 'Index People' do
 		before do
