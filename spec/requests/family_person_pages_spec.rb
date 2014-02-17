@@ -1,5 +1,6 @@
 # encoding: UTF-8
 require 'spec_helper'
+require 'ruby-debug'
 
 describe "Family-Person pages" do
 
@@ -18,6 +19,7 @@ describe "Family-Person pages" do
     end
 
     describe "page" do
+    	debugger
     	specify { expect(address.family).to  eq family }
 
 	    it { should have_title('Familia: Vega') }

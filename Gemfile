@@ -46,7 +46,13 @@ group :test do
   gem "database_cleaner"
 end
 
+group :development do
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+
 gem 'guard-livereload', group: [:development, :test]# You need to install an extensión on your browser
+
 
 
 # Use ActiveModel has_secure_password
