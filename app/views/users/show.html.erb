@@ -1,0 +1,38 @@
+<% provide(:title, "#{@user.name}") %>
+<div class="boton_der">
+	<p>	<button type="button" class="btn btn-info"><%= link_to "Regresar a home", root_path %></button></p>
+	<p><button type="button" class="btn btn-dedault"><%= link_to "Regresar a usuarios", users_path %></button></p>
+</div>
+<div class="row">
+  <div class="span10 offset1">
+  	<h1>Info</h1>
+	<table class="table table-striped">
+		<tr>
+			<th>Nombre</th>
+			<th>Email</th>
+			<th>Administrador</th>
+			<th>Facilitador</th>
+			<th>Coordinador</th>
+		</tr>
+		<tr>
+			<td><%= @user.name %></td>
+			<td><%= @user.email %></td>
+			<% if @user.admin %>
+				<td>Sí</td>
+			<% else %>
+				<td>No</td>
+			<% end %>
+			<% if @user.facilitator %>
+				<td>Sí</td>
+			<% else %>
+				<td>No</td>
+			<% end %>
+			<% if @user.coordinator %>
+				<td>Sí</td>
+			<% else %>
+				<td>No</td>
+			<% end %>
+		</tr>
+	</table>
+  </div>
+</div>

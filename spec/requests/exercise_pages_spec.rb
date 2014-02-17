@@ -4,7 +4,7 @@ require 'spec_helper'
 describe 'Exercise pages' do
 	subject { page }
 
-	let(:user) { create(:user) }
+	let(:user) { create(:user, :is_admin) }
 	let(:exercise) { create(:exercise) }
 
   	before do
@@ -27,7 +27,6 @@ describe 'Exercise pages' do
 				end
 			end
 		end
-
 	end
 
 	describe 'New exercise' do

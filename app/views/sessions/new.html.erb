@@ -1,12 +1,12 @@
-<% provide(:title, "Sign in") %>
+<% provide(:title, "Iniciar Sesión") %>
 <% unless signed_in? %>
 	<div>
 	    <%= form_for(:session, url: sessions_path) do |f| %>
 
-			<%= f.label :email %>
+			<%= f.label :email, :for => "session_email" %>
 			<%= f.text_field :email %>
 
-			<%= f.label :password %>
+			<%= f.label :password, :for => "session_password" %>
 			<%= f.password_field :password %>
 			<br>
 	      	<%= f.submit "Sign in", class: "btn btn-large btn-primary" %>

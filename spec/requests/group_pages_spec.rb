@@ -4,13 +4,14 @@ require 'spec_helper'
 describe 'Group pages' do
 	subject { page }
 
-	let(:user) { create(:user) }
+	let(:user) { create(:user, :is_admin) }
 	let(:group) { create(:group) }
 	let(:person) { create(:person) }
 	let(:family) { Family.create({ name:'Nueva Familia', responsible_id: person.id }) }
 	let(:spot) { family.family_members.create( name: "Joaquín", first_last_name:"Garcia", second_last_name:"Lopez",  sex:"M", dob:"20/01/2014", family_roll: "Hijo") }
 	let(:lecture) { create( :lecture, group: group ) }
 	let(:hijo) { group.spots.create({ child_id: spot.id, tutor_id: person.id }) }
+	let(:payment) { create(:payment) }
 
   	before do
 		sign_in user
@@ -40,7 +41,7 @@ describe 'Group pages' do
 
 		describe 'with invalid information' do
 			before { click_button('Guardar') }
-			it { should have_content('8 errors') }
+			it { should have_content('11 errors') }
 		end
 
 		describe 'with valid information' do
@@ -256,21 +257,20 @@ describe 'Group pages' do
 		
 		before do
 			family.family_members.create( name: "Fernando", first_last_name:"Garcia", second_last_name:"Lopez",  sex:"M", dob:"20/01/2014", family_roll: "Hijo")
-			visit edit_group_path(group)
+			visit new_group_spot_path(group)
 		end
 		
 		describe 'spot page' do
 
-			it { should have_title('Editar Grupo') }
+			it { should have_title('Inscripciones') }
 			it { should have_button('Regresar al Grupo') }
-			it { should have_content('Datos del grupo') }
 			it { should have_content(group.spots.count) }
 
 		end
 
 		describe 'when click on item' do
 			it "should create a spot" do
-				expect { click_link "child_spot_1" }.to change(Spot, :count).by(1)
+				expect { click_link "child_selector_1" }.to change(Spot, :count).by(1)
 			end
 		end
 
@@ -304,7 +304,7 @@ describe 'Group pages' do
 		end
 
 		describe "destroy" do
-			before { visit edit_group_path(group) }
+			before { visit new_group_spot_path(group) }
 			it "should delete a spot" do
 				expect { click_link "Quitar" }.to change(Spot, :count).by(-1)
 			end
@@ -312,31 +312,54 @@ describe 'Group pages' do
 
 	end
 
-=begin
+	describe 'Payments in spot' do
 
-	describe 'Should payments in spot' do
-
-		before { visit group_path(group) }
-
-		describe 'show spot information' do
-			#it { should have_title(group.spots.first.child.name) }
-			#it { should have_button('Regresar a Spots') }
-			#it { should have_button('Nuevo Pago') }
-
+		before do
+			Spot.create({ child_id: spot.id, tutor_id: person.id, group_id: group.id })
 		end
 
-		describe 'Should render payments list on spot' do
+		describe "index" do
+			before { visit edit_group_spot_path(group,group.spots.first) }
 
-			it "should list each spot" do
+			it 'should render payment list' do
+				group.spots.first.payments.each do |payment|
+					expect(page).to have_title("Editar: #{group.spots.first.child.name}")
+					expect(page).to have_button('Nuevo Pago')
+					expect(page).to have_button('Regresar a Spots')
+				end
+			end
 
-			#	spot.payments.each do |spot|
-			#		expect(page).to have_selector('td', text: spot.date)
-			#	end
+			describe "click on new payment" do
+
+				before { click_link('Nuevo Pago') }
+
+				describe 'with invalid information' do
+					before { click_button('Guardar') }
+					it { should have_content('1 error') }
+				end
+
+				describe 'with valid information' do
+
+					before do
+						select "12", from: "payment[date(3i)]"
+						select "January", from: "payment[date(2i)]"
+						select "2014", from: "payment[date(1i)]"
+						fill_in "payment[amount]", :with => "999"
+						expect { click_button "Guardar" }.to change(Payment, :count).by(1)
+					end
+
+					it "should payments info" do
+						expect(page).to have_title("Editar: #{group.spots.first.child.name}")
+						expect(page).to have_content('Pago generado exitosamente')
+						expect(page).to have_button('Nuevo Pago')
+					end
+
+				end
 
 			end
 
 		end
 
 	end
-=end
+
 end

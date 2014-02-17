@@ -5,7 +5,7 @@ describe "Family pages" do
   subject { page }
 
   describe "index" do
-    let(:user) { create(:user) }
+    let(:user) { create(:user, :is_admin) }
     before(:each) do
       sign_in user
       10.times {create(:family)}

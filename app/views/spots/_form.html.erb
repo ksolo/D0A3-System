@@ -21,7 +21,7 @@
 	  </p>
 	  <p>
 	    <%= f.label "Cuidador" %>
-		<%= select("spot", "tutor_id", @spot.child.family_relations.first.family.family_members.all.collect {|p| [ "#{p.name} #{p.first_last_name} #{p.second_last_name} ", p.id ] }, { include_blank: 'Selecciona'}) %> <br><br>
+		<%= select("spot", "tutor_id", @spot.child.family_relations.first.family.family_members.collect {|p| [ "#{p.name} #{p.first_last_name} #{p.second_last_name} ", p.id ] }, { include_blank: 'Selecciona'}) %> <br><br>
 	  </p>
 	  <p>
 	    <%= f.submit "Guardar", class: "btn btn-sm btn-primary" %>
@@ -33,16 +33,16 @@
 			<th>Fecha</th>
 			<td>Monto</td>
 			<td>Beca</td>
-			<td>Editar</td>
-			<td>Borrar</td>
+			<!--<td>Editar</td>
+			<td>Borrar</td>-->
 		</tr>
 		<% @spot.payments.each do |payment| %>
 			<tr>
 				<td><%= payment.date %></td>
 				<td>$<%= payment.amount %>.00</td>
 				<td><%= payment.scholarship %></td>
-				<td><button type="button" class="btn btn-default btn-xs"><%= link_to "Editar Pago", edit_group_spot_payment_path(@group, @spot, payment) %></button></td>
-				<td><button type="button" class="btn btn-danger btn-xs"><%= link_to "Borrar Pago", group_spot_payment_path(@group, @spot, payment), method: :delete, data: { confirm: "Estas Seguro?" } %></button></td>
+				<!--<td><button type="button" class="btn btn-default btn-xs"><%= link_to "Editar Pago", edit_group_spot_payment_path(@group, @spot, payment) %></button></td>
+				<td><button type="button" class="btn btn-danger btn-xs"><%= link_to "Borrar Pago", group_spot_payment_path(@group, @spot, payment), method: :delete, data: { confirm: "Estas Seguro?" } %></button></td>-->
 			</tr>
 		<% end %>
 	</table>

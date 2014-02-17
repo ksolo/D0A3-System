@@ -1,2 +1,73 @@
-<% provide(:title, "Nuevo Spot") %>
-<%= render "/spots/form" %>
+<% provide(:title, "Inscripciones") %>
+<div class="span4 offset1" data-total="<%= @group.spots.count %>" id="total_spots">
+	<h1><span><%= @group.spots.count %></span> Inscritos</h1>
+ </div>
+ <div class="boton_der">
+	<p>
+	  <button type="button" class="btn btn-info"><%= link_to "Regresar al Grupo", group_path(@group) %></button>
+	</p>
+</div>
+<% if(@childs) %>
+ 	<div class="span10 offset1">
+ 		<div id="enlist_childs">
+			<% @group.spots.each do |c| %>
+				<div class="child_spot" id="child_spot_<%= c.child.id %>">
+					<img src="/assets/kid.jpg" alt="<%= c.child.name %>" class="kid_photo">
+					<div class="weeks_stat">
+						<p><span><%= ((Date.today.to_date - c.child.dob.to_date).to_i)/7 %></span><br>Semanas</p>
+					</div>
+					<div class="kid_stats">
+						<p><%= c.child.name %></p>
+						<p><%= ("#{ c.child.first_last_name } #{ c.child.second_last_name }").slice(0..13) %>.</p>
+					</div>
+					<% if c.can_destroy? %>
+						<div class="child_remove">
+							<button type="button" class="btn btn-danger btn-xs">
+								<a href="/spots/destroy?id=<%= c.id %>&group_id=<%= @group.id %>" data-remote="true">Quitar</a>
+							</button>
+						</div>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+		<div id="posibble_childs">
+			<h1>Dentro del Rango</h1>
+				<% counter = 0 %>
+				<% @childs.each do |c| %>
+				<% counter += 1 %>
+				<a href="/spots/create?child_id=<%= c.id %>&group_id=<%= @group.id %>" data-remote="true"  class="child_selector child_<%= c.id %>" id="child_selector_<%= counter %>" data-childid="<%= c.id %>" data-weeks="<%= ((Date.today.to_date - c.dob.to_date).to_i)/7 %>">
+					<div class="child_spot">
+						<img src="/assets/kid.jpg" alt="<%= c.name %>" class="kid_photo">
+						<div class="weeks_stat">
+							<p><span><%= ((Date.today.to_date - c.dob.to_date).to_i)/7 %></span><br>Semanas</p>
+						</div>
+						<div class="kid_stats">
+							<p><%= c.name %></p>
+							<p><%= ("#{ c.first_last_name } #{ c.second_last_name }").slice(0..13) %>.</p>
+						</div>
+						<div class="child_selected">
+							activar
+						</div>
+					</div>
+				</a>
+			<% end %>
+		</div>
+		<div id="searcher">
+			<%= form_tag("/spots/search", :method => "get", remote: true, :id => "search_form") do %>
+				<h1>Buscar</h1>
+				<%= text_field_tag "query", nil, :placeholder => "Escribe un nombre", :class => "search_input" %>
+				<%= text_field_tag "group_id", "#{@group.id}", :style => 'display:none;' %>
+				<!--<%= submit_tag("Buscar") %>-->
+			<% end %>
+		</div>
+		<div id="child_results">
+			<h1>Resultados</h1>
+			<div id="childs_container">
+				
+			</div>
+		</div>
+	</div>
+<% end %>
+<script>
+	<%= render "/spots/edit.js.erb" %>
+</script>

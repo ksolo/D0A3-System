@@ -1,1 +1,2 @@
 $('#enlist_childs').append("<%= escape_javascript(render('create')) %>").fadeIn();
+$("#total_spots span").html("<%= @group.spots.count %>");

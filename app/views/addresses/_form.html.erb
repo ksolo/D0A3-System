@@ -9,74 +9,74 @@
 	<%= form_for([@family, @address]) do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
 	  <p>
-	    <%= f.label "Calle" %>
+	    <%= f.label "Calle", :for => 'address_calle' %>
 	    <%= f.text_field :calle %>
 	  </p>
 	  <p>
-	    <%= f.label "Número Exterior" %>
+	    <%= f.label "Número Exterior", :for => "address_num_ext" %>
 	    <%= f.text_field :num_ext %>
 	  </p>
 	  <p>
-	    <%= f.label "Número Interior" %>
+	    <%= f.label "Número Interior", :for => "address_num_int" %>
 	    <%= f.text_field :num_int %>
 	  </p>
 	  <p>
-	    <%= f.label "Localidad" %>
+	    <%= f.label "Localidad", :for => "address_localidad" %>
 	    <%= f.text_field :localidad %>
 	  </p>
 	  <p>
-	    <%= f.label "Referencia" %>
+	    <%= f.label "Referencia", :for => "address_referencia" %>
 	    <%= f.text_field :referencia %>
 	  </p>
 	  <p>
-	    <%= f.label "Colonia" %>
+	    <%= f.label "Colonia", :for => "address_colonia" %>
 	    <%= f.text_field :colonia %>
 	  </p>
 	  <p>
-	    <%= f.label "Delegación o Municipio" %>
+	    <%= f.label "Delegación o Municipio", :for => "address_municipio" %>
 	    <%= f.text_field :municipio %>
 	  </p>
 	  <% if @address.calle %>
 		  <p>
-		    <%= f.label "Ciudad" %>
+		    <%= f.label "Ciudad", :for => "address_ciudad" %>
 		    <%= f.text_field :ciudad %>
 		  </p>
 		  <p>
-		    <%= f.label "Estado" %>
+		    <%= f.label "Estado", :for => "address_estado" %>
 		    <%= f.text_field :estado %>
 		  </p>
 		  <p>
-		    <%= f.label "País" %>
+		    <%= f.label "País", :for => "address_pais" %>
 		    <%= f.text_field :pais %>
 		  </p>
 	  <% else %>
 		  <p>
-		    <%= f.label "Ciudad" %>
+		    <%= f.label "Ciudad", :for => "address_ciudad" %>
 		    <%= f.text_field :ciudad, :value => "México" %>
 		  </p>
 		  <p>
-		    <%= f.label "Estado" %>
+		    <%= f.label "Estado", :for => "address_estado" %>
 		    <%= f.text_field :estado, :value => "Distrito Federal" %>
 		  </p>
 		  <p>
-		    <%= f.label "País" %>
+		    <%= f.label "País", :for => "address_pais" %>
 		    <%= f.text_field :pais, :value => "México" %>
 		  </p>
 	  <% end %>
 	  <p>
-	    <%= f.label "Código Postal" %>
+	    <%= f.label "Código Postal", :for => "address_codigo_postal" %>
 	    <%= f.text_field :codigo_postal %>
 	  </p>
 	  <p>
-	    <%= f.label "Teléfono" %>
+	    <%= f.label "Teléfono", :for => "address_telefono" %>
 	    <%= f.text_field :telefono %>
 	  </p>
 	  <p>
-	    <%= f.label "Celular" %>
+	    <%= f.label "Celular", :for => "address_celular" %>
 	    <%= f.text_field :celular %>
 	  </p>
 	  <p>
-	    <%= f.label "Email" %>
+	    <%= f.label "Email", :for => "address_email" %>
 	    <%= f.text_field :email %>
 	  </p>
 

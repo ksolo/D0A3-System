@@ -27,20 +27,29 @@ class AddressesController < ApplicationController
 		@address = Address.find(params[:id])
 	    if @address.update_attributes(address_params)
 	    	flash[:success] = "Actualización Exitosa"
-	      redirect_to @family
+	    	redirect_to @family
 	    else
-	      render 'edit'
+	    	render 'edit'
 	    end
 	end
 
 	private
 
 		def address_params
-      params.require(:address).permit(:calle, :num_ext, :num_int, 
-										                  :localidad, :colonia, :municipio,
-										                  :ciudad,:estado, :pais, 
-										                  :codigo_postal, :telefono, :celular, 
-										                  :email)
-    end
+      		params.require(:address).permit(:calle, :num_ext, :num_int, 
+											:localidad, :colonia, :municipio,
+											:ciudad,:estado, :pais, 
+											:codigo_postal, :telefono, :celular, 
+											:email)
+		end
+
+		def correct_user
+			redirect_to(signin_path) unless current_user?(current_user)
+		end
+
+		def master_users
+			@family = Family.find(params[:family_id])
+			redirect_to(@family, notice: "No tienes permitido crear, editar o borrar direcciones.") unless current_user.coordinator? || current_user.admin?
+		end
 
 end

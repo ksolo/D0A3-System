@@ -1,88 +1,20 @@
 <% provide(:title, "Editar Grupo") %>
-<div class="row">
-	<div class="span4">
-		<%= render 'groups/form' %>
-	</div>
 
- <div class="span4 offset1" data-total="<%= @group.spots.count %>" id="total_spots">
-	<h1><%= @group.spots.count %> Inscritos</h1>
- </div>
- <div class="boton_der">
+<div class="boton_der">
 	<p>
-	  <button type="button" class="btn btn-info"><%= link_to "Regresar al Grupo", group_path %></button>
+	  <button type="button" class="btn btn-info"><%= link_to "Regresar a los Grupos", groups_path %></button>
 	</p>
 </div>
- <% if(@childs) %>
- 	<div class="span7 offset1">
- 		<div id="enlist_childs">
-			<% @group.spots.each do |c| %>
-				<div class="child_spot">
-					<img src="/assets/kid.jpg" alt="<%= c.child.name %>" class="kid_photo">
-					<div class="weeks_stat">
-						<p><span><%= ((Date.today.to_date - c.child.dob.to_date).to_i)/7 %></span><br>Semanas</p>
-					</div>
-					<div class="kid_stats">
-						<p><%= c.child.name %></p>
-						<p><%= ("#{ c.child.first_last_name } #{ c.child.second_last_name }").slice(0..13) %>.</p>
-					</div>
-					<div class="child_remove">
-						<button type="button" class="btn btn-danger btn-xs"><%= link_to "Quitar", group_spot_path(@group, c), method: :delete, data: { confirm: "Estas Seguro?" } %></button>
-					</div>
-				</div>
-			<% end %>
-		</div>
-		<div id="posibble_childs">
-			<h2>Posibles</h2>
-				<% counter = 0 %>
-				<% @childs.each do |c| %>
-				<% counter += 1 %>
-				<a href="/spots/create?child_id=<%= c.id %>&group_id=<%= @group.id %>" data-remote="true"  class="child_selector child_<%= c.id %>" id="child_spot_<%= counter %>" data-childid="<%= c.id %>" data-weeks="<%= ((Date.today.to_date - c.dob.to_date).to_i)/7 %>">
-					<div class="child_spot">
-						<img src="/assets/kid.jpg" alt="<%= c.name %>" class="kid_photo">
-						<div class="weeks_stat">
-							<p><span><%= ((Date.today.to_date - c.dob.to_date).to_i)/7 %></span><br>Semanas</p>
-						</div>
-						<div class="kid_stats">
-							<p><%= c.name %></p>
-							<p><%= ("#{ c.first_last_name } #{ c.second_last_name }").slice(0..13) %>.</p>
-						</div>
-						<div class="child_selected">
-							activar
-						</div>
-					</div>
-				</a>
-			<% end %>
-		</div>
-		<div id="not_possible">
-			<h2>No Posibles</h2>
-			<% @childs.each do |c| %>
-				<a href="/spots/create?child_id=<%= c.id %>&group_id=<%= @group.id %>" data-remote="true" class="child_selector child_<%= c.id %>" data-childid="<%= c.id %>" data-weeks="<%= ((Date.today.to_date - c.dob.to_date).to_i)/7 %>">
-					<div class="child_spot">
-						<img src="/assets/kid.jpg" alt="<%= c.name %>" class="kid_photo">
-						<div class="weeks_stat">
-							<p><span><%= ((Date.today.to_date - c.dob.to_date).to_i)/7 %></span><br>Semanas</p>
-						</div>
-						<div class="kid_stats">
-							<p><%= c.name %></p>
-							<p><%= ("#{ c.first_last_name } #{ c.second_last_name }").slice(0..13) %>.</p>
-						</div>
-						<div class="child_selected">
-							activar
-						</div>
-					</div>
-				</a>
-			<% end %>
-		</div>
+<div class="row">
+	<div class="span6 offset3">
+		<%= render 'groups/form' %>
 	</div>
-<% end %>
 </div>
-<% if(@group.spots.empty? || @group.lectures.empty?) %>
+
+<% if(@group.can_destroy?) %>
 	<div class="boton_der">
 		<p>
 			<button type="button" class="btn btn-danger"><%= link_to "Borrar Grupo", @group, method: :delete, data: { confirm: "Estas Seguro?" } %></button>
 		</p>
 	</div>
 <% end %>
-<script>
-	<%= render "/groups/edit.js.erb" %>
-</script>
