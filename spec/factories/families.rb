@@ -9,5 +9,9 @@ FactoryGirl.define do
     	status false
     end
 
+    trait :spesific_name do
+    	name "Vega"
+    end
+
   end
 end

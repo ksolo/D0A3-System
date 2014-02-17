@@ -1,8 +1,7 @@
 class Person < ActiveRecord::Base
-	before_save { name.downcase! }
-	before_save { first_last_name.downcase! }
-	before_save { second_last_name.downcase! }
-
+	before_validation { |person| person.name.downcase! }
+	before_validation { |person| person.first_last_name.downcase! }
+	before_validation { |person| person.second_last_name.downcase! }
 
 	has_many :family_relations
 	has_many :families, through: :family_relations, source: :family
@@ -20,9 +19,9 @@ class Person < ActiveRecord::Base
 	def field_uniqueness
 	  existing_record = Person.where("name ILIKE ? AND first_last_name ILIKE ? AND second_last_name ILIKE ?", name, first_last_name, second_last_name).first
 	  unless existing_record.blank? || (existing_record.id == self.id && 
-	  																	existing_record.name == self.name && 
-	  																	existing_record.first_last_name == self.first_last_name && 
-	  																	existing_record.second_last_name == self.second_last_name)
+	  																	existing_record.name.downcase! == self.name.downcase! && 
+	  																	existing_record.first_last_name.downcase! == self.first_last_name.downcase! && 
+	  																	existing_record.second_last_name.downcase! == self.second_last_name.downcase!)
 	    errors.add(:base, "The combination of name and last_name is allready taken") 
 	  end
 	end

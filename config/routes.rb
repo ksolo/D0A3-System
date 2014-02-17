@@ -1,7 +1,7 @@
 D0A3::Application.routes.draw do
 
   root 'sessions#new'
-
+ 
   get "sessions/new"
   get "sessions/create"
   get "sessions/destroy"
@@ -24,6 +24,8 @@ D0A3::Application.routes.draw do
     end
   end
   
+  resources :users
+
   resources :exercises
   resources :people, only: [:index, :show]
   resources :sessions, only: [:new, :create, :destroy]

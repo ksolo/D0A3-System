@@ -9,7 +9,7 @@ class AddressesController < ApplicationController
 	def create
 		@family = Family.find(params[:family_id])
 		@address = @family.build_address(address_params)
-		if @family.save  
+		if @address.save  
 	    flash[:success] = "Creación Exitosa"
 	    redirect_to @family
 	    else
@@ -37,8 +37,8 @@ class AddressesController < ApplicationController
 
 		def address_params
       params.require(:address).permit(:calle, :num_ext, :num_int, 
-										                  :localidad, :colonia, :municipio,
-										                  :ciudad,:estado, :pais, 
+										                  :localidad, :referencia, :colonia,
+										                  :municipio,:ciudad,:estado, :pais, 
 										                  :codigo_postal, :telefono, :celular, 
 										                  :email)
     end

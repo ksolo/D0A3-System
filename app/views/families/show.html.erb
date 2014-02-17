@@ -52,6 +52,7 @@
 		<% if @family.address %>
 			<p><%= @family.styled_address %></p>
 			<p><%= @family.styled_contact_info %></p>
+			<p>Referencia: <%= @family.address.referencia %></p>
 			<p class="boton_izq">
 			  <button type="button" class="btn btn-default"><%= link_to "Editar Contacto", edit_family_address_path(@family, @family.address) %></button>
 			</p>

@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-	before_save { name.downcase! }
+	before_validation { |group| group.name.downcase! }
 
 	belongs_to :user
 	has_many :spots

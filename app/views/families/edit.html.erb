@@ -1,5 +1,11 @@
 <% provide(:title, 'Editar Familia') %>
 
+<div class="boton_der">
+	<p>
+	  <button type="button" class="btn btn-info"><%= link_to "Regresar a Familia", @family %></button>
+	</p>
+</div>
+
 <div class="row">
   <div class="span6 offset3">
 	<%= form_for(@family) do |f| %>
