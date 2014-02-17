@@ -10,7 +10,7 @@
   <div class="span6 offset3">
 	<%= form_for(@family) do |f| %>
 	  <p>
-	    <%= f.label "Nombre de la familia" %>
+	    <%= f.label "Nombre de la familia", :for => "family_name" %>
 	    <%= f.text_field :name %>
 	  </p>
 	  

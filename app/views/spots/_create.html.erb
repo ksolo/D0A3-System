@@ -1,4 +1,4 @@
-<div class="child_spot">
+<div class="child_spot" id="child_spot_<%= @spot.child.id %>">
 	<img src="/assets/kid.jpg" alt="<%= @spot.child.name %>" class="kid_photo">
 	<div class="weeks_stat">
 		<p><span><%= ((Date.today.to_date - @spot.child.dob.to_date).to_i)/7 %></span><br>Semanas</p>
@@ -8,6 +8,15 @@
 		<p><%= ("#{ @spot.child.first_last_name } #{ @spot.child.second_last_name }").slice(0..13) %>.</p>
 	</div>
 	<div class="child_remove">
-		<button type="button" class="btn btn-danger btn-xs"><%= link_to "Quitar", group_spot_path(@group, @spot), method: :delete, data: { confirm: "Estas Seguro?" } %></button>
+		<button type="button" class="btn btn-danger btn-xs">
+			<a href="/spots/destroy?id=<%= @spot.id %>&group_id=<%= @group.id %>" data-remote="true">Quitar</a>
+		</button>
 	</div>
 </div>
+<script>
+	$(document).ready(function() {
+		$(".inscrito").on("click",function(){
+			$(this).remove();
+		})
+	});
+</script>

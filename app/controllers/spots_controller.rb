@@ -15,8 +15,11 @@ class SpotsController < ApplicationController
 	end
 
 	def new
-	   @group = Group.find(params[:group_id])
-	   @spot = @group.spots.build
+		@group = Group.find(params[:group_id])
+		today = Date.today
+		min_weeks = today-(@group.min_age).weeks
+		max_weeks = today-(@group.max_age).weeks
+		@childs = Person.where(dob: max_weeks..min_weeks)
 	end
 
 	def edit
@@ -41,16 +44,23 @@ class SpotsController < ApplicationController
 	end
 
 	def destroy
+		spot = Spot.find(params[:id])
 		@group = Group.find(params[:group_id])
+		@child = spot.child
 		Spot.find(params[:id]).destroy
-    	flash[:success] = "Spot borrado"
-    	redirect_to edit_group_path(@group)
+		#flash[:success] = "Spot borrado"
+		#redirect_to new_group_spot_path(@group)
+	end
+
+	def search
+		@group = Group.find(params[:group_id])
+		@childs = Person.text_search params[:query].downcase
 	end
 
 	private
 
 	def lecture_params
-      params.require(:spot).permit( :child_id, :tutor_id, :group_id)
-    end
+		params.require(:spot).permit( :child_id, :tutor_id, :group_id)
+	end
 
 end

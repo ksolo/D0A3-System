@@ -1,16 +1,15 @@
 class Family < ActiveRecord::Base
 	before_validation { |family| family.name.downcase! }
-	before_save { |family| family.name.downcase! }
 
 	has_many :family_relations
-	has_many :family_members, through: :family_relations, source: :person
+	has_many :family_members, through: :family_relations, source: :person, :dependent => :restrict
 
 	belongs_to :responsible, :class_name => 'Person'
 
 	validates :name, presence: true, length: { maximum: 50 }, uniqueness: { case_sensitive: false }
 
 	# belongs_to :address
-	has_one :address
+	has_one :address, :dependent => :destroy
 
 	validates :name, presence: true, length: { maximum: 50 },
 						uniqueness: { case_sensitive: false }

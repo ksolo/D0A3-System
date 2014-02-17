@@ -5,10 +5,13 @@ require 'ruby-debug'
 describe "Family-Person pages" do
 
   subject { page }
+  let(:user) { create(:user, :is_admin) }
+  before { sign_in user }
 
   let(:family) { create(:family, :spesific_name) }
 
   describe "index" do
+
 		let(:address) { create(:address, family: family)}
 		let(:person1) { family.family_members.create( name: "Fernando", first_last_name:"Garcia", second_last_name:"Lopez",  sex:"M", dob:"20/01/1995", family_roll: "Hijo") }
 		let(:person2) { family.family_members.create( name: "Alejandra", first_last_name:"Garcia", second_last_name:"Lopez",  sex:"F", dob:"21/02/1996", family_roll: "Hija") }

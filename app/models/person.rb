@@ -5,7 +5,8 @@ class Person < ActiveRecord::Base
 
 	has_many :family_relations
 	has_many :families, through: :family_relations, source: :family
-	has_many :attendances
+	has_many :attendances, :dependent => :restrict
+	#has_many :spots, :dependent => :restrict
 
 	validates :name, presence: true, length: { maximum: 50 }
 	validates :first_last_name, presence: true, length: { maximum: 50 }
@@ -26,20 +27,29 @@ class Person < ActiveRecord::Base
 	  end
 	end
 
-	def name
-     read_attribute(:name).try(:titleize)
+	include PgSearch
+	pg_search_scope :search, against: [:name, :first_last_name, :second_last_name],
+		ignoring: :accents
+		# using: { tsearch: { dictionary: "spanish" } }
+
+  def name
+	read_attribute(:name).try(:titleize)
   end
 
   def first_last_name
-     read_attribute(:first_last_name).try(:titleize)
+	read_attribute(:first_last_name).try(:titleize)
   end
 
   def second_last_name
-     read_attribute(:second_last_name).try(:titleize)
+	read_attribute(:second_last_name).try(:titleize)
   end
 
   def full_name
   	[name,first_last_name,second_last_name].join(" ")
+  end
+
+  def self.text_search(query)
+	search(query)
   end
 
 end

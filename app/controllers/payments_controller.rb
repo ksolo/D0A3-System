@@ -44,8 +44,8 @@ class PaymentsController < ApplicationController
 		@group = Group.find(params[:group_id])
 		@spot = Spot.find(params[:spot_id])
 		Payment.find(params[:id]).destroy
-    	flash[:success] = "Pago borrado"
-    	redirect_to group_spot_path(@group, @spot)
+		flash[:success] = "Pago borrado"
+		redirect_to group_spot_path(@group, @spot)
 	end
 
 	private

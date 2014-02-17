@@ -1,11 +1,3 @@
-<div class="boton_der">
-	<p>
-	  <button type="button" class="btn btn-info"><%= link_to "Regresar a Grupo", group_path(@group) %></button>
-	</p>
-	<p>
-		<button type="button" class="btn btn-danger btn-xs"><%= link_to "Borrar Clase", group_lecture_path(@group, @lecture), method: :delete, data: { confirm: "Estas Seguro?" } %></button></td>
-	</p>
-</div>
 <div class="row">
 	<div class="span6 offset3">
 		<%= form_for([@group, @lecture]) do |f| %>
@@ -17,7 +9,7 @@
 			</span>
 		</p>
 		<p>
-			<%= f.label "Observaciones" %>
+			<%= f.label "Observaciones", :for => 'lecture_observation' %>
 			<%= f.text_area :observation %>
 		</p>
 		<% if(@lecture.attendances.empty?) %>

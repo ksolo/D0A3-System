@@ -1,8 +1,8 @@
-
+# encoding: UTF-8
 require "csv"
 
-User.create( name: "Juan", email: "flaco@gmail.com", password: "123qwe123", password_confirmation: "123qwe123" )
-User.create( name: "javier", email: "javier@deceroatres.com", password: "deceroatres", password_confirmation: "deceroatres" )
+User.create( name: "Juan", email: "flaco@gmail.com", password: "123qwe123", password_confirmation: "123qwe123", admin: true )
+User.create( name: "javier", email: "javier@deceroatres.com", password: "deceroatres", password_confirmation: "deceroatres", admin: true )
 
 ibarrola = Family.create(name:"AAibarrola")
 ibarrola.create_address(calle: "Arteaga y Salazar", num_ext:"44", num_int:"3", 
@@ -17,7 +17,7 @@ def load_file(file)
 	file_text = File.read(file)
 	csv = CSV.parse(file_text, :headers => true, :header_converters => :symbol)
 	csv.each do |row|
-	  array << row.to_hash
+		array << row.to_hash
 	end
 	array
 end

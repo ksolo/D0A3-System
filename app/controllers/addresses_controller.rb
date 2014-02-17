@@ -27,9 +27,9 @@ class AddressesController < ApplicationController
 		@address = Address.find(params[:id])
 	    if @address.update_attributes(address_params)
 	    	flash[:success] = "Actualización Exitosa"
-	      redirect_to @family
+	    	redirect_to @family
 	    else
-	      render 'edit'
+	    	render 'edit'
 	    end
 	end
 
@@ -43,4 +43,12 @@ class AddressesController < ApplicationController
 										                  :email)
     end
 
+		def correct_user
+			redirect_to(signin_path) unless current_user?(current_user)
+		end
+
+		def master_users
+			@family = Family.find(params[:family_id])
+			redirect_to(@family, notice: "No tienes permitido crear, editar o borrar direcciones.") unless current_user.coordinator? || current_user.admin?
+		end
 end

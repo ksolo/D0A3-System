@@ -11,6 +11,7 @@ describe "Authentication" do
       before { click_button "Sign in" }
 
       it { should have_link('Sign in',    href: signin_path) }
+      it { should have_selector('div.alert.alert-error') }
 
       describe "after visiting another page" do
         before { click_link "Sign in" }
@@ -26,9 +27,14 @@ describe "Authentication" do
       before { sign_in user }
 
       it { should have_link('Sign out',    href: signout_path) }
-      it { should_not have_link('Sign in', href: signin_path) }
+      it { should have_link('Familias',    href: families_path) }
+      it { should have_link('Grupos',      href: groups_path) }
+      it { should have_link('Home',        href: root_path) }
+      it { should have_link('Sign out', href: signout_path) }
+      it { should_not have_link('Sign in', href: signout_path ) }
 
     end
+
   end
 
   describe "authorization" do
