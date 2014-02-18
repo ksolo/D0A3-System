@@ -335,7 +335,7 @@ describe 'Group pages' do
 
 				describe 'with invalid information' do
 					before { click_button('Guardar') }
-					it { should have_content('1 error') }
+					it { should have_content('2 error') }
 				end
 
 				describe 'with valid information' do

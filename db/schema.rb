@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140214223057) do
+ActiveRecord::Schema.define(version: 20140213184330) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -58,11 +58,11 @@ ActiveRecord::Schema.define(version: 20140214223057) do
 
   create_table "families", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.boolean  "status"
     t.integer  "responsible_id"
     t.text     "observations"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "families", ["name"], name: "index_families_on_name", unique: true, using: :btree
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 20140214223057) do
   end
 
   create_table "payments", force: true do |t|
-    t.integer  "amount",      default: 0
+    t.integer  "amount"
     t.date     "date"
     t.integer  "spot_id"
     t.boolean  "scholarship", default: false
@@ -135,16 +135,15 @@ ActiveRecord::Schema.define(version: 20140214223057) do
   add_index "spots", ["child_id", "group_id"], name: "index_spots_on_child_id_and_group_id", unique: true, using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "password_digest"
-    t.datetime "created_at"
-    t.datetime "updated_at"
     t.string   "name"
     t.string   "email"
+    t.string   "password_digest"
+    t.boolean  "admin",           default: false
+    t.boolean  "coordinator",     default: false
+    t.boolean  "facilitator",     default: false
     t.string   "remember_token"
-    t.boolean  "admin"
-    t.string   "employee_roll"
-    t.boolean  "coordinator"
-    t.boolean  "facilitator"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

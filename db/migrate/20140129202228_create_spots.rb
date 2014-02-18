@@ -7,5 +7,7 @@ class CreateSpots < ActiveRecord::Migration
 
 		t.timestamps
     end
+
+    add_index :spots, [:child_id, :group_id], unique: true
   end
 end

@@ -7,11 +7,10 @@ class CreatePeople < ActiveRecord::Migration
       t.string :sex
       t.date :dob
       t.string :family_roll
-      t.integer :mother_id
-      t.integer :father_id
-      t.integer :family_id
 
       t.timestamps
     end
+
+    add_index :people, [ :name, :first_last_name, :second_last_name ], :unique => true
   end
 end
