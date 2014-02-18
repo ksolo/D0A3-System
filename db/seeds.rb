@@ -4,13 +4,6 @@ require "csv"
 User.create( name: "Juan", email: "flaco@gmail.com", password: "123qwe123", password_confirmation: "123qwe123", admin: true )
 User.create( name: "javier", email: "javier@deceroatres.com", password: "deceroatres", password_confirmation: "deceroatres", admin: true )
 
-ibarrola = Family.create(name:"AAibarrola")
-ibarrola.create_address(calle: "Arteaga y Salazar", num_ext:"44", num_int:"3", 
-              localidad:"Algo", colonia:"contadero", municipio: "cuajimalpa",
-              ciudad:"México",estado:"Distrito Federal", pais:"México", 
-              codigo_postal:"01190", telefono:"558130387", celular:"5512946184", 
-              email:"user@example.com")
-
 
 def load_file(file)
 	array = []
@@ -47,3 +40,10 @@ families.each do |f|
 		f.save
 	end
 end
+
+# ibarrola = Family.create(name:"AAibarrola")
+# ibarrola.create_address(calle: "Arteaga y Salazar", num_ext:"44", num_int:"3", 
+#               localidad:"Algo", colonia:"contadero", municipio: "cuajimalpa",
+#               ciudad:"México",estado:"Distrito Federal", pais:"México", 
+#               codigo_postal:"01190", telefono:"558130387", celular:"5512946184", 
+#               email:"user@example.com")

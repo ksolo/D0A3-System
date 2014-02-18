@@ -5,6 +5,8 @@ describe "Address pages" do
   subject { page }
 
   let(:family) { create(:family, :spesific_name) }
+  let(:user) { create(:user, :is_admin) }
+  before { sign_in user }
 
   describe "Create Address" do
     before do

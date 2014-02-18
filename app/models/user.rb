@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 	before_validation { |user| user.name.downcase! }
+	before_validation { |user| user.email.downcase! }
 	before_create :create_remember_token
 
 	
@@ -13,9 +14,9 @@ class User < ActiveRecord::Base
 
   	has_secure_password
 
-  	def name
-   		read_attribute(:name).try(:titleize)
-  	end	
+	def name
+ 		read_attribute(:name).try(:titleize)
+	end	
 
 	def User.new_remember_token
 		SecureRandom.urlsafe_base64
@@ -27,8 +28,8 @@ class User < ActiveRecord::Base
 
 	private
 
-    def create_remember_token
-      self.remember_token = User.encrypt(User.new_remember_token)
-    end
+  def create_remember_token
+    self.remember_token = User.encrypt(User.new_remember_token)
+  end
 
 end
