@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   	has_secure_password
 
 	def name
- 		read_attribute(:name).try(:titleize)
+ 		read_attribute(:name).ty(:titleize)
 	end	
 
 	def User.new_remember_token
