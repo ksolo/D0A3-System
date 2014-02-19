@@ -8,7 +8,7 @@ class Person < ActiveRecord::Base
 	has_many :attendances, :dependent => :restrict
 	#has_many :spots, :dependent => :restrict
 
-	scope :children, where("dob > :years",{ years: Date.today - 5.years} )
+	scope :children, proc {where("dob > :years",{ years: Date.today - 5.years} )}
 	
 	validates_presence_of :name, :first_last_name, :second_last_name, :sex, :dob, :family_roll
 	validates :name, :first_last_name, :second_last_name, :family_roll, length: { maximum: 50 }
