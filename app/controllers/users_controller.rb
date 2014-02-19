@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "De 0 a 3"
-      redirect_to @user
+      redirect_to users_path
     else
       render 'new'
     end
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Actualización exitosa"
-      redirect_to @user
+      redirect_to users_path
     else
       render 'edit'
     end

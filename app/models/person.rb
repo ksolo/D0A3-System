@@ -8,14 +8,15 @@ class Person < ActiveRecord::Base
 	has_many :attendances, :dependent => :restrict
 	#has_many :spots, :dependent => :restrict
 
-	validates :name, presence: true, length: { maximum: 50 }
-	validates :first_last_name, presence: true, length: { maximum: 50 }
-	validates :second_last_name, presence: true, length: { maximum: 50 }
+	scope :children, proc {where("dob > :years",{ years: Date.today - 5.years} )}
+	
+	validates_presence_of :name, :first_last_name, :second_last_name, :sex, :dob, :family_roll
+	validates :name, :first_last_name, :second_last_name, :family_roll, length: { maximum: 50 }
 	validates :sex, inclusion: { in: %w(M F), message: "%{value} is not a gender try M or F"}
-	validates :dob, presence: true
-	validates :family_roll, presence: true, length: { maximum: 50 }
 
-	validate :field_uniqueness # Custom Method
+	# Custom Methods
+	validate :field_uniqueness 
+	validate :dob_cannot_be_in_the_future
 
 	def field_uniqueness
 	  existing_record = Person.where("name ILIKE ? AND first_last_name ILIKE ? AND second_last_name ILIKE ?", name, first_last_name, second_last_name).first
@@ -23,33 +24,38 @@ class Person < ActiveRecord::Base
 	  																	existing_record.name.downcase! == self.name.downcase! && 
 	  																	existing_record.first_last_name.downcase! == self.first_last_name.downcase! && 
 	  																	existing_record.second_last_name.downcase! == self.second_last_name.downcase!)
-	    errors.add(:base, "The combination of name and last_name is allready taken") 
+	    errors.add(:base, "La combinación de nombre y apellidos ya existe en la base de datos") 
 	  end
 	end
 
-	include PgSearch
-	pg_search_scope :search, against: [:name, :first_last_name, :second_last_name],
-		ignoring: :accents
-		# using: { tsearch: { dictionary: "spanish" } }
+	def dob_cannot_be_in_the_future
+    errors.add(:dob, "Según la fecha de nacimiento la persona no ha nacido") if
+      !dob.blank? and dob > Date.today
+  end
 
   def name
 	read_attribute(:name).try(:titleize)
   end
 
   def first_last_name
-	read_attribute(:first_last_name).try(:titleize)
+	  read_attribute(:first_last_name).try(:titleize)
   end
 
   def second_last_name
-	read_attribute(:second_last_name).try(:titleize)
+	  read_attribute(:second_last_name).try(:titleize)
   end
 
   def full_name
   	[name,first_last_name,second_last_name].join(" ")
   end
 
+	include PgSearch
+	pg_search_scope :search, against: [:name, :first_last_name, :second_last_name],
+	ignoring: :accents
+	# using: { tsearch: { dictionary: "spanish" } }
+
   def self.text_search(query)
-	search(query)
+	  search(query)
   end
 
 end

@@ -13,7 +13,7 @@ class GroupsController < ApplicationController
 		puts
 		if @group.save
 			flash[:success] = "Creación Exitosa"
-			redirect_to edit_group_path(@group)
+			redirect_to @group
 		else
 			render 'new'
 		end

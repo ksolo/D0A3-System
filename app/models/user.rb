@@ -11,11 +11,19 @@ class User < ActiveRecord::Base
 	validates :password, length: { minimum: 6 }
 	validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 
-  	has_secure_password
+  has_secure_password
 
+  scope :facilitadores, where(:facilitator => true)
+
+<<<<<<< HEAD
   	def name
    		read_attribute(:name).try(:titleize)
   	end	
+=======
+	def name
+ 		read_attribute(:name).try(:titleize)
+	end	
+>>>>>>> ValidationsandSpecs
 
 	def User.new_remember_token
 		SecureRandom.urlsafe_base64
