@@ -1,0 +1,31 @@
+<% provide(:title, "Cambiar contraseña de: #{@user.name}") %>
+
+<div class="boton_der">
+	<p>	<button type="button" class="btn btn-info"><%= link_to "Regresar a Usuarios", users_path %></button></p>
+</div>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for @user, :url => password_reset_path(params[:id]) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <% if !current_user.admin? %>
+    <p>
+      <%= f.label :old_password, 'Contraseña Actual' %>
+      <%= f.password_field :old_password %>
+    <p>
+  <% end %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </p>
+  <%= f.submit "Update Password", class: "btn btn-sm btn-info" %>
+<% end %>
+  </div>
+</div>
+<% if params[:action] == 'edit' %>
+	<div class="boton_der">
+		<p><button type="button" class="btn btn-default"><%= link_to "Cambiar contraseña", :action => 'password', :controller => 'users', :id => @user.id %></button></p>
+	</div>
+<% end %>

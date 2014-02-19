@@ -50,6 +50,7 @@ end
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'meta_request'
 end
 
 gem 'guard-livereload', group: [:development, :test]# You need to install an extensión on your browser

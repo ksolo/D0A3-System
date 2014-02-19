@@ -1,22 +1,21 @@
 class User < ActiveRecord::Base
-	before_validation { |user| user.name.downcase! }
-	before_validation { |user| user.email.downcase! }
-	before_create :create_remember_token
 
+	before_save { self.email = email.downcase }
+	before_create :create_remember_token
 	
 	has_many :groups, :dependent => :restrict
 
 	VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
 
 	validates :name, presence: true, length: { maximum: 50 }	
-	validates :password,  presence: true, length: { minimum: 6 }
+	validates :password, length: { minimum: 6 }
 	validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 
   	has_secure_password
 
-	def name
- 		read_attribute(:name).ty(:titleize)
-	end	
+  	def name
+   		read_attribute(:name).try(:titleize)
+  	end	
 
 	def User.new_remember_token
 		SecureRandom.urlsafe_base64
@@ -28,8 +27,8 @@ class User < ActiveRecord::Base
 
 	private
 
-  def create_remember_token
-    self.remember_token = User.encrypt(User.new_remember_token)
-  end
+    def create_remember_token
+      self.remember_token = User.encrypt(User.new_remember_token)
+    end
 
 end

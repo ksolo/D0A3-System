@@ -1,5 +1,5 @@
-<% provide(:title, "Iniciar Sesión") %>
 <% unless signed_in? %>
+	<% provide(:title, "Iniciar Sesión") %>
 	<div>
 	    <%= form_for(:session, url: sessions_path) do |f| %>
 
@@ -13,7 +13,8 @@
 
 		<% end %>
 	</div>
-	<% else %>
+<% else %>
+	<% provide(:title, "#{current_user.name}") %>
 	<div>
 		<h2><%= "#{current_user.name} is logged-in"%></h2>
 	</div>

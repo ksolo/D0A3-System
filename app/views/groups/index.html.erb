@@ -1,15 +1,9 @@
 <% provide(:title, "Nuestros Grupos") %>
 
 <div class="boton_der">
-	<% if valid_user %>
-		<p>
-			<button type="button" class="btn btn-default"><%= link_to "Nuevo Grupo", new_group_path %></button>
-		</p>
-	<% else %>
-		<p>
-			<button type="button" class="btn btn-default disabled">Nuevo Grupo </button>
-		</p>
-	<% end %>
+	<p>
+		<button type="button" class="btn btn-default"><%= link_to "Nuevo Grupo", new_group_path %></button>
+	</p>
 </div>
 
 <h2>Total de Grupos: <%= @groups.count %></h2>

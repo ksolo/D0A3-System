@@ -16,22 +16,28 @@
 
 		$(".inscrito").on("click",function(){
 			$(this).remove();
-		})
-
-		//To click add class child active
-		$('.child_selector').on("click",function(){
-			var childId = $(this).data('childid'),
-			$$ = $('.child_'+childId);
-
-			$$.find('.child_selected').fadeIn(250);
-
-			$$.not("#enlist_childs .child_"+childId).fadeOut();
-			$("#enlist_childs .child_"+childId).fadeIn();
 		});
 
 		<% @group.spots.each do |c| %>
 			$('.child_<%= c.child.id  %>').hide().addClass('child_active');
 			$("#enlist_childs .child_<%= c.child.id  %>").show();
+		<% end %>
+		<% if !manager %>
+			$('.child_remove, .child_selected').on("click",function(){
+				$(".alert-notice").fadeIn(300,function(){
+					$(this).delay(5000).fadeOut();
+				});
+			});
+		<% else %>
+			$('.child_selector').on("click",function(){
+				var childId = $(this).data('childid'),
+				$$ = $('.child_'+childId);
+
+				$$.find('.child_selected').fadeIn(250);
+
+				$$.not("#enlist_childs .child_"+childId).fadeOut();
+				$("#enlist_childs .child_"+childId).fadeIn();
+			});
 		<% end %>
 		showKids();
 	});

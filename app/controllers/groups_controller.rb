@@ -1,7 +1,5 @@
 # encoding: UTF-8
 class GroupsController < ApplicationController
-	#include GroupsHelper
-	#skip_before_action :correct_user, only: [:index]
 	
 	helper_method :valid_user
 	before_action :correct_user, only: [:edit, :update, :new, :create, :destroy, :delete]
@@ -12,6 +10,7 @@ class GroupsController < ApplicationController
 
 	def create
 		@group = Group.new(group_params)
+		puts
 		if @group.save
 			flash[:success] = "Creación Exitosa"
 			redirect_to edit_group_path(@group)
@@ -51,17 +50,19 @@ class GroupsController < ApplicationController
 
 	private
 
-		def group_params
-		  params["group"]["name"].downcase!
+	def group_params
+	  params["group"]["name"].downcase!
       params.require(:group).permit(:name, :user_id, :location, :cost, :min_age, :max_age, :init_date, :finish_date)
     end
 
-    def correct_user
-			redirect_to(groups_path, notice: "No tienes permitido crear, editar o borrar grupos.") unless valid_user
-		end
+    protected
 
-		def valid_user
-			current_user.admin? || current_user.facilitator?
-		end
+    def correct_user
+		redirect_to(groups_path, notice: "No tienes permitido crear, editar o borrar grupos.") unless valid_user
+	end
+
+	def valid_user
+		current_user.admin? || current_user.facilitator?
+	end
 
 end
