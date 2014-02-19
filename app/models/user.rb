@@ -13,17 +13,11 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  scope :facilitadores, where(:facilitator => true)
+  scope :facilitadores, proc {where(:facilitator => true)}
 
-<<<<<<< HEAD
-  	def name
-   		read_attribute(:name).try(:titleize)
-  	end	
-=======
-	def name
- 		read_attribute(:name).try(:titleize)
-	end	
->>>>>>> ValidationsandSpecs
+  def name
+    read_attribute(:name).try(:titleize)
+  end	
 
 	def User.new_remember_token
 		SecureRandom.urlsafe_base64
