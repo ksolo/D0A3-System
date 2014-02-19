@@ -12,10 +12,12 @@ class User < ActiveRecord::Base
 	validates :password,  presence: true, length: { minimum: 6 }
 	validates :email, presence: true, format: { with: VALID_EMAIL_REGEX }, uniqueness: { case_sensitive: false }
 
-  	has_secure_password
+  has_secure_password
+
+  scope :facilitadores, where(:facilitator => true)
 
 	def name
- 		read_attribute(:name).ty(:titleize)
+ 		read_attribute(:name).try(:titleize)
 	end	
 
 	def User.new_remember_token
