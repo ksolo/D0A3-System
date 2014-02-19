@@ -54,7 +54,7 @@ class SpotsController < ApplicationController
 
 	def search
 		@group = Group.find(params[:group_id])
-		@childs = Person.text_search params[:query].downcase
+		@childs = Person.children.text_search(params[:query].downcase)
 	end
 
 	private

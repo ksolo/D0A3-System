@@ -38,7 +38,7 @@ describe Person do
 		it { should have(1).error_on(:name) }
 		it { should have(1).error_on(:first_last_name) }
 		it { should have(1).error_on(:second_last_name) }
-		it { should have(1).error_on(:sex) }
+		it { should have(2).error_on(:sex) }
 		it { should have(1).error_on(:dob) }
 		it { should have(1).error_on(:family_roll) }
 	end
@@ -58,6 +58,14 @@ describe Person do
 		it { should have(1).error_on(:family_roll) }
 	end
 
+
+	describe "when dob is after than today" do
+		before do
+			@person.dob = Date.today + 10.days
+		end
+
+		it { should have(1).error_on(:dob) }
+	end
 
 	describe "when complete name is already taken" do
 		before do
