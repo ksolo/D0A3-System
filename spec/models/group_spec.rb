@@ -32,10 +32,10 @@ describe Group do
 		before do
 			@group.name = " "
 			@group.cost = "-10"
-			@group.init_date = " "
-			@group.finish_date = " "
 			@group.min_age = "-10"
 			@group.max_age = " 300"
+			@group.init_date = " "
+			@group.finish_date = " "
 			@group.location = " "
 		end
 
@@ -46,6 +46,24 @@ describe Group do
 		it { should have(1).error_on(:min_age) }
 		it { should have(1).error_on(:max_age) }
 		it { should have(1).error_on(:location) }
+	end
+
+	describe "when min_age is greater than max_age" do
+		before do
+			@group.min_age = "100"
+			@group.max_age = " 50"
+		end
+
+		it { should have(1).error_on(:min_age) }
+	end
+
+	describe "when init_date is greater than finish_date" do
+		before do
+			@group.init_date = "12/03/2014"
+			@group.finish_date = "12/01/2014"
+		end
+
+		it { should have(1).error_on(:init_date) }
 	end
 
 	describe "when name is too long" do

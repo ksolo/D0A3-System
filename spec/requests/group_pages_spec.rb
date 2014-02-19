@@ -68,7 +68,7 @@ describe 'Group pages' do
 				expect { click_button "Guardar" }.to change(Group, :count).by(1)
 			end
 
-			it { should have_title('Editar Grupo') }
+			it { should have_title("Grupo New Group") }
 			it { should have_content('Creación Exitosa') }
 		end
 
