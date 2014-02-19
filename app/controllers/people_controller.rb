@@ -1,6 +1,7 @@
 # encoding: UTF-8
 class PeopleController < ApplicationController
 
+	helper_method :valid_user
 	before_action :correct_user, only: [:edit, :update, :new, :create, :destroy, :delete]
 
 	def index
@@ -60,10 +61,15 @@ class PeopleController < ApplicationController
 			params["person"]["first_last_name"].downcase!
 			params["person"]["second_last_name"].downcase!
 			params.require(:person).permit(:name, :first_last_name, :second_last_name, :sex, :dob, :family_roll)
-	  end
+		end
+
+		protected
 
 		def correct_user
-			@family = Family.find(params[:family_id])
-			redirect_to(@family, notice: "No tienes permitido crear, editar o borrar Personas.") unless current_user.coordinator? || current_user.admin?
+			redirect_to(families_path, notice: "No tienes permitido crear, editar o borrar familias.") unless valid_user
+		end
+
+		def valid_user
+			current_user.admin? || current_user.coordinator?
 		end
 end

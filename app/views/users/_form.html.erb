@@ -1,3 +1,6 @@
+<div class="boton_der">
+	<p>	<button type="button" class="btn btn-info"><%= link_to "Regresar a Usuarios", users_path %></button></p>
+</div>
 <div class="row">
   <div class="span6 offset3">
     <%= form_for(@user) do |f| %>
@@ -26,17 +29,22 @@
 				<%= f.label 'facilitator', "Facilitador", { :class => "checkbox inline" } %>
 			</p>
 		<% end %>
-		<p>
-			<%= f.label "Contraseña", :for => 'user_password' %>
-			<%= f.password_field :password, :value => @user.password %>
-		</p>
-		<p>
-			<%= f.label "Confirmación de Contraseña", :for => 'user_password_confirmation' %>
-			<%= f.password_field :password_confirmation, :value => @user.password %>
-		</p>
-		<p>
-			<%= f.submit "Guardar", class: "btn btn-sm btn-primary" %>
-		</p>
+		<% if params[:action] == 'new' %>
+			<p>
+				<%= f.label "Contraseña", :for => 'user_password' %>
+				<%= f.password_field :password, :value => @user.password %>
+			</p>
+			<p>
+				<%= f.label "Confirmación de Contraseña", :for => 'user_password_confirmation' %>
+				<%= f.password_field :password_confirmation, :value => @user.password %>
+			</p>
+		<% end %>
+		<p><%= f.submit "Guardar", class: "btn btn-sm btn-primary" %></p>
     <% end %>
   </div>
 </div>
+<% if params[:action] == 'edit' %>
+	<div class="boton_der">
+		<p><button type="button" class="btn btn-default"><%= link_to "Cambiar contraseña", edit_password_reset_path(@user) %></button></p>
+	</div>
+<% end %>

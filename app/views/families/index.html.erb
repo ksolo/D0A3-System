@@ -1,15 +1,9 @@
 <% provide(:title, "Nuestras Familias") %>
 
 <div class="boton_der">
-	<% if(valid_user) %>
-		<p>
-			<button type="button" class="btn btn-default"><%= link_to "Nueva Familia", new_family_path %></button>
-		</p>
-	<% else %>
-		<p>
-			<button type="button" class="btn btn-default disabled">Nueva Familia</button>
-		</p>
-	<% end %>
+	<p>
+		<button type="button" class="btn btn-default"><%= link_to "Nueva Familia", new_family_path %></button>
+	</p>
 </div>
 
 <h2>Total de Familias: <%= @families.count %></h2>

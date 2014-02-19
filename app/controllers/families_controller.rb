@@ -50,9 +50,9 @@ class FamiliesController < ApplicationController
 	private
 
 		def family_params
-      params["family"]["name"].downcase!
-      params.require(:family).permit(:name)
-    end
+			params["family"]["name"].downcase!
+			params.require(:family).permit(:name)
+		end
 
 		def correct_user
 			redirect_to(families_path, notice: "No tienes permitido crear, editar o borrar familias.") unless valid_user
@@ -60,5 +60,5 @@ class FamiliesController < ApplicationController
 
 		def valid_user
 			current_user.admin? || current_user.coordinator? #|| current_user.facilitator?
-		end		
+		end
 end

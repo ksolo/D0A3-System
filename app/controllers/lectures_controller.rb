@@ -4,8 +4,8 @@ class LecturesController < ApplicationController
 		@group = Group.find(params[:group_id])
 		@lecture = @group.lectures.build(lecture_params)
 		if @group.save  
-	    flash[:success] = "Clase creada exitosamente"
-	    redirect_to @group
+		    flash[:success] = "Clase creada exitosamente"
+		    redirect_to @group
 	    else
 	      render 'new'
 	    end

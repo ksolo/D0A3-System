@@ -12,26 +12,24 @@ D0A3::Application.routes.draw do
     end
   end
 
-  resources :users  
-
+  resources :users
   resources :exercises
+  resources :password_resets
   resources :people, only: [:index, :show]
   resources :sessions, only: [:new, :create, :destroy]
 
   root 'sessions#new'
 
   get "sessions/new"
+  get "sessions/edit"
   get "sessions/create"
   get "sessions/destroy"
 
   #get "spots/create"
   match '/user',    to: 'users#show',           via: 'get'
   match '/edit',    to: 'users#edit',           via: 'get'
-  match '/signin',  to: 'sessions#new',            via: 'get'
+  match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
-
-  match '/user',    to: 'users#show',           via: 'get'
-  match '/edit',    to: 'users#edit',           via: 'get'
 
   get ':controller(/:action(/:id))(.:format)'
 

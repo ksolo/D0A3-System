@@ -1,5 +1,8 @@
 # encoding: UTF-8
 class SpotsController < ApplicationController
+	
+	helper_method :valid_user
+	before_action :correct_user, only: [:update, :create, :destroy]
 
 	def index
 		@group = Group.find(params[:group_id])
@@ -61,6 +64,16 @@ class SpotsController < ApplicationController
 
 	def lecture_params
 		params.require(:spot).permit( :child_id, :tutor_id, :group_id)
+	end
+
+	protected
+
+    def correct_user
+		redirect_to(:back, notice: "No tienes permitido crear, editar o borrar grupos.") unless valid_user
+	end
+
+	def valid_user
+		current_user.admin? || current_user.facilitator?
 	end
 
 end

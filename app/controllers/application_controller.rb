@@ -5,9 +5,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   include SessionsHelper
-  
-  before_action :require_login
- 
+  helper_method :manager
+
+  before_action :require_login, only: :index
+  before_action :user_visor, only: [:update, :create, :destroy]
+
   private
  
   def require_login
@@ -16,4 +18,15 @@ class ApplicationController < ActionController::Base
       redirect_to signin_url # halts request cycle
     end
   end
+
+  protected
+
+  def user_visor
+    redirect_to(:back, notice:"No tienes los permisos suficientes para llevar a cabo esta tarea.") unless manager
+  end
+
+  def manager
+    current_user.admin? || current_user.facilitator? || current_user.coordinator?
+  end
+
 end

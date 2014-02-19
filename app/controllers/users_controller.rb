@@ -1,5 +1,7 @@
 # encoding: UTF-8
 class UsersController < ApplicationController
+  
+  skip_before_action :user_visor, only: [:edit, :update]
 
   before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
@@ -49,10 +51,10 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params
-    params["user"]["name"].downcase!
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin, :coordinator, :facilitator)
-  end
+    def user_params
+      params["user"]["name"].downcase!
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin, :coordinator, :facilitator)
+    end
 
     def signed_in_user
       unless signed_in?
