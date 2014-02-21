@@ -17,15 +17,20 @@ class PasswordResetsController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.authenticate(params[:user][:old_password]) || @user.admin?
-      if @user.update_attributes(password_params)
-        flash[:success] = "Password cambiado"
-        redirect_to root_url
+    if @user.authenticate(params[:user][:old_password]) || current_user.admin?
+      if !params[:user][:password].blank?
+        if @user.update_attributes(password_params)
+          flash[:success] = "Password cambiado"
+          redirect_to root_url
+        else
+          render 'edit'
+        end
       else
+        @user.errors.add(:password, "El campo contraseña no puede estar vacío") 
         render 'edit'
       end
     else
-      flash[:error] = "Mala verificacion"
+      @user.errors.add(:password, "La contraseña actual no coincide con la que has escrito.") 
       render 'edit'
     end
   end
@@ -36,13 +41,8 @@ class PasswordResetsController < ApplicationController
       params.require(:user).permit(:password, :password_confirmation)
     end
 
-    def verify_old_password
-      @user.password == params[:old_pasword]
-    end
-
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user) || current_user.admin?
     end
-
 end

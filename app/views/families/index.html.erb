@@ -7,14 +7,44 @@
 </div>
 
 <h2>Total de Familias: <%= @families.count %></h2>
-
+<%= will_paginate %>
 <table class="table table-striped">
 <tr>
 	<th>Familias</th>
+	<% if params[:filter] %><th></th><% end %>
 </tr>
-<% @families.each do |family| %>
-	<tr>
+<% @families.each_with_index do |family,index| %>
+	<tr id="family_<%= family.id %>" class="family_<%= family.status %>">
 		<td><%= link_to family.name, family %></td>
+		<% if params[:filter] %>
+			<td>
+				<a href="/families/status/<%= family.id %>" data-remote="true" id="family_status_<%= index %>">
+					<% if family.status %>
+						<button type="button" class="btn status_button btn-danger">DESACTIVAR</button>
+					<% else %>
+						<button type="button" class="btn status_button btn-success">ACTIVAR</button>
+					<% end %>
+				</a>
+			</td>
+		<% end %>
 	</tr>
 <% end %>
 </table>
+<% if !params[:filter] %>
+	<div class="boton_der">
+		<p>
+			<a href="/families?filter=pasive">
+				<button type="button" class="btn btn-default" id="admin_families"> Administrar Familias </button>
+			</a>
+		</p>
+	</div>
+<% else %>
+	<div class="boton_der">
+		<p>
+			<a href="/families">
+				<button type="button" class="btn btn-default" id="admin_families">Volver a Familias</button>
+			</a>
+		</p>
+	</div>
+<% end %>
+<%= will_paginate %>

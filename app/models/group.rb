@@ -2,8 +2,8 @@ class Group < ActiveRecord::Base
 	before_validation { |group| group.name.downcase! }
 
 	belongs_to :user
-	has_many :spots, :dependent => :restrict
-	has_many :lectures, :dependent => :restrict
+	has_many :spots, :dependent => :restrict_with_error
+	has_many :lectures, :dependent => :restrict_with_error
 
 	validates_presence_of :name, :user_id, :cost, :location, :min_age, :max_age, :init_date, :finish_date
 	validates :name, length: { maximum: 50 }

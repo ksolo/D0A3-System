@@ -3,11 +3,15 @@
 </div>
 <div class="row">
   <div class="span6 offset3">
-    <%= form_for(@user) do |f| %>
+    <%= form_for @user, :html => { :multipart => true } do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
 		<p>
 			<%= f.label "Nombre", :for => 'user_name' %>
 			<%= f.text_field :name %>
+		</p>
+		<p>
+			<%= f.label :photo, "Foto"  %>
+			<%= f.file_field :photo  %>
 		</p>
 		<p>
 			<%= f.label "Email", :for => 'user_email' %>
@@ -29,7 +33,7 @@
 				<%= f.label 'facilitator', "Facilitador", { :class => "checkbox inline" } %>
 			</p>
 		<% end %>
-		<% if params[:action] == 'new' %>
+		<% if params[:action] == 'new' || params[:action] == 'create' %>
 			<p>
 				<%= f.label "Contraseña", :for => 'user_password' %>
 				<%= f.password_field :password, :value => @user.password %>

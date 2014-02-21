@@ -19,8 +19,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  protected
-
   def user_visor
     redirect_to(:back, notice:"No tienes los permisos suficientes para llevar a cabo esta tarea.") unless manager
   end

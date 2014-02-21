@@ -3,6 +3,7 @@ class SpotsController < ApplicationController
 	
 	helper_method :valid_user
 	before_action :correct_user, only: [:update, :create, :destroy]
+	before_action :pasive_family, only: [:update, :edit]
 
 	def index
 		@group = Group.find(params[:group_id])
@@ -74,6 +75,12 @@ class SpotsController < ApplicationController
 
 	def valid_user
 		current_user.admin? || current_user.facilitator?
+	end
+
+	def pasive_family
+		@spot = Spot.find(params[:id])
+		@group = Group.find(params[:group_id])
+		redirect_to(group_spot_path(@group,@spot)) unless @spot.child.family_relations.first.family.status?
 	end
 
 end
