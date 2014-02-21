@@ -5,8 +5,8 @@ class Person < ActiveRecord::Base
 
 	has_many :family_relations
 	has_many :families, through: :family_relations, source: :family
-	has_many :attendances, :dependent => :restrict
-	#has_many :spots, :dependent => :restrict
+	has_many :attendances, :dependent => :restrict_with_error
+	#has_many :spots, :dependent => :restrict_with_error
 
 	scope :children, proc {where("dob > :years",{ years: Date.today - 5.years} )}
 	
