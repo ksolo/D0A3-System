@@ -31,7 +31,6 @@ describe "Family-Person pages" do
 			it { should have_link("Editar Nombre de la Familia", href: edit_family_path(family))}
 
 			it { should have_content("Contacto") }
-
 			# HELP - The Addres is not working, it is not recognizing it, and it is strange that on the address specs works fine. 
 			# specify { expect(family.address).to  eq address }
 			# it { should have_content("Arteaga Y Salazar,44 ,Int 3,Algo,Contadero, Cuajimalpa, México, Distrito Federal, México, 01190") }

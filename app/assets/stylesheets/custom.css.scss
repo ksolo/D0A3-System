@@ -2,7 +2,13 @@
 
 /* mixins, variables, etc. */
 
+$grayDarker: #222222;
+$grayLight: #999999;
 $grayMediumLight: #eaeaea;
+$morado: #81519C;
+$morado_claro:#d3c0de;
+$verde:#82C87D;
+$negro_opaco:#444444;
 
 /* universal */
 
@@ -11,7 +17,7 @@ html {
 }
 
 body {
-  padding-top: 70px;
+  padding-top: 80px;
 }
 
 section {
@@ -29,37 +35,99 @@ textarea {
   }
 }
 
- .navbar-inverse .navbar-inner{
-	background-color: white;
+ .navbar-fixed-top{
+	background-color: $negro_opaco;
 	background-image: none;
-	border-color: #81519c;
+	border-color: $verde;
+  border-bottom-width:5px;
 }
 
-
-.navbar .nav > li > a {
-  color: $grayLight;
+.navbar .navbar-right > li > a {
+  color: white;
   font-weight:bold;	
   padding: 30px 15px 2px;
   text-shadow:none;
   &:hover {
-    color: purple;
+    color: $verde;
     text-decoration: none;
   }
 }
 
+a {
+color: #81519C;
+text-decoration: none;
+  &:hover {
+    color: #81519C;
+    text-decoration:underline;
+  }
+}
 
 /* buttons */
 
+
+
+.btn-default {
+    background-color:$verde;
+    border-color:$verde;
+  &:hover {
+    background-color: #71c06b;
+    border-color: #71c06b;
+  }
+}
+
+.btn-default a{
+  color: white;
+  &:hover {
+   text-decoration: none;
+  }
+}
+
+.btn-info {
+  background-color:$morado;
+  border-color:$morado;
+  &:hover {
+    background-color:#73488b;
+    border-color:#73488b;
+  }
+}
+
 .btn-info a{
- color: white;
+  color: white;
+  &:hover {
+   text-decoration: none;
+  }
+}
+
+.btn-danger {
+    background-color:#D9534F;
+    border-color:#D9534F;
+  &:hover {
+    background-color: #D43F3A;
+    border-color: #D43F3A;
+  }
 }
 
 .btn-danger a{
- color: white;
+  color: white;
+  &:hover {
+   text-decoration: none;
+  }
+}
+
+.btn-warning {
+    background-color:#F0AD4E;
+    border-color:#F0AD4E;
+  &:hover {
+    background-color: #EEA236;
+    border-color: #EEA236;
+  }
 }
 
 .btn-warning a{
- color: white;
+  color: white;
+  &:hover {
+   text-decoration: none;
+  }
 }
 
 /* typography */
@@ -69,7 +137,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 span.line {
-  background: #81519C;
+  background: $morado;
   display: block;
   width: 95px;
   height: 4px;
@@ -83,7 +151,7 @@ span.line {
 
 
 h1 {
-  color: $grayLight;
+  color: #6c6c6c;
   font-size: 3em;
   letter-spacing: -2px;
   margin-bottom: 30px;
@@ -181,6 +249,32 @@ footer {
 
 .clear { clear: both; }
 
+/* Group show */
+
+.panel-primary {
+  // border-color:$verde;
+  border: 4px solid rgba(0, 0, 0, 0);
+  background-color: $morado_claro;
+}
+
+.group_info {
+  padding:10px, 10px;
+  margin-left:auto;
+  margin-right:auto;
+  border-radius: 4px;
+  text-align: center;
+}
+
+.group_info > li {
+  display:inline-block;
+  padding: 4px 15px;
+}
+
+.group_info > li > strong{
+  padding: 0px 5px;
+}
+
+
 /* Group select */
 .date_selector:nth-child(1){ width: 55px; }
 .date_selector:nth-child(2){ width: 110px; }
@@ -246,5 +340,3 @@ footer {
   height: 5px;
 }
 #enlist_childs .child_selector, #posibble_childs .child_selector{ display: none; }
-
-.alert-notice{ display: none; }
