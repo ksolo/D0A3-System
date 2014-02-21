@@ -5,7 +5,7 @@
       <nav>
         <ul class="nav navbar-nav navbar-right">
           <% if signed_in? %>
-            <li><%= link_to "#{current_user.name}:", edit_user_path(current_user) %></li>
+            <li><%= link_to "#{current_user.name}:", user_path(current_user) %></li>
             <li><%= link_to "Home", root_path %></li>
             <li><%= link_to "Familias", families_path %></li>
             <li><%= link_to "Grupos", groups_path %></li>

@@ -1,7 +1,7 @@
 <% provide(:title, "Todos los Miembros") %>
 
 <h2>Total de Miembros: <%= @people.count %></h2>
-
+<%= will_paginate %>
 <table class="table table-striped">
 <tr>
 	<th>Nombre</th>
@@ -23,3 +23,4 @@
 </tr>
 <% end %>
 </table>
+<%= will_paginate %>

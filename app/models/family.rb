@@ -14,6 +14,7 @@ class Family < ActiveRecord::Base
 	def name
      read_attribute(:name).try(:titleize)
      # The try method will silently avoid a NoMethodError exception when the name attribute is nil.
+     
   end
 
 	def styled_address

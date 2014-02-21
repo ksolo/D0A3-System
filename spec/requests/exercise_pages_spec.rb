@@ -7,13 +7,11 @@ describe 'Exercise pages' do
 	let(:user) { create(:user, :is_admin) }
 	let(:exercise) { create(:exercise) }
 
-  	before do
-	  	sign_in user
-	end
+  	before { sign_in user }
 
 	describe 'Index Exercises' do
 		before do
-	  	10.times { create(:exercise) }
+	  		10.times { create(:exercise) }
 			visit exercises_path
 		end
 

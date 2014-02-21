@@ -1,5 +1,7 @@
 # encoding: UTF-8
 class PaymentsController < ApplicationController
+	before_action :pasive_family, only: [:create, :new]
+
 	def create
 		@group = Group.find(params[:group_id])
 		@spot = Spot.find(params[:spot_id])
@@ -19,9 +21,9 @@ class PaymentsController < ApplicationController
 	end
 
 	def edit
-		@group = Group.find(params[:group_id])
-		@spot = Spot.find(params[:spot_id])
-		@payment = @spot.payments.find(params[:id])
+		# @group = Group.find(params[:group_id])
+		# @spot = Spot.find(params[:spot_id])
+		# @payment = @spot.payments.find(params[:id])
 	end
 
 	def show
@@ -41,11 +43,11 @@ class PaymentsController < ApplicationController
 	end
 
 	def destroy
-		@group = Group.find(params[:group_id])
-		@spot = Spot.find(params[:spot_id])
-		Payment.find(params[:id]).destroy
-		flash[:success] = "Pago borrado"
-		redirect_to group_spot_path(@group, @spot)
+		# @group = Group.find(params[:group_id])
+		# @spot = Spot.find(params[:spot_id])
+		# Payment.find(params[:id]).destroy
+		# flash[:success] = "Pago borrado"
+		# redirect_to group_spot_path(@group, @spot)
 	end
 
 	private
@@ -53,5 +55,11 @@ class PaymentsController < ApplicationController
 	def payment_params
       params.require(:payment).permit( :date, :spot_id, :scholarship, :amount )
     end
+
+   	def pasive_family
+		@spot = Spot.find(params[:spot_id])
+		@group = Group.find(params[:group_id])
+		redirect_to(group_spot_path(@group,@spot)) unless @spot.child.family_relations.first.family.status?
+	end
 
 end

@@ -10,7 +10,6 @@ class GroupsController < ApplicationController
 
 	def create
 		@group = Group.new(group_params)
-		puts
 		if @group.save
 			flash[:success] = "Creación Exitosa"
 			redirect_to @group

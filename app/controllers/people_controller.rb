@@ -5,7 +5,7 @@ class PeopleController < ApplicationController
 	before_action :correct_user, only: [:edit, :update, :new, :create, :destroy, :delete]
 
 	def index
-		@people = Person.all.order("name ASC")
+		@people = Person.all.order("name ASC").paginate(page: params[:page])
 	end
 
 	def create

@@ -6,7 +6,10 @@ class FamiliesController < ApplicationController
 	before_action :correct_user, only: [:edit, :update, :new, :create, :destroy, :delete]
 
 	def index
-		@families = Family.all.order("name ASC")
+		@families = Family.where(:status=>true).order("name ASC").paginate(page: params[:page])
+		if params[:filter]
+			@families = Family.all.order("name ASC").paginate(page: params[:page])
+		end
 	end
 
 	def create
@@ -29,6 +32,12 @@ class FamiliesController < ApplicationController
 
 	def show
 		@family = Family.find(params[:id])
+	end
+
+	def status
+		@family = Family.find(params[:id])
+		@family.toggle!(:status)
+		@family.save
 	end
 
 	def update

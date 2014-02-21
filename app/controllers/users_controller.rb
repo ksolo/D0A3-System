@@ -35,6 +35,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+    # params[:user].delete(:password) if params[:user][:password].blank?
     if @user.update_attributes(user_params)
       flash[:success] = "Actualización exitosa"
       redirect_to users_path
@@ -53,7 +54,7 @@ class UsersController < ApplicationController
 
     def user_params
       params["user"]["name"].downcase!
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin, :coordinator, :facilitator)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :admin, :coordinator, :facilitator, :photo)
     end
 
     def signed_in_user

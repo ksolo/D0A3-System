@@ -30,8 +30,7 @@ describe 'Group pages' do
 					expect(page).to have_selector('a', text: g.name)
 				end
 			end
-		end
-	
+		end	
 	end
 
 	describe 'New group' do
@@ -270,7 +269,7 @@ describe 'Group pages' do
 
 		describe 'when click on item' do
 			it "should create a spot" do
-				expect { click_link "child_selector_1" }.to change(Spot, :count).by(1)
+				expect { click_link "child_selector_0" }.to change(Spot, :count).by(1)
 			end
 		end
 
