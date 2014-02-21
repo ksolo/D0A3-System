@@ -60,7 +60,7 @@ class PeopleController < ApplicationController
 			params["person"]["name"].downcase!
 			params["person"]["first_last_name"].downcase!
 			params["person"]["second_last_name"].downcase!
-			params.require(:person).permit(:name, :first_last_name, :second_last_name, :sex, :dob, :family_roll)
+			params.require(:person).permit(:name, :first_last_name, :second_last_name, :sex, :dob, :family_roll, :photo)
 		end
 
 		protected

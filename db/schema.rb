@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20140213184330) do
 
   create_table "families", force: true do |t|
     t.string   "name"
-    t.boolean  "status"
+    t.boolean  "status",         default: true
     t.integer  "responsible_id"
     t.text     "observations"
     t.datetime "created_at"
@@ -111,6 +111,7 @@ ActiveRecord::Schema.define(version: 20140213184330) do
     t.string   "sex"
     t.date     "dob"
     t.string   "family_roll"
+    t.string   "photo"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -142,6 +143,7 @@ ActiveRecord::Schema.define(version: 20140213184330) do
     t.boolean  "coordinator",     default: false
     t.boolean  "facilitator",     default: false
     t.string   "remember_token"
+    t.string   "photo"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

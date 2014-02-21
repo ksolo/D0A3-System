@@ -21,7 +21,7 @@
 	<th>Editar</th>
 	<th>Borrar</th>
 </tr>
-<% @family.family_members.each do |member| %>
+<% @family.family_members.order("name ASC").each do |member| %>
 <tr>
 	<td><%= link_to member.name, member %></td>
 	<td><%= member.first_last_name %></td>

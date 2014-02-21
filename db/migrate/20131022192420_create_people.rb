@@ -7,6 +7,7 @@ class CreatePeople < ActiveRecord::Migration
       t.string :sex
       t.date :dob
       t.string :family_roll
+      t.string :photo
 
       t.timestamps
     end

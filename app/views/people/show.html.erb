@@ -4,4 +4,5 @@
 	<% @person.families.each do |family| %>
 		<strong><%= "#{family.name} " %></strong>
 	<% end %>
+	<%= image_tag @person.photo_url(:thumb).to_s %>
 </h2>
