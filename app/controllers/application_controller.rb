@@ -7,14 +7,14 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   helper_method :manager
 
-  before_action :require_login, only: :index
+  before_action :require_login
   before_action :user_visor, only: [:update, :create, :destroy]
 
   private
  
   def require_login
     unless signed_in?
-      flash[:error] = "Inicia sesión"
+      flash[:danger] = "Inicia sesión"
       redirect_to signin_url # halts request cycle
     end
   end

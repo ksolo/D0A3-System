@@ -2,6 +2,7 @@
 class FamiliesController < ApplicationController
 	#include FamiliesHelper
 
+	before_action :signed_in_user
 	helper_method :valid_user
 	before_action :correct_user, only: [:edit, :update, :new, :create, :destroy, :delete]
 

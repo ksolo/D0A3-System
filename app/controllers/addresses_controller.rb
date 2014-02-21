@@ -1,6 +1,8 @@
 # encoding: UTF-8
 class AddressesController < ApplicationController
 
+	before_action :signed_in_user
+
 	def new
 	   @family = Family.find(params[:family_id])
 	   @address = @family.build_address
