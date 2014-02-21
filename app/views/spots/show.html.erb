@@ -1,17 +1,22 @@
-<% provide(:title, "#{@spot.child.name} #{@spot.child.first_last_name} #{@spot.child.second_last_name}") %>
+<% provide(:title, "#{@group.name} / #{@spot.child.name} #{@spot.child.first_last_name} #{@spot.child.second_last_name}") %>
 <div class="boton_der">
 	<p>
 	  <button type="button" class="btn btn-info"><%= link_to "Regresar a Spots", group_path(@group) %></button>
 	</p>
-	<p>
-		<button type="button" class="btn btn-default btn-xs"><%= link_to "Editar Spot", edit_group_spot_path(@group,@spot) %></button>
-	</p>
-	<p>
-		<button type="button" class="btn btn-default">
-			<%= link_to "Nuevo Pago", new_group_spot_payment_path(@group, @spot) %>
-		</button>
-	</p>
+	<% if @spot.child.family_relations.first.family.status? %>
+		<p>
+			<button type="button" class="btn btn-default btn-xs"><%= link_to "Editar Spot", edit_group_spot_path(@group,@spot) %></button>
+		</p>
+		<p>
+			<button type="button" class="btn btn-default">
+				<%= link_to "Nuevo Pago", new_group_spot_payment_path(@group, @spot) %>
+			</button>
+		</p>
+	<% end %>
 </div>
+<% if !@spot.child.family_relations.first.family.status? %>
+	<div class="alert alert-error">La familia está en modo pasivo. No puede llevar a cabo esta acción.</div>
+<% end %>
 <div class="row">
   <div class="span10 offset1">
   	<h1>Pagos</h1>
@@ -20,8 +25,6 @@
 			<th>Fecha</th>
 			<td>Monto</td>
 			<td>Beca</td>
-			<!--<td>Editar</td>
-			<td>Borrar</td>-->
 		</tr>
 		<% @spot.payments.each do |payment| %>
 			<tr>
@@ -32,8 +35,6 @@
 				<% else %>
 					<td>NO</td>
 				<% end %>
-				<!--<td><button type="button" class="btn btn-default btn-xs"><%= link_to "Editar Pago", edit_group_spot_payment_path(@group, @spot, payment) %></button></td>
-				<td><button type="button" class="btn btn-danger btn-xs"><%= link_to "Borrar Pago", group_spot_payment_path(@group, @spot, payment), method: :delete, data: { confirm: "Estas Seguro?" } %></button></td>-->
 			</tr>
 		<% end %>
 	</table>

@@ -8,6 +8,7 @@ class CreateUsers < ActiveRecord::Migration
 	    t.boolean  :coordinator, :default => false
 	    t.boolean  :facilitator, :default => false
 	    t.string   :remember_token
+      t.string   :photo
 
       t.timestamps
     end

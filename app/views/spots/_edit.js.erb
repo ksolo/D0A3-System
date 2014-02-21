@@ -24,7 +24,7 @@
 		<% end %>
 		<% if !manager %>
 			$('.child_remove, .child_selected').on("click",function(){
-				$(".alert-notice").fadeIn(300,function(){
+				$("#alert_notice").stop().fadeIn(300,function(){
 					$(this).delay(5000).fadeOut();
 				});
 			});

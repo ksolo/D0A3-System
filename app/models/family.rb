@@ -2,7 +2,7 @@ class Family < ActiveRecord::Base
 	before_validation { |family| family.name.downcase! }
 
 	has_many :family_relations
-	has_many :family_members, through: :family_relations, source: :person, :dependent => :restrict
+	has_many :family_members, through: :family_relations, source: :person, :dependent => :restrict_with_error
 
 	belongs_to :responsible, :class_name => 'Person'
 
@@ -11,12 +11,10 @@ class Family < ActiveRecord::Base
 	# belongs_to :address
 	has_one :address, :dependent => :destroy
 
-	validates :name, presence: true, length: { maximum: 50 },
-						uniqueness: { case_sensitive: false }
-
 	def name
      read_attribute(:name).try(:titleize)
      # The try method will silently avoid a NoMethodError exception when the name attribute is nil.
+     
   end
 
 	def styled_address

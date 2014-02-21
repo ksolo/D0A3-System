@@ -1,3 +1,4 @@
+# encoding: UTF-8
 class Person < ActiveRecord::Base
 	before_validation { |person| person.name.downcase! }
 	before_validation { |person| person.first_last_name.downcase! }
@@ -5,10 +6,12 @@ class Person < ActiveRecord::Base
 
 	has_many :family_relations
 	has_many :families, through: :family_relations, source: :family
-	has_many :attendances, :dependent => :restrict
-	#has_many :spots, :dependent => :restrict
+	has_many :attendances, :dependent => :restrict_with_error
+	has_many :tutoring, :foreign_key => :tutor_id, :class_name => 'Spot', :dependent => :restrict_with_error
+	has_many :spots, :foreign_key => :child_id, :dependent => :restrict_with_error
 
-	scope :children, proc {where("dob > :years",{ years: Date.today - 5.years} )}
+	mount_uploader :photo, PhotoUploader	
+	scope :children, proc { where("dob > :years", { years: Date.today - 5.years} )}
 	
 	validates_presence_of :name, :first_last_name, :second_last_name, :sex, :dob, :family_roll
 	validates :name, :first_last_name, :second_last_name, :family_roll, length: { maximum: 50 }
@@ -28,7 +31,7 @@ class Person < ActiveRecord::Base
 	  end
 	end
 
-	def dob_cannot_be_in_the_future
+  def dob_cannot_be_in_the_future
     errors.add(:dob, "Según la fecha de nacimiento la persona no ha nacido") if
       !dob.blank? and dob > Date.today
   end

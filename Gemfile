@@ -22,13 +22,13 @@ gem 'coffee-rails', '~> 4.0.0'
 # Use bycrypt to encode keys and restore on cookies sessions
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
-
+gem "carrierwave", "~> 0.9.0"
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 gem "debugger", "~> 1.6.5"
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
-
+gem 'will_paginate', '~> 3.0'
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

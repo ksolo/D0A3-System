@@ -1,11 +1,12 @@
 <% provide(:title, "#{@user.name}") %>
 <div class="boton_der">
 	<p>	<button type="button" class="btn btn-info"><%= link_to "Regresar a home", root_path %></button></p>
-	<p><button type="button" class="btn btn-dedault"><%= link_to "Regresar a usuarios", users_path %></button></p>
+	<p><button type="button" class="btn btn-default"><%= link_to "Regresar a usuarios", users_path %></button></p>
 </div>
 <div class="row">
   <div class="span10 offset1">
   	<h1>Info</h1>
+  	<%= image_tag @user.photo_url(:thumb).to_s  %>
 	<table class="table table-striped">
 		<tr>
 			<th>Nombre</th>
@@ -35,4 +36,7 @@
 		</tr>
 	</table>
   </div>
+</div>
+<div class="boton_der">
+	<p><button type="button" class="btn btn-default"><%= link_to "Editar perfil", edit_user_path %></button></p>
 </div>

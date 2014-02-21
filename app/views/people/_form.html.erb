@@ -1,10 +1,14 @@
 <div class="row">
   <div class="span6 offset3">
-	<%= form_for([@family, @person]) do |f| %>
+	<%= form_for [@family, @person], :html => { :multipart => true } do |f| %>
 	<%= render 'shared/error_messages', object: f.object %>
 	<p>
 	    <%= f.label "Nombre", :for => "person_name" %>
 	    <%= f.text_field :name %>
+	</p>
+	<p>
+		<%= f.label :photo, "Foto"  %>
+		<%= f.file_field :photo  %>
 	</p>
 	<p>
 	    <%= f.label "Apellido Paterno", :for => "person_first_last_name" %>
