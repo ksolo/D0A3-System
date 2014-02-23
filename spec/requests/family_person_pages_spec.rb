@@ -16,7 +16,7 @@ describe "Family-Person pages" do
 		let(:person1) { family.family_members.create( name: "Fernando", first_last_name:"Garcia", second_last_name:"Lopez",  sex:"M", dob:"20/01/1995", family_roll: "Hijo") }
 		let(:person2) { family.family_members.create( name: "Alejandra", first_last_name:"Garcia", second_last_name:"Lopez",  sex:"F", dob:"21/02/1996", family_roll: "Hija") }
 		let(:person3) { family.family_members.create( name: "Rodrigo", first_last_name:"Garcia", second_last_name:"Lopez",  sex:"M", dob:"22/03/1969", family_roll: "Padre") }
-    
+
     before do
       visit family_path(family)
     end
@@ -31,11 +31,11 @@ describe "Family-Person pages" do
 			it { should have_link("Editar Nombre de la Familia", href: edit_family_path(family))}
 
 			it { should have_content("Contacto") }
-			# HELP - The Addres is not working, it is not recognizing it, and it is strange that on the address specs works fine. 
+			# HELP - The Addres is not working, it is not recognizing it, and it is strange that on the address specs works fine.
 			# specify { expect(family.address).to  eq address }
 			# it { should have_content("Arteaga Y Salazar,44 ,Int 3,Algo,Contadero, Cuajimalpa, México, Distrito Federal, México, 01190") }
 			# it { should have_link("Editar Contacto", href: edit_family_address_path(family,address))}
-		end	
+		end
 
     describe "Members List" do
 
@@ -44,17 +44,17 @@ describe "Family-Person pages" do
           expect(page).to have_link(person.name, href: person_path(person))
           expect(page).to have_selector('a', text: person.name)
           expect(page).to have_selector('a', text: person.name)
-          expect(page).to have_selector('td', text: person.first_last_name) 
-          expect(page).to have_selector('td', text: person.second_last_name) 
-          expect(page).to have_selector('td', text: person.dob) 
-          expect(page).to have_selector('td', text: person.family_roll) 
+          expect(page).to have_selector('td', text: person.first_last_name)
+          expect(page).to have_selector('td', text: person.second_last_name)
+          expect(page).to have_selector('td', text: person.dob)
+          expect(page).to have_selector('td', text: person.family_roll)
         end
       end
     end
   end # describe index
 
-  # describe "index when family has no members" do 
-  # 	before {visit family_path(family)} 
+  # describe "index when family has no members" do
+  # 	before {visit family_path(family)}
 
   # 	it { should have_link("Falta Información de Contacto", href: edit_family_address_path(family,address ))}
   # 	it { should have_link("Borrar Familia", href: new_family_address_path(family))}
@@ -85,7 +85,7 @@ describe "Family-Person pages" do
 				fill_in "person[second_last_name]", with: "Portilla"
 				choose "person_sex_f"
 				select 'Padre', from: 'person[family_roll]'
-				# HELP - If modifying 1995 for any other year, rspec does not finds it. 
+				# HELP - If modifying 1995 for any other year, rspec does not finds it.
 				select  '1995', from: 'person[dob(1i)]'
 				select  'February' , from: 'person[dob(2i)]'
 				select  '21' , from: 'person[dob(3i)]'
@@ -107,9 +107,9 @@ describe "Family-Person pages" do
 
 
 
-			specify { expect(person.name).to  eq "Fernando" }
-			specify { expect(person.first_last_name).to  eq "Garcia" }
-			specify { expect(person.second_last_name).to  eq "Lopez" }
+			specify { expect(person.name).to  eq "fernando" }
+			specify { expect(person.first_last_name).to  eq "garcia" }
+			specify { expect(person.second_last_name).to  eq "lopez" }
 			specify { expect(person.sex).to  eq "M" }
 			specify { expect(person.family_roll).to  eq "Hijo" }
 			specify { expect(person.dob).to  eq "20/01/1995".to_date }
@@ -161,7 +161,7 @@ describe "Family-Person pages" do
 				select  '2002', from: 'person[dob(1i)]'
 				select  'February' , from: 'person[dob(2i)]'
 				select  '21' , from: 'person[dob(3i)]'
-				# Otra forma de hacerlo	
+				# Otra forma de hacerlo
 				# within '#person_dob_3i' do
 				#   find("option[value='21']").select_option
 				# end
@@ -203,10 +203,10 @@ describe "Family-Person pages" do
 	end # Edit Person
 end #describe-Family-Person-Pages
 
- 	 # let(:address) {family.address.create_address(calle: "Arteaga y Salazar", num_ext:"44", num_int:"3", 
+ 	 # let(:address) {family.address.create_address(calle: "Arteaga y Salazar", num_ext:"44", num_int:"3",
    #                localidad:"Algo", colonia:"contadero", municipio: "cuajimalpa",
-   #                ciudad:"México",estado:"Distrito Federal", pais:"México", 
-   #                codigo_postal:"01190", telefono:"558130387", celular:"5512946184", 
+   #                ciudad:"México",estado:"Distrito Federal", pais:"México",
+   #                codigo_postal:"01190", telefono:"558130387", celular:"5512946184",
    #                email:"user@example.com")}
 
 

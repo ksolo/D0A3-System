@@ -2,9 +2,9 @@
 require 'spec_helper'
 
 describe 'Person pages' do
-	
+
 	subject { page }
-	
+
 	let(:user) { create(:user, :is_admin) }
 	before { sign_in user }
 
@@ -28,7 +28,7 @@ describe 'Person pages' do
 	describe 'Show person' do
 		let(:member) { FactoryGirl.create(:person) }
 		before { visit person_path(member) }
-		it { should have_title(member.name) }
+		it { should have_title(member.reload.full_name) }
 	end
 
 end
